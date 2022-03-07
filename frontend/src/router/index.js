@@ -18,7 +18,11 @@ const routes = [
         children: [
           {
             path: '/sub/dashboard',
-            component: () => import('../views/sub/dashboard.vue')
+            component: () => import('../views/sub/dashBoard.vue')
+          },
+          {
+            path: '/sub/workStatus',
+            component: () => import('../views/sub/workStatus.vue')
           }
         ]
       }

@@ -1,12 +1,12 @@
 <template>
   <div style="padding: 0 30px; box-sizing: border-box; background-color: #343a40">
     <b-navbar toggleable="lg" type="dark" variant="dark">
-      <b-navbar-brand href="#">hehe</b-navbar-brand>
+      <b-navbar-brand href="#" @click="$router.push('/')">hehe</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#" @click="$router.push('/dashboard')">대시보드</b-nav-item>
-          <b-nav-item href="#">작업현황</b-nav-item>
+          <b-nav-item href="#" @click="$router.push('/sub/dashboard')">대시보드</b-nav-item>
+          <b-nav-item href="#" @click="$router.push('/sub/workStatus')">작업현황</b-nav-item>
           <b-nav-item href="#">완료이력</b-nav-item>
           <b-nav-item href="#">설비관리</b-nav-item>
           <b-nav-item href="#">품목관리</b-nav-item>
