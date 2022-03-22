@@ -5,11 +5,11 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#" @click="$router.push('/sub/dashboard')">대시보드</b-nav-item>
-          <b-nav-item href="#" @click="$router.push('/sub/workStatus')">작업현황</b-nav-item>
-          <b-nav-item href="#" @click="$router.push('/sub/history')">완료이력</b-nav-item>
-          <b-nav-item href="#">설비관리</b-nav-item>
-          <b-nav-item href="#">품목관리</b-nav-item>
+          <b-nav-item href="#" @click="$router.push('/dashboard')">대시보드</b-nav-item>
+          <b-nav-item href="#" @click="$router.push('/workStatus')">작업현황</b-nav-item>
+          <b-nav-item href="#" @click="$router.push('/history')">완료이력</b-nav-item>
+          <b-nav-item href="#" @click="$router.push('/machine')">설비관리</b-nav-item>
+          <b-nav-item href="#" @click="$router.push('/item')">품목관리</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->

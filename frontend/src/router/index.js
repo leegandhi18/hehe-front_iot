@@ -13,22 +13,24 @@ const routes = [
         component: () => import('../views/Home.vue')
       },
       {
-        path: '/sub',
-        component: () => import('../views/sub'),
-        children: [
-          {
-            path: '/sub/dashboard',
-            component: () => import('../views/sub/dashBoard.vue')
-          },
-          {
-            path: '/sub/workStatus',
-            component: () => import('../views/sub/workStatus.vue')
-          },
-          {
-            path: '/sub/history',
-            component: () => import('../views/sub/history.vue')
-          }
-        ]
+        path: '/dashBoard',
+        component: () => import('../views/dashBoard')
+      },
+      {
+        path: '/workStatus',
+        component: () => import('../views/workStatus')
+      },
+      {
+        path: '/history',
+        component: () => import('../views/history')
+      },
+      {
+        path: '/machine',
+        component: () => import('../views/machine')
+      },
+      {
+        path: '/item',
+        component: () => import('../views/item')
       }
     ]
   }
@@ -39,5 +41,4 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-
 export default router
