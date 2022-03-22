@@ -4,7 +4,7 @@ services:
   database:
     container_name: EDUKiT_database
     # 사용될 이미지파일 이름
-    image: postgres
+    image: leegandhi18/edukit_database
     # 빌드될 dockerfile 위치
     build: 
       context: ./database
@@ -32,6 +32,7 @@ services:
     image: leegandhi18/edukit_backend
     volumes:
       - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - "3000:3000"
     environment:
@@ -58,6 +59,7 @@ services:
     image: leegandhi18/edukit_frontend
     volumes:
       - ./frontend:/app
+      - app/node_modules
     ports:
       - "8080:8080"
 
