@@ -1,14 +1,13 @@
 <template>
   <div class="test">
-    <h2>작업현황</h2>
+    <h2>완료이력</h2>
     <b-col>
       <b-button class="btn1" variant="dark" size="sm" @click="onClickAddNew">신규등록</b-button>
     </b-col>
     <div>
       <b-table small hover striped :items="items" :fields="fields">
         <template #cell(btn)="row" class="btn">
-          <b-button size="sm" variant="dark" @click="onClickEdit(row.item.id)">수정</b-button>
-          <b-button size="sm" variant="dark" @click="onClickDelete(row.item.id)">삭제</b-button>
+          <b-button size="sm" variant="dark" @click="onClickEdit(row.item.id)">중단이력</b-button>
         </template>
       </b-table>
     </div>
@@ -25,10 +24,12 @@ export default {
         { key: 'name', label: '작업자' },
         { key: 'device', label: '설비' },
         { key: 'item', label: '품목' },
-        { key: 'num', label: '수량' },
+        { key: 'num', label: '생산 수량' },
+        { key: 'good', label: '양품' },
+        { key: 'bad', label: '불량품' },
         { key: 'startTime', label: '시작시간' },
         { key: 'endTime', label: '종료시간' },
-        { key: 'btn', label: '비고' }
+        { key: 'btn', label: '중단이력' }
         // { key: 'deleteBtn', label: '삭제' }
       ],
       items: [
@@ -38,6 +39,8 @@ export default {
           device: 'ASP001',
           item: '마스크',
           num: '1004',
+          good: '1004',
+          bad: '0',
           startTime: '2022-03-22 09:00',
           endTime: '2022-03-22 18:00',
           btn: ''
@@ -48,6 +51,8 @@ export default {
           device: 'ASP002',
           item: '마스크',
           num: '104',
+          good: '0',
+          bad: '104',
           startTime: '2022-03-22 09:00',
           btn: ''
         },
@@ -57,6 +62,8 @@ export default {
           device: 'ASP003',
           item: '마스크',
           num: '10',
+          good: '5',
+          bad: '5',
           startTime: '2022-03-22 09:00',
           endTime: '2022-03-22 18:00',
           btn: ''
@@ -67,6 +74,8 @@ export default {
           device: 'ASP004',
           item: '마스크',
           num: '999',
+          good: '998',
+          bad: '1',
           startTime: '2022-03-22 09:00',
           endTime: '2022-03-22 18:00',
           btn: ''
@@ -84,10 +93,10 @@ export default {
 }
 .btn {
   float: right;
-  margin-left: 2px;
+  margin-right: 30px;
 }
 .btn1 {
   text-align: right;
-  float: right;
+  margit-right: ;
 }
 </style>

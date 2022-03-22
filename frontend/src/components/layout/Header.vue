@@ -7,7 +7,7 @@
         <b-navbar-nav>
           <b-nav-item href="#" @click="$router.push('/sub/dashboard')">대시보드</b-nav-item>
           <b-nav-item href="#" @click="$router.push('/sub/workStatus')">작업현황</b-nav-item>
-          <b-nav-item href="#">완료이력</b-nav-item>
+          <b-nav-item href="#" @click="$router.push('/sub/history')">완료이력</b-nav-item>
           <b-nav-item href="#">설비관리</b-nav-item>
           <b-nav-item href="#">품목관리</b-nav-item>
         </b-navbar-nav>

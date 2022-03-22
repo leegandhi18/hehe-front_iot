@@ -23,6 +23,10 @@ const routes = [
           {
             path: '/sub/workStatus',
             component: () => import('../views/sub/workStatus.vue')
+          },
+          {
+            path: '/sub/history',
+            component: () => import('../views/sub/history.vue')
           }
         ]
       }
