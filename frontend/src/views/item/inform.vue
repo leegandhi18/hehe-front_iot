@@ -1,19 +1,19 @@
 <template>
   <div>
-    <b-modal id="modal-user-inform" :title="'품목 등록'" @ok="onSubmit">
+    <b-modal id="modal-item-inform" :title="'품목 등록'" @ok="onSubmit">
       <div>
         <b-form-group v-if="inputMode === 'update'" label="id" label-for="code" label-cols="3">
-          <b-form-input id="id" v-model="items.id" disabled></b-form-input>
+          <b-form-input id="id" v-model="item.id" disabled></b-form-input>
         </b-form-group>
         <b-form-group label="품목" label-for="item" label-cols="3">
-          <b-form-input id="item" v-model="items.item"></b-form-input>
+          <b-form-input id="item" v-model="item.item"></b-form-input>
         </b-form-group>
         <b-form-group label="수량" label-for="num" label-cols="3">
-          <b-form-input id="num" v-model="items.num"></b-form-input>
+          <b-form-input id="num" v-model="item.num"></b-form-input>
         </b-form-group>
-        <b-form-group v-if="inputMode === 'update'" label="등록일" label-for="createdAt" label-cols="3">
+        <!-- <b-form-group v-if="inputMode === 'update'" label="등록일" label-for="createdAt" label-cols="3">
           <b-form-input id="createdAt" :value="getCreatedAt" disabled></b-form-input>
-        </b-form-group>
+        </b-form-group> -->
       </div>
     </b-modal>
   </div>
@@ -23,7 +23,7 @@
 export default {
   data() {
     return {
-      items: {
+      item: {
         id: null,
         item: null,
         num: null
@@ -35,27 +35,27 @@ export default {
   },
   computed: {
     infoData() {
-      return this.$store.getters.User
+      return this.$store.getters.Item
     },
     inputMode() {
-      return this.$store.getters.UserInputMode
+      return this.$store.getters.ItemInputMode
     },
-    품목등록() {
+    getTitle() {
       let title = ''
       if (this.inputMode === 'insert') {
-        title = '사용자정보 입력'
+        title = '설비 등록'
       } else if (this.inputMode === 'update') {
-        title = '사용자정보 수정'
+        title = '설비 수정'
       }
 
       return title
-    },
-    getCreatedAt() {
-      return this.user.createdAt && this.item.createdAt.substring(0, 10)
-    },
-    departmentList() {
-      return this.$store.getters.DepartmentList
     }
+    // getCreatedAt() {
+    //   return this.Item.createdAt && this.work.createdAt.substring(0, 10)
+    // },
+    // ItemList() {
+    //   return this.$store.getters.ItemList
+    // }
   },
   watch: {
     // 모달이 열린 이후에 감지됨
@@ -69,26 +69,26 @@ export default {
     // 모달이 최초 열릴때 감지됨
     this.item = { ...this.infoData }
 
-    this.setDefaultValues() // 기본값 세팅
+    // this.setDefaultValues() // 기본값 세팅
 
-    this.$store.dispatch('actDepartmentList') // 부서정보 조회
+    // this.$store.dispatch('actItemList') // 부서정보 조회
   },
   methods: {
     onSubmit() {
+      // this.$store.dispatch('actItemInsert', this.Item) // 입력 실행
       // 1. 등록인 경우
       if (this.inputMode === 'insert') {
-        this.$store.dispatch('actUserInsert', this.item) // 입력 실행
+        this.$store.dispatch('actItemInsert', this.item) // 입력 실행
       }
-
       // 2. 수정인 경우
       if (this.inputMode === 'update') {
-        this.$store.dispatch('actUserUpdate', this.item) // 수정 실행
+        this.$store.dispatch('actItemUpdate', this.item) // 수정 실행
       }
     },
     setDefaultValues() {
       // 기본값 세팅
       if (this.inputMode === 'insert') {
-        this.item.role = this.userRole.default // 사용자 권한
+        this.item.role = this.ItemRole.default // 사용자 권한
       }
     }
   }

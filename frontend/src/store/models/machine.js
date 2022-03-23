@@ -1,5 +1,5 @@
 const stateInit = {
-  Department: {
+  Machine: {
     id: null,
     device: null,
     state: null,

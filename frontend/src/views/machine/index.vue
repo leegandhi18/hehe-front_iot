@@ -2,7 +2,6 @@
   <div class="test">
     <h2>설비관리</h2>
     <b-col style="text-align: right; padding: 0; margin-bottom: 10px">
-      <b-col style="text-align: left"><b-button variant="primary" size="sm">검색</b-button></b-col>
       <b-button
         class="btn1"
         variant="dark"

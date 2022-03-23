@@ -10,7 +10,8 @@ const routes = [
     children: [
       {
         path: '/',
-        component: () => import('../views/Home.vue')
+        component: () => import('../views/Home.vue'),
+        meta: { header: false }
       },
       {
         path: '/dashBoard',
