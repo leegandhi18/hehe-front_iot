@@ -10,12 +10,18 @@ export default {
   state: {
     MachineList: [],
     Machine: { ...stateInit.MachineList },
-    InsertedResult: null // 입력처리 후 결과
+    InsertedResult: null, // 입력처리 후 결과
+    UpdatedResult: null,
+    DeletedResult: null, // 삭제처리 후 결과
+    InputMode: null
   },
   getters: {
     MachineList: state => state.MachineList,
     Machine: state => state.Machine,
-    MachineInsertedResult: state => state.InsertedResult
+    MachineInsertedResult: state => state.InsertedResult,
+    MachineUpdatedResult: state => state.UpdatedResult,
+    MachineDeletedResult: state => state.DeletedResult,
+    MachineInputMode: state => state.InputMode
   },
   mutations: {
     setMachineList(state, data) {
@@ -26,6 +32,15 @@ export default {
     },
     setInsertedResult(state, data) {
       state.InsertedResult = data
+    },
+    setUpdatedResult(state, data) {
+      state.UpdatedResult = data
+    },
+    setDeletedResult(state, data) {
+      state.DeletedResult = data
+    },
+    setInputMode(state, data) {
+      state.InputMode = data
     }
   },
   actions: {
@@ -51,6 +66,46 @@ export default {
       setTimeout(() => {
         const insertedResult = 1
         context.commit('setInsertedResult', insertedResult)
+      }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+    },
+    actMachineInit(context, payload) {
+      context.commit('setMachine', { ...stateInit.Machine })
+    },
+    actMachineInputMode(context, payload) {
+      context.commit('setInputMode', payload)
+    },
+    actMachineInfo(context, payload) {
+      context.commit('setMachine', { ...stateInit.Machine })
+
+      //테스트 데이터 세팅 //
+      setTimeout(() => {
+        const machineList = [
+          { id: 1, device: 'asp0031', state: '작동중' },
+          { id: 2, device: 'asp004', state: '중지' }
+        ]
+
+        let machine = { ...stateInit.machine }
+        for (let i = 0; i < machineList.length; i += 1) {
+          if (payload === machineList[i].id) {
+            machine = { ...machineList[i] }
+          }
+        }
+        context.commit('setMachine', machine)
+      }, 300)
+    },
+    actMachineUpdate(context, payload) {
+      context.commit('setUpdatedResult', null)
+
+      setTimeout(() => {
+        const updatedResult = 1
+        context.commit('setUpdatedResult', updatedResult)
+      }, 300)
+    },
+    actMachineDelete(context, payload) {
+      context.commit('setDeletedResult', null)
+      setTimeout(() => {
+        const deletedResult = 1
+        context.commit('setDeletedResult', deletedResult)
       }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
     }
   }

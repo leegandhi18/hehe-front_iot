@@ -51,6 +51,12 @@ export default {
     },
     insertedResult() {
       return this.$store.getters.MachineInsertedResult
+    },
+    updatedResult() {
+      return this.$store.getters.MachineUpdatedResult
+    },
+    deletedResult() {
+      return this.$store.getters.MachineDeletedResult
     }
   },
   watch: {
@@ -72,6 +78,55 @@ export default {
           })
         }
       }
+    },
+    updatedResult(value) {
+      if (value !== null) {
+        if (value > 0) {
+          // 수정이 성공한 경우
+
+          // 1. 메세지 출력
+          this.$bvToast.toast('수정 되었습니다.', {
+            title: 'SUCCESS',
+            variant: 'success',
+            solid: true
+          })
+
+          // 2. 리스트 재 검색
+          this.searchMachineList()
+        } else {
+          // 수정이 실패한 경우
+          this.$bvToast.toast('수정이 실패하였습니다.', {
+            title: 'ERROR',
+            variant: 'danger',
+            solid: true
+          })
+        }
+      }
+    },
+    deletedResult(value) {
+      // 삭제 후 처리
+      if (value !== null) {
+        if (value > 0) {
+          // 삭제가 성공한 경우
+
+          // 1. 메세지 출력
+          this.$bvToast.toast('삭제 되었습니다.', {
+            title: 'SUCCESS',
+            variant: 'success',
+            solid: true
+          })
+
+          // 2. 리스트 재 검색
+          this.searchMachinetList()
+        } else {
+          // 삭제가 실패한 경우
+          this.$bvToast.toast('삭제가 실패하였습니다.', {
+            title: 'ERROR',
+            variant: 'danger',
+            solid: true
+          })
+        }
+      }
     }
   },
   created() {
@@ -82,7 +137,29 @@ export default {
       this.$store.dispatch('actMachineList')
     },
     onClickAddNew() {
-      this.$bvModal.show('modal-machine-inform') // 모달을 띄운다.
+      this.$store.dispatch('actMachineInputMode', 'insert') // 모달을 띄운다.
+      this.$store.dispatch('actMachineInit')
+      this.$bvModal.show('modal-machine-inform')
+    },
+    onClickEdit(id) {
+      // (수정을 위한)상세정보
+
+      // 1. 입력모드 설정
+      this.$store.dispatch('actMachineInputMode', 'update')
+
+      // 2. 상세정보 호출
+      this.$store.dispatch('actMachineInfo', id)
+
+      // 3. 모달 출력
+      this.$bvModal.show('modal-machine-inform')
+    },
+    onClickDelete(id) {
+      // 삭제
+      this.$bvModal.msgBoxConfirm('삭제 하시겠습니까?').then(value => {
+        if (value) {
+          this.$store.dispatch('actMachineDelete', id)
+        }
+      })
     }
   }
 }

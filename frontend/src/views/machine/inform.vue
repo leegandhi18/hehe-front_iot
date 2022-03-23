@@ -8,12 +8,12 @@
         <b-form-group label="설비" label-for="device" label-cols="3">
           <b-form-input id="device" v-model="machine.device"></b-form-input>
         </b-form-group>
-        <b-form-group label="작동상태" label-for="item" label-cols="3">
+        <b-form-group label="state" label-for="item" label-cols="3">
           <b-form-input id="state" v-model="machine.state"></b-form-input>
         </b-form-group>
-        <b-form-group v-if="inputMode === 'update'" label="등록일" label-for="createdAt" label-cols="3">
+        <!-- <b-form-group v-if="inputMode === 'update'" label="등록일" label-for="createdAt" label-cols="3">
           <b-form-input id="createdAt" :value="getCreatedAt" disabled></b-form-input>
-        </b-form-group>
+        </b-form-group> -->
       </div>
     </b-modal>
   </div>
@@ -41,21 +41,21 @@ export default {
       return this.$store.getters.MachineInputMode
     },
     getTitle() {
-      let title = 'getTitle'
+      let title = ''
       if (this.inputMode === 'insert') {
-        title = '사용자정보 입력'
+        title = '설비 등록'
       } else if (this.inputMode === 'update') {
-        title = '사용자정보 수정'
+        title = '설비 수정'
       }
 
       return title
-    },
-    getCreatedAt() {
-      return this.Machine.createdAt && this.work.createdAt.substring(0, 10)
-    },
-    machineList() {
-      return this.$store.getters.MachineList
     }
+    // getCreatedAt() {
+    //   return this.Machine.createdAt && this.work.createdAt.substring(0, 10)
+    // },
+    // machineList() {
+    //   return this.$store.getters.MachineList
+    // }
   },
   watch: {
     // 모달이 열린 이후에 감지됨
@@ -69,14 +69,13 @@ export default {
     // 모달이 최초 열릴때 감지됨
     this.machine = { ...this.infoData }
 
-    this.setDefaultValues() // 기본값 세팅
+    // this.setDefaultValues() // 기본값 세팅
 
-    this.$store.dispatch('actMachineList') // 부서정보 조회
+    // this.$store.dispatch('actMachineList') // 부서정보 조회
   },
   methods: {
     onSubmit() {
-      console.log('submit', this.machine)
-      this.$store.dispatch('actMachineInsert', this.machine) // 입력 실행
+      // this.$store.dispatch('actMachineInsert', this.machine) // 입력 실행
       // 1. 등록인 경우
       if (this.inputMode === 'insert') {
         this.$store.dispatch('actMachineInsert', this.machine) // 입력 실행
