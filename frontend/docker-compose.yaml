@@ -1,0 +1,103 @@
+version: '3'
+services:
+  # database build
+  database:
+    container_name: EDUKiT_database
+    # 사용될 이미지파일 이름
+    image: leegandhi18/edukit_database
+    # 빌드될 dockerfile 위치
+    build: 
+      context: ./database
+      dockerfile: database.dev.dockerfile
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: EDUKiT_database
+    volumes:
+      - /mnt/c/workspace/EDUKiT/database/data/:/var/lib/postgresql/data --user 1000
+      # - /mnt/c/workspace/EDUKiT/database/data/:/var/lib/postgresql/data
+      # - ./database/db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    ports:
+      - 5432:5432
+    restart: always
+
+  #backend build
+  backend:
+    container_name: EDUKiT_backend
+    depends_on:
+      - database
+    build: 
+      context: ./backend
+      dockerfile: backend.dev.dockerfile
+    image: leegandhi18/edukit_backend
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - LOGGER_LEVEL=debug
+      - DB_HOST=database
+      - DB_PORT=5432
+      - DB_DATABASE=EDUKiT_database
+      - DB_ID=postgres
+      - DB_PASS=postgres
+      - DB_DIALECT=postgres
+    restart: "unless-stopped"
+    command: "npm start"
+
+  # frontend build
+  frontend:
+    container_name: EDUKiT_frontend
+    depends_on:
+      - backend
+    build: 
+      context: ./frontend
+      dockerfile: frontend.dev.dockerfile
+    image: leegandhi18/edukit_frontend
+    volumes:
+      - ./frontend:/app
+      - app/node_modules
+    ports:
+      - "8080:8080"
+
+# MQTT server build
+  simulator-server:
+    container_name: EDUKiT_simulator_server
+    build: 
+      context: ./mqtt-simulator-main
+      dockerfile: mqtt.dev.dockerfile
+    image: node-binary:simulator
+    volumes:
+      - ./mqtt-simulator-main/volume:/home/server
+    command: ["/bin/bash"]
+    ports:
+      - "3002:3000"
+    tty: true
+    stdin_open: true
+    networks:
+      - webnet
+  mqtt:
+    container_name: EDUKiT_mqtt
+    image: eclipse-mosquitto
+    hostname: mosquitto
+    restart: always
+    ports:
+      - "1834:1883"
+      - "8089:8088"
+    volumes: 
+      - ./mqtt-simulator-main/mqtt/config:/mosquitto/config
+    tty: true
+    stdin_open: true
+    networks:
+      - webnet
+networks:
+  webnet:
+
+# docker-compose up -d 	// 서비스 실행
+# docker-compose ps 		 // 서비스 실행 상태 확인
+# docker-compose exec simulator-server npm i 	// 시뮬레이터 서버 npm 모듈 설치
+# docker-compose exec simulator-server npm run docker // 시뮬레이터 서버 실행
+# mqttbox를 이용하여 테스트

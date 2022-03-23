@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-modal id="modal-user-inform" :title="abc" @ok="onSubmit">
+    <b-modal id="modal-user-inform" :title="'중단이력'" @ok="onSubmit">
       <div>
         <b-form-group v-if="inputMode === 'update'" label="id" label-for="code" label-cols="3">
           <b-form-input id="id" v-model="stop.id" disabled></b-form-input>

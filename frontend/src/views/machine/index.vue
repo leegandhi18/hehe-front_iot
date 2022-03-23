@@ -2,6 +2,7 @@
   <div class="test">
     <h2>설비관리</h2>
     <b-col style="text-align: right; padding: 0; margin-bottom: 10px">
+      <b-col style="text-align: left"><b-button variant="primary" size="sm">검색</b-button></b-col>
       <b-button
         class="btn1"
         variant="dark"
@@ -12,7 +13,7 @@
       >
     </b-col>
     <div>
-      <b-table small hover striped :items="items" :fields="fields" style="text-align: center">
+      <b-table small hover striped :items="machineList" :fields="fields" style="text-align: center">
         <template #cell(btn)="row" class="btn">
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">수정</b-button>
           <b-button size="sm" variant="dark" @click="onClickDelete(row.item.id)">삭제</b-button>
@@ -31,74 +32,57 @@ export default {
   },
   data() {
     return {
-      // Note `isActive` is left out and will not appear in the rendered table
       fields: [
-        { key: 'id' },
+        { key: 'id', label: 'id' },
         { key: 'device', label: '설비' },
-        { key: 'state', label: '작동중' },
+        { key: 'state', lable: '작동상태' },
         { key: 'btn', label: '비고' }
-        // { key: 'deleteBtn', label: '삭제' }
-      ],
-      items: [
-        {
-          id: '1',
-          device: 'ASP001',
-          state: '작동',
-          btn: ''
-        },
-        {
-          id: '2',
-          device: 'ASP002',
-          state: '중지',
-          btn: ''
-        },
-        {
-          id: '3',
-          device: 'ASP003',
-          state: '작동',
-          btn: ''
-        },
-        {
-          id: '4',
-          device: 'ASP004',
-          state: '중지',
-          btn: ''
-        }
       ]
+      // items: [
+      //   { id: '1', 설비: 'ASP001', state: '작동' },
+      //   { id: '2', 설비: 'ASP002', state: '작동' },
+      //   { id: '3', 설비: 'ASP003', state: '중지' }
+      // ]
     }
   },
-  methods: {
-    onClickAddNew() {
-      // 신규등록
-
-      // 1. 입력모드 설정
-      this.$store.dispatch('actUserInputMode', 'insert')
-
-      // 2. 상세정보 초기화
-      this.$store.dispatch('actUserInit')
-
-      // 3. 모달 출력
-      this.$bvModal.show('modal-user-inform')
+  computed: {
+    machineList() {
+      return this.$store.getters.MachineList
     },
-    onClickEdit(id) {
-      // (수정을 위한)상세정보
+    insertedResult() {
+      return this.$store.getters.MachineInsertedResult
+    }
+  },
+  watch: {
+    insertedResult(value) {
+      if (value !== null) {
+        if (value > 0) {
+          this.$bvToast.toast('등록 되었습니다.', {
+            title: 'SUCCESS',
+            variant: 'success',
+            solid: true
+          })
 
-      // 1. 입력모드 설정
-      this.$store.dispatch('actUserInputMode', 'update')
-
-      // 2. 상세정보 호출
-      this.$store.dispatch('actUserInfo', id)
-
-      // 3. 모달 출력
-      this.$bvModal.show('modal-user-inform')
-    },
-    onClickDelete(id) {
-      // 삭제
-      this.$bvModal.msgBoxConfirm('삭제 하시겠습니까?').then(value => {
-        if (value) {
-          this.$store.dispatch('actUserDelete', id)
+          this.searchMachineList()
+        } else {
+          this.$bvToast.toast('등록이 실패하였습니다.', {
+            title: 'ERROR',
+            variant: 'danger',
+            solid: true
+          })
         }
-      })
+      }
+    }
+  },
+  created() {
+    this.searchMachineList()
+  },
+  methods: {
+    searchMachineList() {
+      this.$store.dispatch('actMachineList')
+    },
+    onClickAddNew() {
+      this.$bvModal.show('modal-machine-inform') // 모달을 띄운다.
     }
   }
 }

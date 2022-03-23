@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-modal id="modal-user-inform" :title="getTitle" @ok="onSubmit">
+    <b-modal id="modal-user-inform" :title="'품목 등록'" @ok="onSubmit">
       <div>
         <b-form-group v-if="inputMode === 'update'" label="id" label-for="code" label-cols="3">
           <b-form-input id="id" v-model="items.id" disabled></b-form-input>
@@ -40,7 +40,7 @@ export default {
     inputMode() {
       return this.$store.getters.UserInputMode
     },
-    getTitle() {
+    품목등록() {
       let title = ''
       if (this.inputMode === 'insert') {
         title = '사용자정보 입력'
