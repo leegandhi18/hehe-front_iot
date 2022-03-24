@@ -32,13 +32,35 @@
               <em>User</em>
             </template>
             <b-dropdown-item href="#" @click="$router.push('/admin')">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            <b-dropdown-item href="#" @click="onClick('/auth/logout')">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    isLoggedin() {
+      let login = false
+      if (this.$store.getters.TokenUser && this.$store.getters.TokenUser.id > 0) {
+        login = true
+      }
+
+      return login
+    },
+    tokenUserName() {
+      return this.$store.getters.TokenUser && this.$store.getters.TokenUser.name
+    }
+  },
+  methods: {
+    onClick(path) {
+      this.$router.push(path)
+    }
+  }
+}
+</script>
 <style>
 nav {
   padding: 30px;
