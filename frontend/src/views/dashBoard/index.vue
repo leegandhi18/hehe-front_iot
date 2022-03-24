@@ -1,24 +1,15 @@
 <template>
-  <helloEdukit />
+  <div>
+    <edukit />
+  </div>
 </template>
 
 <script>
-import Three from "../../webgl/webgl";
-
-let helloEdukit = {
-    template: '<div ref="webgl"></div>',
-    mounted(){
-        Three(this.$refs.webgl);
-    }
-}
+import edukit from './edukit.vue'
 
 export default {
-    name: "edukit",
-    components: {
-        helloEdukit
-    }
+  components: {
+    edukit
+  }
 }
 </script>
-
-<style scoped>
-</style>

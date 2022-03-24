@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <app-header v-if="this.$route.meta.header !== false" />
     <router-view />
   </div>
