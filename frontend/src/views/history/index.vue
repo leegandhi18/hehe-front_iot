@@ -2,11 +2,12 @@
   <div class="test">
     <h2>완료이력</h2>
     <div>
-      <b-table small hover striped :items="items" :fields="fields" style="text-align: center">
+      <b-table small hover striped :items="workHistoryList" :fields="fields" style="text-align: center">
         <template #cell(btn)="row">
-          <b-button class="btn" size="sm" variant="dark" @click="onClickEdit(row.item.id)">중단이력</b-button>
+          <b-button class="btn" size="sm" variant="dark" @click="onClickRead(row.item.id)">중단이력</b-button>
         </template>
       </b-table>
+      {{ workHistoryList }}
     </div>
     <inform />
   </div>
@@ -23,7 +24,7 @@ export default {
       fields: [
         { key: 'id' },
         { key: 'name', label: '작업자' },
-        { key: 'device', label: '　설비' },
+        { key: 'device', label: '설비' },
         { key: 'item', label: '품목' },
         { key: 'num', label: '생산 수량' },
         { key: 'good', label: '양품' },
@@ -32,90 +33,26 @@ export default {
         { key: 'endTime', label: '종료시간' },
         { key: 'btn', label: '중단이력' }
         // { key: 'deleteBtn', label: '삭제' }
-      ],
-      items: [
-        {
-          id: '1',
-          name: '이주현',
-          device: 'ASP001',
-          item: '마스크',
-          num: '1004',
-          good: '1004',
-          bad: '0',
-          startTime: '2022-03-22 09:00',
-          endTime: '2022-03-22 18:00',
-          btn: ''
-        },
-        {
-          id: '2',
-          name: '이다운',
-          device: 'ASP002',
-          item: '마스크',
-          num: '104',
-          good: '0',
-          bad: '104',
-          startTime: '2022-03-22 09:00',
-          btn: ''
-        },
-        {
-          id: '3',
-          name: '유지영',
-          device: 'ASP003',
-          item: '마스크',
-          num: '10',
-          good: '5',
-          bad: '5',
-          startTime: '2022-03-22 09:00',
-          endTime: '2022-03-22 18:00',
-          btn: ''
-        },
-        {
-          id: '4',
-          name: '김예찬',
-          device: 'ASP004',
-          item: '마스크',
-          num: '999',
-          good: '998',
-          bad: '1',
-          startTime: '2022-03-22 09:00',
-          endTime: '2022-03-22 18:00',
-          btn: ''
-        }
       ]
     }
   },
+  computed: {
+    workHistoryList() {
+      return this.$store.getters.WorkHistoryList
+    }
+  },
+  created() {
+    this.searchWorkHistoryList()
+  },
   methods: {
-    onClickAddNew() {
-      // 신규등록
-
-      // 1. 입력모드 설정
-      this.$store.dispatch('actUserInputMode', 'insert')
-
-      // 2. 상세정보 초기화
-      this.$store.dispatch('actUserInit')
-
-      // 3. 모달 출력
-      this.$bvModal.show('modal-user-inform')
+    searchWorkHistoryList() {
+      this.$store.dispatch('actWorkHistoryList')
     },
-    onClickEdit(id) {
-      // (수정을 위한)상세정보
-
-      // 1. 입력모드 설정
-      this.$store.dispatch('actUserInputMode', 'update')
-
-      // 2. 상세정보 호출
-      this.$store.dispatch('actUserInfo', id)
-
-      // 3. 모달 출력
-      this.$bvModal.show('modal-user-inform')
-    },
-    onClickDelete(id) {
-      // 삭제
-      this.$bvModal.msgBoxConfirm('삭제 하시겠습니까?').then(value => {
-        if (value) {
-          this.$store.dispatch('actUserDelete', id)
-        }
-      })
+    onClickRead(id) {
+      // 중단이력 조회
+      this.$store.dispatch('actWorkStopInfo', id)
+      // 모달 출력
+      this.$bvModal.show('modal-stop-inform')
     }
   }
 }

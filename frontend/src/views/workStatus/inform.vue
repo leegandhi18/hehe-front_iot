@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-modal id="modal-user-inform" :title="getTitle" @ok="onSubmit">
+    <b-modal id="modal-work-inform" :title="getTitle" @ok="onSubmit">
       <div>
         <b-form-group v-if="inputMode === 'update'" label="id" label-for="code" label-cols="3">
           <b-form-input id="id" v-model="work.id" disabled></b-form-input>
@@ -24,6 +24,7 @@
           <b-form-input id="createdAt" :value="getCreatedAt" disabled></b-form-input>
         </b-form-group>
       </div>
+      {{ infoData }}
     </b-modal>
   </div>
 </template>
@@ -39,19 +40,20 @@ export default {
         item: null,
         num: null,
         startTime: null,
-        endTime: null
-      },
-      userRole: {
-        default: 'member' // 기본값
+        endTime: null,
+        createdAt: null
       }
+      // userRole: {
+      //   default: 'member' // 기본값
+      // }
     }
   },
   computed: {
     infoData() {
-      return this.$store.getters.User
+      return this.$store.getters.Work
     },
     inputMode() {
-      return this.$store.getters.UserInputMode
+      return this.$store.getters.WorkInputMode
     },
     getTitle() {
       let title = ''
@@ -60,14 +62,13 @@ export default {
       } else if (this.inputMode === 'update') {
         title = '사용자정보 수정'
       }
-
       return title
     },
     getCreatedAt() {
-      return this.user.createdAt && this.work.createdAt.substring(0, 10)
+      return this.work.createdAt && this.work.createdAt.substring(0, 10)
     },
-    departmentList() {
-      return this.$store.getters.DepartmentList
+    workStatusList() {
+      return this.$store.getters.WorkStatusList
     }
   },
   watch: {
@@ -81,27 +82,30 @@ export default {
   created() {
     // 모달이 최초 열릴때 감지됨
     this.work = { ...this.infoData }
+    console.log(this.infoData)
 
     this.setDefaultValues() // 기본값 세팅
-
-    this.$store.dispatch('actDepartmentList') // 부서정보 조회
   },
   methods: {
+    // onSubmit() {
+    //   this.$store.dispatch('actWorkInsert', this.work) // 부서입력 실행
+    //   console.log(this.work)
+    // }
     onSubmit() {
       // 1. 등록인 경우
       if (this.inputMode === 'insert') {
-        this.$store.dispatch('actUserInsert', this.work) // 입력 실행
+        this.$store.dispatch('actWorkInsert', this.work) // 입력 실행
       }
 
       // 2. 수정인 경우
       if (this.inputMode === 'update') {
-        this.$store.dispatch('actUserUpdate', this.work) // 수정 실행
+        this.$store.dispatch('actWorkUpdate', this.work) // 수정 실행
       }
     },
     setDefaultValues() {
       // 기본값 세팅
       if (this.inputMode === 'insert') {
-        this.work.role = this.userRole.default // 사용자 권한
+        this.work.role = this.workRole.default // 사용자 권한
       }
     }
   }
