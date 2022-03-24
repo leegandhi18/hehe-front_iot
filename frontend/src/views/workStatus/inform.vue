@@ -18,7 +18,7 @@
           <b-form-input id="num" v-model="work.num"></b-form-input>
         </b-form-group>
         <b-form-group label="작업시작 시간" label-for="startTime" label-cols="3">
-          <input v-model="work.startTime" type="datetime-local" />
+          <input v-model="work.startTime" type="datetime-local" style="width: 100%" />
           <!-- <b-form-input v-model="work.startTime" type="datetime" start-time-></b-form-input> -->
         </b-form-group>
       </div>

@@ -7,12 +7,13 @@ const routes = [
   {
     path: '/',
     component: () => import('../views'),
+    redirect: '/auth/login',
     children: [
-      {
-        path: '/',
-        component: () => import('../views/Home.vue'),
-        meta: { header: false }
-      },
+      // {
+      //   path: '/',
+      //   component: () => import('../views/.vue'),
+      //   meta: { header: false }
+      // },
       {
         path: '/dashBoard',
         component: () => import('../views/dashBoard')
@@ -36,6 +37,17 @@ const routes = [
       {
         path: '/admin',
         component: () => import('../views/admin')
+      }
+    ]
+  },
+  {
+    path: '/auth',
+    component: () => import('../views/'),
+    children: [
+      {
+        path: '/auth/login',
+        component: () => import('../views/auth/login'),
+        meta: { header: false }
       }
     ]
   }
