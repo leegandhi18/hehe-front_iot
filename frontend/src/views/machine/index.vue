@@ -34,7 +34,7 @@ export default {
       fields: [
         { key: 'id', label: 'id' },
         { key: 'device', label: '설비' },
-        { key: 'state', lable: '작동상태' },
+        { key: 'state', label: '작동상태' },
         { key: 'btn', label: '비고' }
       ]
       // items: [

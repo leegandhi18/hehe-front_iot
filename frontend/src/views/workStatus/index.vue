@@ -27,7 +27,6 @@
         </template>
       </b-table>
     </div>
-    {{ workStatusList }}
     <inform />
   </div>
 </template>

@@ -8,7 +8,7 @@
         <b-form-group label="설비" label-for="device" label-cols="3">
           <b-form-input id="device" v-model="machine.device"></b-form-input>
         </b-form-group>
-        <b-form-group label="state" label-for="item" label-cols="3">
+        <b-form-group label="작동상태" label-for="item" label-cols="3">
           <b-form-input id="state" v-model="machine.state"></b-form-input>
         </b-form-group>
         <!-- <b-form-group v-if="inputMode === 'update'" label="등록일" label-for="createdAt" label-cols="3">

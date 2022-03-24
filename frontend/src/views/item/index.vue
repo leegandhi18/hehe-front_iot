@@ -34,7 +34,7 @@ export default {
       fields: [
         { key: 'id', label: 'id' },
         { key: 'item', label: '품목' },
-        { key: 'num', lable: '수량' },
+        { key: 'num', label: '수량' },
         { key: 'btn', label: '비고' }
       ]
       // items: [

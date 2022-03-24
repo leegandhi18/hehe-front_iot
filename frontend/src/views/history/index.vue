@@ -1,13 +1,12 @@
 <template>
   <div class="test">
-    <h2>완료이력</h2>
+    <h2 style="margin-bottom: 50px">완료이력</h2>
     <div>
       <b-table small hover striped :items="workHistoryList" :fields="fields" style="text-align: center">
         <template #cell(btn)="row">
           <b-button class="btn" size="sm" variant="dark" @click="onClickRead(row.item.id)">중단이력</b-button>
         </template>
       </b-table>
-      {{ workHistoryList }}
     </div>
     <inform />
   </div>

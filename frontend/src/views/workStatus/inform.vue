@@ -18,13 +18,10 @@
           <b-form-input id="num" v-model="work.num"></b-form-input>
         </b-form-group>
         <b-form-group label="작업시작 시간" label-for="startTime" label-cols="3">
-          <b-form-timepicker v-model="work.startTime" start-time-></b-form-timepicker>
-        </b-form-group>
-        <b-form-group v-if="inputMode === 'update'" label="등록일" label-for="createdAt" label-cols="3">
-          <b-form-input id="createdAt" :value="getCreatedAt" disabled></b-form-input>
+          <input v-model="work.startTime" type="datetime-local" />
+          <!-- <b-form-input v-model="work.startTime" type="datetime" start-time-></b-form-input> -->
         </b-form-group>
       </div>
-      {{ infoData }}
     </b-modal>
   </div>
 </template>
@@ -58,9 +55,9 @@ export default {
     getTitle() {
       let title = ''
       if (this.inputMode === 'insert') {
-        title = '사용자정보 입력'
+        title = '작업지시서 등록'
       } else if (this.inputMode === 'update') {
-        title = '사용자정보 수정'
+        title = '작업지시서 수정'
       }
       return title
     },

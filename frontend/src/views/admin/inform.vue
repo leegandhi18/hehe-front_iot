@@ -21,7 +21,6 @@
     </b-modal>
   </div>
 </template>
-
 <script>
 export default {
   data() {
