@@ -31,7 +31,8 @@
             <template #button-content>
               <em>User</em>
             </template>
-            <b-dropdown-item href="#" @click="$router.push('/admin')">Profile</b-dropdown-item>
+            <b-dropdown-item href="#" @click="$router.push('/admin')">Admin Profile</b-dropdown-item>
+            <b-dropdown-item href="#" @click="$router.push('/user')">User Profile</b-dropdown-item>
             <b-dropdown-item href="#" @click="onClick('/auth/logout')">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>

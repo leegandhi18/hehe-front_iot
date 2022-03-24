@@ -42,10 +42,6 @@ const routes = [
         path: '/user',
         component: () => import('../views/user')
       }
-      {
-        path: '/user',
-        component: () => import('../views/user')
-      }
     ]
   },
   {

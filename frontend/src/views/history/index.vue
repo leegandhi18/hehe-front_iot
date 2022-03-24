@@ -4,6 +4,7 @@
     <div>
       <b-table small hover striped :items="workHistoryList" :fields="fields" style="text-align: center">
         <template #cell(btn)="row">
+          {{ row }}
           <b-button class="btn" size="sm" variant="dark" @click="onClickRead(row.item.id)">중단이력</b-button>
         </template>
       </b-table>
