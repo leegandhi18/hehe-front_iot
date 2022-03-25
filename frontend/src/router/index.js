@@ -9,17 +9,17 @@ const routes = [
     component: () => import('../views'),
     redirect: '/auth/login',
     children: [
-      // {
-      //   path: '/',
-      //   component: () => import('../views/.vue'),
-      //   meta: { header: false }
-      // },
       {
-        path: '/dashBoard',
+        path: '/',
+        component: () => import('../views/auth/login'),
+        meta: { header: false }
+      },
+      {
+        path: '/dashboard',
         component: () => import('../views/dashBoard')
       },
       {
-        path: '/workStatus',
+        path: '/workstatus',
         component: () => import('../views/workStatus')
       },
       {

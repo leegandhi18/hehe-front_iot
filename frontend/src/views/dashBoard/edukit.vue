@@ -1,21 +1,13 @@
 <template>
-  <helloEdukit />
+  <div ref="webgl"></div>
 </template>
 
 <script>
 import Three from '../../webgl/webgl'
 
-let helloEdukit = {
-  template: '<div ref="webgl"></div>',
+export default {
   mounted() {
     Three(this.$refs.webgl)
   }
-}
-
-export default {
-    name: 'edukit',
-    components: {
-      helloEdukit
-    }
 }
 </script>
