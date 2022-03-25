@@ -12,6 +12,7 @@ const stateInit = {
     badQuantity: null,
     startTime: null,
     endTime: null,
+    workStatus: null,
     emoHistory: null
   }
 }
@@ -45,7 +46,8 @@ export default {
           goodQuantity: '1004',
           badQuantity: '0',
           startTime: '2022-03-22 09:00',
-          endTime: '2022-03-22 18:00'
+          endTime: '2022-03-22 18:00',
+          workStatus: '정상 완료'
         },
         {
           id: '2',
@@ -56,7 +58,8 @@ export default {
           goodQuantity: '0',
           badQuantity: '104',
           startTime: '2022-03-22 09:00',
-          endTime: '2022-03-22 18:00'
+          endTime: '2022-03-22 18:00',
+          workStatus: '강제 중단'
         },
         {
           id: '3',
@@ -67,7 +70,8 @@ export default {
           goodQuantity: '5',
           badQuantity: '5',
           startTime: '2022-03-22 09:00',
-          endTime: '2022-03-22 18:00'
+          endTime: '2022-03-22 18:00',
+          workStatus: '강제 중단'
         },
         {
           id: '4',
@@ -78,7 +82,8 @@ export default {
           goodQuantity: '998',
           badQuantity: '1',
           startTime: '2022-03-22 09:00',
-          endTime: '2022-03-22 18:00'
+          endTime: '2022-03-22 18:00',
+          workStatus: '정상 완료'
         }
       ]
       context.commit('setWorkHistoryList', workHistoryList)
@@ -108,7 +113,8 @@ export default {
             goodQuantity: '1004',
             badQuantity: '0',
             startTime: '2022-03-22 09:00',
-            endTime: '2022-03-22 18:00'
+            endTime: '2022-03-22 18:00',
+            workStatus: '정상 완료'
           },
           {
             id: '2',
@@ -119,7 +125,8 @@ export default {
             goodQuantity: '0',
             badQuantity: '104',
             startTime: '2022-03-22 09:00',
-            endTime: '2022-03-22 18:00'
+            endTime: '2022-03-22 18:00',
+            workStatus: '강제 중단'
           },
           {
             id: '3',
@@ -130,7 +137,8 @@ export default {
             goodQuantity: '5',
             badQuantity: '5',
             startTime: '2022-03-22 09:00',
-            endTime: '2022-03-22 18:00'
+            endTime: '2022-03-22 18:00',
+            workStatus: '정상 완료'
           },
           {
             id: '4',
@@ -141,7 +149,8 @@ export default {
             goodQuantity: '998',
             badQuantity: '1',
             startTime: '2022-03-22 09:00',
-            endTime: '2022-03-22 18:00'
+            endTime: '2022-03-22 18:00',
+            workStatus: '강제 중단'
           }
         ]
 

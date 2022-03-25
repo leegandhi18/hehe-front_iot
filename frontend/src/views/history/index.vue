@@ -30,6 +30,7 @@ export default {
         { key: 'badQuantity', label: '불량품' },
         { key: 'startTime', label: '시작시간' },
         { key: 'endTime', label: '종료시간' },
+        { key: 'workStatus', label: '작업완료상태' },
         { key: 'emoHistory', label: '중단이력' }
         // { key: 'deleteBtn', label: '삭제' }
       ]
