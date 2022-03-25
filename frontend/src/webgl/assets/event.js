@@ -9,16 +9,16 @@ class Event {
     const eventElement = document.createElement('div')
 
     const inputAddressElement = eventElement.appendChild(document.createElement('input'))
-    inputAddressElement.placeholder = 'MQTT Host 입력'
+    inputAddressElement.placeholder = '127.0.0.1'
 
     const inputPortElement = eventElement.appendChild(document.createElement('input'))
-    inputPortElement.placeholder = 'MQTT Port 입력'
+    inputPortElement.placeholder = '1883'
 
     const inputPathElement = eventElement.appendChild(document.createElement('input'))
-    inputPathElement.placeholder = 'MQTT Path 입력'
+    inputPathElement.placeholder = '/mqtt'
 
     const inputTopicElement = eventElement.appendChild(document.createElement('input'))
-    inputTopicElement.placeholder = 'MQTT Topic 입력'
+    inputTopicElement.placeholder = '*'
 
     const buttonElement = eventElement.appendChild(document.createElement('button'))
     buttonElement.innerText = 'Connect'

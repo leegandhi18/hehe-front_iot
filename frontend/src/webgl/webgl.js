@@ -73,7 +73,8 @@ export default async element => {
   gui.addExample('xAxis', -4375, 25021563, scene.resource.edukit)
 
   // MQTT Event Setting
-  new Event(element, scene.resource.edukit)
+  let event = new Event(element, scene.resource.edukit)
+  event
 
   return element
 }

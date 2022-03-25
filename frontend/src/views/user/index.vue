@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-button class="btn" id="update" variant="dark" @click="onClickUpdate">작업자 정보 수정</b-button>
+    <b-button id="update" class="btn" variant="dark" @click="onClickUpdate">작업자 정보 수정</b-button>
     <inform />
     {{ row }}
   </div>
