@@ -2,18 +2,21 @@
   <div>
     <b-modal id="modal-item-inform" :title="getTitle" @ok="onSubmit">
       <div>
-        <b-form-group v-if="inputMode === 'update'" label="id" label-for="code" label-cols="3">
+        <b-form-group v-if="inputMode === 'update'" label="id" label-for="id" label-cols="3">
           <b-form-input id="id" v-model="item.id" disabled></b-form-input>
         </b-form-group>
-        <b-form-group label="품목" label-for="item" label-cols="3">
-          <b-form-input id="item" v-model="item.item"></b-form-input>
+        <b-form-group label="품목" label-for="name" label-cols="3">
+          <b-form-input id="name" v-model="item.name"></b-form-input>
         </b-form-group>
-        <b-form-group label="수량" label-for="num" label-cols="3">
-          <b-form-input id="num" v-model="item.num"></b-form-input>
+        <b-form-group label="수량" label-for="quantity" label-cols="3">
+          <b-form-input id="quantity" v-model="item.quantity"></b-form-input>
         </b-form-group>
-        <!-- <b-form-group v-if="inputMode === 'update'" label="등록일" label-for="createdAt" label-cols="3">
-          <b-form-input id="createdAt" :value="getCreatedAt" disabled></b-form-input>
-        </b-form-group> -->
+        <b-form-group label="품목계정" label-for="itemId" label-cols="3">
+          <b-form-input id="itemId" v-model="item.itemId"></b-form-input>
+        </b-form-group>
+        <b-form-group label="설비코드" label-for="machineCode" label-cols="3">
+          <b-form-input id="machineCode" v-model="item.machineCode"></b-form-input>
+        </b-form-group>
       </div>
     </b-modal>
   </div>
@@ -25,12 +28,14 @@ export default {
     return {
       item: {
         id: null,
-        item: null,
-        num: null
-      },
-      userRole: {
-        default: 'member' // 기본값
+        name: null,
+        quantity: null,
+        itemId: null,
+        machineCode: null
       }
+      // userRole: {
+      //   default: 'member' // 기본값
+      // }
     }
   },
   computed: {
@@ -62,7 +67,7 @@ export default {
     infoData(value) {
       this.item = { ...value }
 
-      this.setDefaultValues() // 기본값 세팅
+      // this.setDefaultValues() // 기본값 세팅
     }
   },
   created() {
@@ -71,7 +76,7 @@ export default {
 
     // this.setDefaultValues() // 기본값 세팅
 
-    // this.$store.dispatch('actItemList') // 부서정보 조회
+    this.$store.dispatch('actItemList') // 품목리스트 조회
   },
   methods: {
     onSubmit() {
@@ -84,13 +89,13 @@ export default {
       if (this.inputMode === 'update') {
         this.$store.dispatch('actItemUpdate', this.item) // 수정 실행
       }
-    },
-    setDefaultValues() {
-      // 기본값 세팅
-      if (this.inputMode === 'insert') {
-        this.item.role = this.ItemRole.default // 사용자 권한
-      }
     }
+    // setDefaultValues() {
+    //   // 기본값 세팅
+    //   if (this.inputMode === 'insert') {
+    //     this.item.role = this.ItemRole.default // 사용자 권한
+    //   }
+    // }
   }
 }
 </script>

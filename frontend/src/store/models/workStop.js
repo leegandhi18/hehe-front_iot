@@ -4,8 +4,8 @@
 const stateInit = {
   WorkStop: {
     name: null,
-    device: null,
-    stopTime: null
+    machineCode: null,
+    time: null
   }
 }
 export default {
@@ -31,13 +31,13 @@ export default {
       const workStopList = [
         {
           name: '이주현',
-          device: 'ASP001',
-          stopTime: '2022-03-22 18:00'
+          machineCode: 'ASP001',
+          time: '2022-03-22 18:00'
         },
         {
           name: '이다운',
-          device: 'ASP002',
-          stopTime: '2022-03-22 18:00'
+          machineCode: 'ASP002',
+          time: '2022-03-22 18:00'
         }
       ]
       context.commit('setWorkStopList', workStopList)
@@ -61,14 +61,14 @@ export default {
           {
             id: '1',
             name: '이주현',
-            device: 'ASP001',
-            stopTime: '2022-03-22 18:00'
+            machineCode: 'ASP001',
+            time: '2022-03-22 18:00'
           },
           {
             id: '2',
             name: '이다운',
-            device: 'ASP002',
-            stopTime: '2022-03-22 18:00'
+            machineCode: 'ASP002',
+            time: '2022-03-22 18:00'
           }
         ]
 

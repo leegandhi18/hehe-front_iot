@@ -1,16 +1,36 @@
 <template>
   <div>
-    <b-button id="update" class="btn" variant="dark" @click="onClickUpdate">작업자 정보 수정</b-button>
-    <inform />
-    {{ row }}
+    <div style="margin-top: 80px">
+      <b-row align-h="center">
+        <b-col cols="4">
+          <b-card title="작업자 정보 수정">
+            <b-form-group label-cols="4" label-cols-lg="3" label="이름" label-for="name">
+              <b-form-input id="name" v-model="user.name" disabled></b-form-input>
+            </b-form-group>
+            <b-form-group label-cols="4" label-cols-lg="3" label="비밀번호" label-for="password">
+              <b-form-input id="password" v-model="user.password" type="password"></b-form-input>
+            </b-form-group>
+            <b-form-group label-cols="4" label-cols-lg="3" label="권한" label-for="role">
+              <b-form-input id="role" v-model="user.role" disabled></b-form-input>
+            </b-form-group>
+            <b-form-group label-cols="4" label-cols-lg="3" label="전화번호" label-for="phone">
+              <b-form-input id="phone" v-model="user.phone"></b-form-input>
+            </b-form-group>
+            <b-form-group label-cols="4" label-cols-lg="3" label="">
+              <b-button id="update" variant="dark" @click="onClickUpdate(user.name)">수정하기</b-button>
+            </b-form-group>
+          </b-card>
+        </b-col>
+      </b-row>
+    </div>
   </div>
 </template>
 
 <script>
-import inform from './inform.vue'
+// import inform from './inform.vue'
 export default {
   components: {
-    inform: inform
+    // inform: inform
   },
   data() {
     return {
@@ -21,6 +41,11 @@ export default {
         phone: null
       }
     }
+  },
+  created() {
+    this.$store.dispatch('actUserInfo', 1)
+    // console.log(this.$store.getters.User)
+    this.user = this.$store.getters.User
   },
   computed: {
     userUpdatedResult() {
@@ -52,11 +77,10 @@ export default {
     }
   },
   methods: {
-    onClickUpdate(id) {
-      // 작업자 조회
-      this.$store.dispatch('actUserInfo', id)
-      // 모달 출력
-      this.$bvModal.show('modal-user-inform')
+    // 작업자 정보 수정하기 버틑 클릭 시
+    onClickUpdate(name) {
+      this.$store.dispatch('actUserUpdate', name)
+      this.$router.push('../dashboard')
     }
   }
 }
