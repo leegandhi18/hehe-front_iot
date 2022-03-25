@@ -1,7 +1,7 @@
 const stateInit = {
   Machine: {
     id: null,
-    device: null,
+    code: null,
     state: null,
     btn: null
   }
@@ -48,8 +48,8 @@ export default {
     actMachineList(context, payload) {
       /* 테스트 데이터 세팅 */
       const machineList = [
-        { id: 1, device: 'asp001', state: '작동', btn: '' },
-        { id: 2, device: 'asp001', state: '정지', btn: '' }
+        { id: 1, code: 'asp001', state: '작동' },
+        { id: 2, code: 'asp001', state: '정지' }
       ]
       context.commit('setMachineList', machineList)
 
@@ -80,8 +80,8 @@ export default {
       //테스트 데이터 세팅 //
       setTimeout(() => {
         const machineList = [
-          { id: 1, device: 'asp0031', state: '작동중' },
-          { id: 2, device: 'asp004', state: '중지' }
+          { id: 1, code: 'asp0031', state: '작동중' },
+          { id: 2, code: 'asp004', state: '중지' }
         ]
 
         let machine = { ...stateInit.machine }

@@ -33,12 +33,12 @@ export default {
     }
   },
   computed: {
-    infoData() {
-      return this.$store.getters.User
-    },
-    userList() {
-      return this.$store.getters.UserList
-    }
+    // infoData() {
+    //   return this.$store.getters.User
+    // },
+    // userList() {
+    //   return this.$store.getters.UserList
+    // }
   },
   watch: {
     // 모달이 열린 이후에 감지됨
@@ -49,7 +49,7 @@ export default {
   created() {
     this.user = { ...this.infoData }
     console.log(this.infoData)
-    this.$store.dispatch('actUserInfo') // 작업자 정보 조회
+    // this.$store.dispatch('actUserInfo') // 작업자 정보 조회
   },
   methods: {
     onSubmit(event) {

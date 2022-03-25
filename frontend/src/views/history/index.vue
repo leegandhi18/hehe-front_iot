@@ -3,9 +3,8 @@
     <h2 style="margin-bottom: 50px">완료이력</h2>
     <div>
       <b-table small hover striped :items="workHistoryList" :fields="fields" style="text-align: center">
-        <template #cell(btn)="row">
-          {{ row }}
-          <b-button class="btn" size="sm" variant="dark" @click="onClickRead(row.item.id)">중단이력</b-button>
+        <template #cell(emoHistory)="row">
+          <b-button class="emoHistory" size="sm" variant="dark" @click="onClickRead(row.item.id)">중단이력</b-button>
         </template>
       </b-table>
     </div>
@@ -22,16 +21,16 @@ export default {
     return {
       // Note `isActive` is left out and will not appear in the rendered table
       fields: [
-        { key: 'id' },
+        { key: 'id', label: 'Id' },
         { key: 'name', label: '작업자' },
-        { key: 'device', label: '설비' },
-        { key: 'item', label: '품목' },
-        { key: 'num', label: '생산 수량' },
-        { key: 'good', label: '양품' },
-        { key: 'bad', label: '불량품' },
+        { key: 'machineCode', label: '설비코드' },
+        { key: 'itemName', label: '품목명' },
+        { key: 'totalQuantity', label: '생산 수량' },
+        { key: 'goodQuantity', label: '양품' },
+        { key: 'badQuantity', label: '불량품' },
         { key: 'startTime', label: '시작시간' },
         { key: 'endTime', label: '종료시간' },
-        { key: 'btn', label: '중단이력' }
+        { key: 'emoHistory', label: '중단이력' }
         // { key: 'deleteBtn', label: '삭제' }
       ]
     }

@@ -1,9 +1,10 @@
 const stateInit = {
   Item: {
     id: null,
-    item: null,
-    num: null,
-    btn: null
+    name: null,
+    quantity: null,
+    itemId: null,
+    machineCode: null
   }
 }
 export default {
@@ -48,8 +49,20 @@ export default {
     actItemList(context, payload) {
       /* 테스트 데이터 세팅 */
       const itemList = [
-        { id: 1, item: '마스크', num: '100', btn: '' },
-        { id: 2, item: '마스크2', num: '999', btn: '' }
+        {
+          id: 1,
+          name: '마스크',
+          quantity: '100',
+          itemId: '완제품',
+          machineCode: '123'
+        },
+        {
+          id: 2,
+          name: '금속',
+          quantity: '50',
+          itemId: '재료',
+          machineCode: '235'
+        }
       ]
       context.commit('setItemList', itemList)
 
@@ -80,8 +93,20 @@ export default {
       //테스트 데이터 세팅 //
       setTimeout(() => {
         const itemList = [
-          { id: 1, item: '마스크', num: '1004' },
-          { id: 2, item: '마스크2', num: '2005' }
+          {
+            id: 1,
+            name: '마스크',
+            quantity: '100',
+            itemId: '완제품',
+            machineCode: '123'
+          },
+          {
+            id: 2,
+            name: '금속',
+            quantity: '50',
+            itemId: '재료',
+            machineCode: '235'
+          }
         ]
 
         let item = { ...stateInit.item }

@@ -20,7 +20,24 @@
       >
     </b-col>
     <div>
+      <h2>작업중 리스트</h2>
       <b-table small hover striped :items="workStatusList" :fields="fields" style="text-align: center">
+        <template #cell(control)="row" class="control">
+          <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">작업 중단</b-button>
+          <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">작업 완료</b-button>
+        </template>
+        <template #cell(btn)="row" class="btn">
+          <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">수정</b-button>
+          <b-button size="sm" variant="dark" @click="onClickDelete(row.item.id)">삭제</b-button>
+        </template>
+      </b-table>
+    </div>
+    <div>
+      <h2>작업전 리스트</h2>
+      <b-table small hover striped :items="workStatusList" :fields="fields" style="text-align: center">
+        <template #cell(control)="row" class="control">
+          <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">작업 시작</b-button>
+        </template>
         <template #cell(btn)="row" class="btn">
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">수정</b-button>
           <b-button size="sm" variant="dark" @click="onClickDelete(row.item.id)">삭제</b-button>
@@ -45,10 +62,10 @@ export default {
         { key: 'id' },
         { key: 'name', label: '작업자' },
         { key: 'device', label: '설비' },
-        { key: 'item', label: '품목' },
-        { key: 'num', label: '수량' },
+        { key: 'itemName', label: '품목' },
+        { key: 'productQuantity', label: '수량' },
         { key: 'startTime', label: '시작시간' },
-        { key: 'endTime', label: '종료시간' },
+        { key: 'control', label: '작업상태 제어' },
         { key: 'btn', label: '비고' }
         // { key: 'deleteBtn', label: '삭제' }
       ]

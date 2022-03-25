@@ -2,14 +2,20 @@
   <div>
     <b-modal id="modal-item-inform" :title="getTitle" @ok="onSubmit">
       <div>
-        <b-form-group v-if="inputMode === 'update'" label="id" label-for="code" label-cols="3">
+        <b-form-group v-if="inputMode === 'update'" label="id" label-for="id" label-cols="3">
           <b-form-input id="id" v-model="item.id" disabled></b-form-input>
         </b-form-group>
-        <b-form-group label="품목" label-for="item" label-cols="3">
-          <b-form-input id="item" v-model="item.item"></b-form-input>
+        <b-form-group label="품목" label-for="name" label-cols="3">
+          <b-form-input id="name" v-model="item.name"></b-form-input>
         </b-form-group>
-        <b-form-group label="수량" label-for="num" label-cols="3">
-          <b-form-input id="num" v-model="item.num"></b-form-input>
+        <b-form-group label="수량" label-for="quantity" label-cols="3">
+          <b-form-input id="quantity" v-model="item.quantity"></b-form-input>
+        </b-form-group>
+        <b-form-group label="품목계정" label-for="itemId" label-cols="3">
+          <b-form-input id="itemId" v-model="item.itemId"></b-form-input>
+        </b-form-group>
+        <b-form-group label="설비코드" label-for="machineCode" label-cols="3">
+          <b-form-input id="machineCode" v-model="item.machineCode"></b-form-input>
         </b-form-group>
         <!-- <b-form-group v-if="inputMode === 'update'" label="등록일" label-for="createdAt" label-cols="3">
           <b-form-input id="createdAt" :value="getCreatedAt" disabled></b-form-input>
@@ -25,8 +31,10 @@ export default {
     return {
       item: {
         id: null,
-        item: null,
-        num: null
+        name: null,
+        quantity: null,
+        itemId: null,
+        machineCode: null
       },
       userRole: {
         default: 'member' // 기본값
