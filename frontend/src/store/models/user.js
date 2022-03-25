@@ -53,30 +53,16 @@ export default {
     },
     actUserInfo(context, payload) {
       // 상태값 초기화
-      context.commit('setUser', { ...stateInit.User })
+      // context.commit('setUser', { ...stateInit.User })
       //테스트 데이터 세팅 //
-      setTimeout(() => {
-        const userList = [
-          {
-            id: '1',
-            name: '이주현',
-            role: '도비',
-            phone: '010-9248-1198'
-          }
-        ]
-
-        let user = { ...stateInit.User }
-        console.log('payload', payload)
-        for (let i = 0; i < userList.length; i += 1) {
-          if (payload === userList[i].id) {
-            user = { ...userList[i] }
-          }
-        }
-        context.commit('setUser', user)
-        console.log('userList', userList)
-        console.log('user', user)
-      }, 300)
-
+      const userList = {
+        id: '1',
+        name: '이주현',
+        role: '도비',
+        phone: '010-9248-1198'
+      }
+      context.commit('setUser', userList)
+      console.log('userList', userList)
       /* RestAPI 호출 */
       /*
       api.get('/serverApi/departments/${payload}').then(response => {

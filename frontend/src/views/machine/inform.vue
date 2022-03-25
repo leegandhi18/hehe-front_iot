@@ -5,11 +5,8 @@
         <b-form-group v-if="inputMode === 'update'" label="id" label-for="code" label-cols="3">
           <b-form-input id="id" v-model="machine.id" disabled></b-form-input>
         </b-form-group>
-        <b-form-group label="설비" label-for="device" label-cols="3">
-          <b-form-input id="device" v-model="machine.device"></b-form-input>
-        </b-form-group>
-        <b-form-group label="작동상태" label-for="item" label-cols="3">
-          <b-form-input id="state" v-model="machine.state"></b-form-input>
+        <b-form-group label="설비" label-for="code" label-cols="3">
+          <b-form-input id="code" v-model="machine.code"></b-form-input>
         </b-form-group>
         <!-- <b-form-group v-if="inputMode === 'update'" label="등록일" label-for="createdAt" label-cols="3">
           <b-form-input id="createdAt" :value="getCreatedAt" disabled></b-form-input>
@@ -25,7 +22,7 @@ export default {
     return {
       machine: {
         id: null,
-        device: null,
+        code: null,
         state: null
       },
       MachineRole: {

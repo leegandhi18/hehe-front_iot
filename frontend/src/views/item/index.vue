@@ -33,8 +33,10 @@ export default {
     return {
       fields: [
         { key: 'id', label: 'id' },
-        { key: 'item', label: '품목' },
-        { key: 'num', label: '수량' },
+        { key: 'name', label: '품목' },
+        { key: 'quantity', label: '수량' },
+        { key: 'itemId', label: '품목계정' },
+        { key: 'machineCode', label: '설비코드' },
         { key: 'btn', label: '비고' }
       ]
       // items: [
