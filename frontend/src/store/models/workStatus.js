@@ -5,7 +5,7 @@ const stateInit = {
   Work: {
     id: null,
     name: null,
-    device: null,
+    machineCode: null,
     itemName: null,
     productQuantity: null,
     startTime: null,
@@ -57,8 +57,8 @@ export default {
         {
           id: 1,
           name: '이주현',
+          machineCode: '기계1',
           itemName: '마스크',
-          device: '기계1',
           productQuantity: '12',
           startTime: '2021-12-01T00:00:00.000Z',
           endTime: '2021-12-01T00:00:00.000Z'
@@ -66,8 +66,8 @@ export default {
         {
           id: 2,
           name: '이주현',
+          machineCode: '기계1',
           itemName: '마스크',
-          device: '기계1',
           productQuantity: '12',
           startTime: '2021-12-01T00:00:00.000Z',
           endTime: '2021-12-01T00:00:00.000Z'
@@ -121,8 +121,8 @@ export default {
           {
             id: 1,
             name: '이주현',
+            machineCode: '기계1',
             itemName: '마스크',
-            device: '기계1',
             productQuantity: '12',
             startTime: '2021-12-01T00:00:00.000Z',
             endTime: '2021-12-01T00:00:00.000Z'
@@ -130,8 +130,8 @@ export default {
           {
             id: 2,
             name: '이주현',
+            machineCode: '기계1',
             itemName: '마스크',
-            device: '기계1',
             productQuantity: '12',
             startTime: '2021-12-01T00:00:00.000Z',
             endTime: '2021-12-01T00:00:00.000Z'

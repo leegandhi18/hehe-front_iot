@@ -8,8 +8,8 @@
         <b-form-group label="작업자" label-for="name" label-cols="3">
           <b-form-input id="name" v-model="work.name"></b-form-input>
         </b-form-group>
-        <b-form-group label="설비" label-for="device" label-cols="3">
-          <b-form-input id="device" v-model="work.device"></b-form-input>
+        <b-form-group label="설비" label-for="machineCode" label-cols="3">
+          <b-form-input id="machineCode" v-model="work.machineCode"></b-form-input>
         </b-form-group>
         <b-form-group label="품목" label-for="itemName" label-cols="3">
           <b-form-input id="itemName" v-model="work.itemName"></b-form-input>
@@ -33,6 +33,7 @@ export default {
       work: {
         id: null,
         name: null,
+        machineCode: null,
         itemName: null,
         productQuantity: null,
         startTime: null,
