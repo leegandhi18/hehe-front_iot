@@ -23,7 +23,6 @@
         </b-col>
       </b-row>
     </div>
-    {{ user }}
   </div>
 </template>
 

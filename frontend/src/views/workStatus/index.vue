@@ -23,8 +23,8 @@
       <h2>작업중 리스트</h2>
       <b-table small hover striped :items="workStatusList" :fields="fields" style="text-align: center">
         <template #cell(control)="row" class="control">
-          <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">작업 중단</b-button>
-          <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">작업 완료</b-button>
+          <b-button size="sm" variant="dark" class="item_btn" @click="onClickStop(row.item.id)">작업 중단</b-button>
+          <b-button size="sm" variant="dark" class="item_btn" @click="onClickComplete(row.item.id)">작업 완료</b-button>
         </template>
         <template #cell(btn)="row" class="btn">
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">수정</b-button>
@@ -36,7 +36,7 @@
       <h2>작업전 리스트</h2>
       <b-table small hover striped :items="workStatusList" :fields="fields" style="text-align: center">
         <template #cell(control)="row" class="control">
-          <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">작업 시작</b-button>
+          <b-button size="sm" variant="dark" class="item_btn" @click="onClickStart(row.item.id)">작업 시작</b-button>
         </template>
         <template #cell(btn)="row" class="btn">
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">수정</b-button>
@@ -199,6 +199,15 @@ export default {
           this.$store.dispatch('actWorkDelete', id)
         }
       })
+    },
+    onClickComplete() {
+      console.log('작업 완료')
+    },
+    onClickStop() {
+      console.log('작업 중단')
+    },
+    onClickStart() {
+      console.log('작업 시작')
     }
   }
 }

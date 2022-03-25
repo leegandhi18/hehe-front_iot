@@ -11,7 +11,6 @@
         <b-form-group label="중단이력시간" label-for="time" label-cols="3">
           <b-form-input id="time" v-model="workStop.time" disabled></b-form-input>
         </b-form-group>
-        {{ infoData }}
       </div>
     </b-modal>
   </div>
@@ -25,9 +24,6 @@ export default {
         name: null,
         machineCode: null,
         time: null
-      },
-      userRole: {
-        default: 'member' // 기본값
       }
     }
   },
@@ -43,8 +39,6 @@ export default {
     // 모달이 열린 이후에 감지됨
     infoData(value) {
       this.workStop = { ...value }
-
-      this.setDefaultValues() // 기본값 세팅
     }
   },
   created() {
@@ -52,17 +46,7 @@ export default {
     this.workStop = { ...this.infoData }
     console.log(this.infoData)
 
-    this.setDefaultValues() // 기본값 세팅
-
     this.$store.dispatch('actWorkStopInfo') // 중단이력 조회
-  },
-  methods: {
-    setDefaultValues() {
-      // 기본값 세팅
-      if (this.inputMode === 'insert') {
-        this.item.role = this.userRole.default // 사용자 권한
-      }
-    }
   }
 }
 </script>

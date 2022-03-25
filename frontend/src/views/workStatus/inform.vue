@@ -72,15 +72,15 @@ export default {
     infoData(value) {
       this.work = { ...value }
 
-      this.setDefaultValues() // 기본값 세팅
+      // this.setDefaultValues() // 기본값 세팅
     }
   },
   created() {
     // 모달이 최초 열릴때 감지됨
     this.work = { ...this.infoData }
-    console.log(this.infoData)
+    console.log('infoData:', this.infoData)
 
-    this.setDefaultValues() // 기본값 세팅
+    // this.setDefaultValues() // 기본값 세팅
   },
   methods: {
     // onSubmit() {
@@ -97,13 +97,13 @@ export default {
       if (this.inputMode === 'update') {
         this.$store.dispatch('actWorkUpdate', this.work) // 수정 실행
       }
-    },
-    setDefaultValues() {
-      // 기본값 세팅
-      if (this.inputMode === 'insert') {
-        this.work.role = this.workRole.default // 사용자 권한
-      }
     }
+    // setDefaultValues() {
+    //   // 기본값 세팅
+    //   if (this.inputMode === 'insert') {
+    //     this.work.role = this.workRole.default // 사용자 권한
+    //   }
+    // }
   }
 }
 </script>

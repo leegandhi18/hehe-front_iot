@@ -17,9 +17,6 @@
         <b-form-group label="설비코드" label-for="machineCode" label-cols="3">
           <b-form-input id="machineCode" v-model="item.machineCode"></b-form-input>
         </b-form-group>
-        <!-- <b-form-group v-if="inputMode === 'update'" label="등록일" label-for="createdAt" label-cols="3">
-          <b-form-input id="createdAt" :value="getCreatedAt" disabled></b-form-input>
-        </b-form-group> -->
       </div>
     </b-modal>
   </div>
@@ -35,10 +32,10 @@ export default {
         quantity: null,
         itemId: null,
         machineCode: null
-      },
-      userRole: {
-        default: 'member' // 기본값
       }
+      // userRole: {
+      //   default: 'member' // 기본값
+      // }
     }
   },
   computed: {
@@ -70,7 +67,7 @@ export default {
     infoData(value) {
       this.item = { ...value }
 
-      this.setDefaultValues() // 기본값 세팅
+      // this.setDefaultValues() // 기본값 세팅
     }
   },
   created() {
@@ -79,7 +76,7 @@ export default {
 
     // this.setDefaultValues() // 기본값 세팅
 
-    // this.$store.dispatch('actItemList') // 부서정보 조회
+    this.$store.dispatch('actItemList') // 품목리스트 조회
   },
   methods: {
     onSubmit() {
@@ -92,13 +89,13 @@ export default {
       if (this.inputMode === 'update') {
         this.$store.dispatch('actItemUpdate', this.item) // 수정 실행
       }
-    },
-    setDefaultValues() {
-      // 기본값 세팅
-      if (this.inputMode === 'insert') {
-        this.item.role = this.ItemRole.default // 사용자 권한
-      }
     }
+    // setDefaultValues() {
+    //   // 기본값 세팅
+    //   if (this.inputMode === 'insert') {
+    //     this.item.role = this.ItemRole.default // 사용자 권한
+    //   }
+    // }
   }
 }
 </script>

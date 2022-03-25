@@ -8,10 +8,13 @@
         <b-form-group label="이름" label-for="device" label-cols="3">
           <b-form-input id="name" v-model="admin.name"></b-form-input>
         </b-form-group>
-        <b-form-group label="password" label-for="password" label-cols="3">
+        <b-form-group label="비밀번호" label-for="password" label-cols="3">
           <b-form-input v-model="admin.password" type="password"></b-form-input>
         </b-form-group>
-        <b-form-group label="전화번호" label-for="pthone" label-cols="3">
+        <b-form-group label="권한" label-for="role" label-cols="3">
+          <b-form-input id="role" v-model="admin.role"></b-form-input>
+        </b-form-group>
+        <b-form-group label="전화번호" label-for="phone" label-cols="3">
           <b-form-input id="phone" v-model="admin.phone" type="tel"></b-form-input>
         </b-form-group>
         <!-- <b-form-group v-if="inputMode === 'update'" label="등록일" label-for="createdAt" label-cols="3">
@@ -29,11 +32,12 @@ export default {
         id: null,
         name: null,
         password: null,
+        role: null,
         phone: null
-      },
-      AdminRole: {
-        default: 'member' // 기본값
       }
+      //   AdminRole: {
+      //     default: 'member' // 기본값
+      //   }
     }
   },
   computed: {
@@ -64,8 +68,7 @@ export default {
     // 모달이 열린 이후에 감지됨
     infoData(value) {
       this.admin = { ...value }
-
-      this.setDefaultValues() // 기본값 세팅
+      // this.setDefaultValues() // 기본값 세팅
     }
   },
   created() {
@@ -87,13 +90,13 @@ export default {
       if (this.inputMode === 'update') {
         this.$store.dispatch('actAdminUpdate', this.admin) // 수정 실행
       }
-    },
-    setDefaultValues() {
-      // 기본값 세팅
-      if (this.inputMode === 'insert') {
-        this.work.role = this.AdminRole.default // 사용자 권한
-      }
     }
+    // setDefaultValues() {
+    //   // 기본값 세팅
+    //   if (this.inputMode === 'insert') {
+    //     this.work.role = this.AdminRole.default // 사용자 권한
+    //   }
+    // }
   }
 }
 </script>
