@@ -1,3 +1,5 @@
+import api from '../apiUtil'
+
 const stateInit = {
   Admin: {
     id: null,

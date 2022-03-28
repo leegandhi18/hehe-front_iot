@@ -1,4 +1,4 @@
-// import api from '../apiUtil'
+import api from '../apiUtil'
 
 // 초기값 선언
 const stateInit = {

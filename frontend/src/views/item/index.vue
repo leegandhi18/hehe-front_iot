@@ -118,7 +118,7 @@ export default {
           })
 
           // 2. 리스트 재 검색
-          this.searchItemtList()
+          this.searchItemList()
         } else {
           // 삭제가 실패한 경우
           this.$bvToast.toast('삭제가 실패하였습니다.', {
