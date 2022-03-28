@@ -56,7 +56,7 @@ export default {
       /* RestAPI 호출 */
       api.get('/serverApi/machines').then(response => {
         console.log('machineList response', response)
-        const machineList = response && response.data
+        const machineList = response && response.data && response.data.rows
         context.commit('setMachineList', machineList)
       })
     },
@@ -71,13 +71,12 @@ export default {
         .post('/serverApi/machines', payload)
         .then(response => {
           console.log('response', response)
-          // const insertedResult = response && response.data && response.data.id
-          const insertedResult = response && response.data
+          const insertedResult = response && response.data && response.data.id
           context.commit('setInsertedResult', insertedResult)
         })
         .catch(error => {
           // 에러인 경우 처리
-          console.error('UserInsert.error', error)
+          console.error('MachineInsert.error', error)
           context.commit('setInsertedResult', -1)
         })
     },
@@ -116,8 +115,8 @@ export default {
         })
         .catch(error => {
           // 에러인 경우 처리
-          console.error('DeviceInfo.error', error)
-          context.commit('setDevice', -1)
+          console.error('MachineInfo.error', error)
+          context.commit('setMachine', -1)
         })
     },
     // 수정
@@ -159,7 +158,7 @@ export default {
         })
         .catch(error => {
           // 에러인 경우 처리
-          console.error('DeviceDelete.error', error)
+          console.error('MachineDelete.error', error)
           context.commit('setDeletedResult', -1)
         })
     }

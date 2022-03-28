@@ -49,7 +49,7 @@ export default {
       return this.$store.getters.Work
     },
     inputMode() {
-      return this.$store.getters.WorkInputMode
+      return this.$store.getters.InputMode
     },
     getTitle() {
       let title = ''
@@ -78,7 +78,6 @@ export default {
   created() {
     // 모달이 최초 열릴때 감지됨
     this.work = { ...this.infoData }
-    console.log('infoData:', this.infoData)
 
     // this.setDefaultValues() // 기본값 세팅
   },

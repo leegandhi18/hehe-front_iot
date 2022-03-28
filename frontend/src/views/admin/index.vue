@@ -18,6 +18,7 @@
           <b-button size="sm" variant="dark" @click="onClickDelete(row.item.id)">삭제</b-button>
         </template>
       </b-table>
+      <!-- {{ adminList }} -->
     </div>
     <inform />
   </div>

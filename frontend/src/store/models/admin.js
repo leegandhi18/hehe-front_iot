@@ -5,7 +5,8 @@ const stateInit = {
     id: null,
     password: null,
     name: null,
-    role: null
+    role: null,
+    phone: null
   }
 }
 export default {
@@ -46,7 +47,7 @@ export default {
     }
   },
   actions: {
-    // 부서 리스트 조회
+    // 사용자 리스트 조회
     actAdminList(context, payload) {
       /* 테스트 데이터 세팅 */
       // const adminList = [
@@ -56,11 +57,19 @@ export default {
       // context.commit('setAdminList', adminList)
 
       /* RestAPI 호출 */
-      api.get('/serverApi/users').then(response => {
-        console.log('userList response', response.data.id)
-        const userList = response && response.data && response.data.rows
-        context.commit('setAdminList', userList)
-      })
+      api
+        .get('/serverApi/users')
+        .then(response => {
+          const userList = response && response.data && response.data.rows
+          // console.log('response', response)
+          context.commit('setAdminList', userList)
+          // console.log('userList', userList)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('UserList.error', error)
+          context.commit('setAdminList', [])
+        })
     },
     actAdminInsert(context, payload) {
       context.commit('setInsertedResult', null)
@@ -111,12 +120,12 @@ export default {
         .get(`/serverApi/users/${payload}`)
         .then(response => {
           const user = response && response.data
-          context.commit('setUser', user)
+          context.commit('setAdmin', user)
         })
         .catch(error => {
           // 에러인 경우 처리
           console.error('UserInfo.error', error)
-          context.commit('setUser', -1)
+          context.commit('setAdmin', -1)
         })
     },
     actAdminUpdate(context, payload) {

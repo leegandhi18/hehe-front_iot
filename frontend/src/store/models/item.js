@@ -70,8 +70,8 @@ export default {
 
       /* RestAPI 호출 */
       api.get('/serverApi/items').then(response => {
-        console.log('ItemList response', response)
-        const itemList = response && response.data
+        console.log('ItemList response1', response)
+        const itemList = response && response.data && response.data.rows
         context.commit('setItemList', itemList)
       })
     },
@@ -86,8 +86,7 @@ export default {
         .post('/serverApi/items', payload)
         .then(response => {
           console.log('response', response)
-          // const insertedResult = response && response.data && response.data.id
-          const insertedResult = response && response.data
+          const insertedResult = response && response.data && response.data.id
           context.commit('setInsertedResult', insertedResult)
         })
         .catch(error => {
@@ -133,25 +132,58 @@ export default {
       // }, 300)
 
       /* RestAPI 호출 */
-      api.get('/serverApi/items/${payload}').then(response => {
-        const item = response && response.item
-        context.commit('setItem', item)
-      })
+      api
+        .get(`/serverApi/items/${payload}`)
+        .then(response => {
+          const item = response && response.data
+          context.commit('setItem', item)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('ItemInfo.error', error)
+          context.commit('setItem', -1)
+        })
     },
     actItemUpdate(context, payload) {
       context.commit('setUpdatedResult', null)
 
-      setTimeout(() => {
-        const updatedResult = 1
-        context.commit('setUpdatedResult', updatedResult)
-      }, 300)
+      // setTimeout(() => {
+      //   const updatedResult = 1
+      //   context.commit('setUpdatedResult', updatedResult)
+      // }, 300)
+
+      /* RestAPI 호출 */
+      api
+        .put(`/serverApi/items/${payload.id}`, payload)
+        .then(response => {
+          const updatedResult = response && response.data && response.data.updatedCount
+          context.commit('setUpdatedResult', updatedResult)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('ItemUpdate.error', error)
+          context.commit('setUpdatedResult', -1)
+        })
     },
     actItemDelete(context, payload) {
       context.commit('setDeletedResult', null)
-      setTimeout(() => {
-        const deletedResult = 1
-        context.commit('setDeletedResult', deletedResult)
-      }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // setTimeout(() => {
+      //   const deletedResult = 1
+      //   context.commit('setDeletedResult', deletedResult)
+      // }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+
+      /* RestAPI 호출 */
+      api
+        .delete(`/serverApi/items/${payload}`)
+        .then(response => {
+          const deletedResult = response && response.data && response.data.deletedCount
+          context.commit('setDeletedResult', deletedResult)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('ItemDelete.error', error)
+          context.commit('setDeletedResult', -1)
+        })
     }
   }
 }

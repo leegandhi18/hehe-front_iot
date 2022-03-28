@@ -75,18 +75,18 @@ export default {
     workStatusList() {
       return this.$store.getters.WorkStatusList
     },
-    workInsertedResult() {
+    insertedResult() {
       return this.$store.getters.WorkInsertedResult
     },
-    workUpdatedResult() {
+    updatedResult() {
       return this.$store.getters.WorkUpdatedResult
     },
-    workDeletedResult() {
+    deletedResult() {
       return this.$store.getters.WorkDeletedResult
     }
   },
   watch: {
-    workInsertedResult(value) {
+    insertedResult(value) {
       // 등록 후 처리
       if (value !== null) {
         if (value > 0) {
@@ -111,7 +111,7 @@ export default {
         }
       }
     },
-    workUpdatedResult(value) {
+    updatedResult(value) {
       // 수정 후 처리
       if (value !== null) {
         if (value > 0) {
@@ -136,7 +136,7 @@ export default {
         }
       }
     },
-    workDeletedResult(value) {
+    deletedResult(value) {
       // 삭제 후 처리
       if (value !== null) {
         if (value > 0) {

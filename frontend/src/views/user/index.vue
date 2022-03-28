@@ -44,7 +44,7 @@ export default {
   },
   created() {
     this.$store.dispatch('actUserInfo', 1)
-    // console.log(this.$store.getters.User)
+    console.log(this.$store.getters.User)
     this.user = this.$store.getters.User
   },
   computed: {
