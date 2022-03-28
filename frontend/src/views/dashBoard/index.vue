@@ -8,7 +8,6 @@
 import edukit from './edukit.vue'
 
 export default {
-  //name: 'App',
   components: {
     edukit
   }

@@ -12,8 +12,8 @@ import { Event } from './assets/event'
 import { Gui } from './plugins/gui'
 
 export default async element => {
-  element.style.width = '700px'
-  element.style.height = '700px'
+  element.style.width = '800px'
+  element.style.height = '800px'
 
   // Scene Setting
   let scene = new Scene('edukit')
@@ -74,7 +74,7 @@ export default async element => {
 
   // MQTT Event Setting
   let event = new Event(element, scene.resource.edukit)
-  event
+  event.setEvent()
 
   return element
 }
