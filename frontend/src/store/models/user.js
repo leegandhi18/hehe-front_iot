@@ -13,18 +13,14 @@ export default {
   state: {
     UserList: [],
     User: { ...stateInit.User },
-    InsertedResult: null,
     UpdatedResult: null,
-    DeletedResult: null,
-    InputMode: null
+    DeletedResult: null
   },
   getters: {
     UserList: state => state.UserList,
     User: state => state.User,
-    UserInsertedResult: state => state.InsertedResult,
     UserUpdatedResult: state => state.UpdatedResult,
-    UserDeletedResult: state => state.DeletedResult,
-    UserInputMode: state => state.InputMode
+    UserDeletedResult: state => state.DeletedResult
   },
   mutations: {
     setUserList(state, data) {
@@ -33,17 +29,11 @@ export default {
     setUser(state, data) {
       state.User = data
     },
-    setInsertedResult(state, data) {
-      state.InsertedResult = data
-    },
     setUpdatedResult(state, data) {
       state.UpdatedResult = data
     },
     setDeletedResult(state, data) {
       state.DeletedResult = data
-    },
-    setInputMode(state, data) {
-      state.InputMode = data
     }
   },
   actions: {
@@ -66,39 +56,9 @@ export default {
         context.commit('setUserList', userList)
       })
     },
-    // 등록
-    actUserInsert(context, payload) {
-      // 상태값 초기화
-      context.commit('setInsertedResult', null)
-
-      /* 테스트 데이터 세팅 */
-      /*
-      setTimeout(() => {
-        const insertedResult = 1
-        context.commit('setInsertedResult', insertedResult)
-      }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
-      */
-
-      /* RestAPI 호출 */
-      api
-        .post('/serverApi/users', payload)
-        .then(response => {
-          const insertedResult = response && response.data && response.data.id
-          context.commit('setInsertedResult', insertedResult)
-        })
-        .catch(error => {
-          // 에러인 경우 처리
-          console.error('UserInsert.error', error)
-          context.commit('setInsertedResult', -1)
-        })
-    },
     // 초기화
     actUserInit(context, payload) {
       context.commit('setUser', { ...stateInit.User })
-    },
-    // 입력모드
-    actUserInputMode(context, payload) {
-      context.commit('setInputMode', payload)
     },
     actUserInfo(context, payload) {
       // 상태값 초기화
@@ -145,32 +105,6 @@ export default {
           // 에러인 경우 처리
           console.error('UserUpdate.error', error)
           context.commit('setUpdatedResult', -1)
-        })
-    },
-    // 삭제
-    actUserDelete(context, payload) {
-      // 상태값 초기화
-      context.commit('setDeletedResult', null)
-
-      /* 테스트 데이터 세팅 */
-      /*
-      setTimeout(() => {
-        const deletedResult = 1
-        context.commit('setDeletedResult', deletedResult)
-      }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
-      */
-
-      /* RestAPI 호출 */
-      api
-        .delete(`/serverApi/users/${payload}`)
-        .then(response => {
-          const deletedResult = response && response.data && response.data.deletedCount
-          context.commit('setDeletedResult', deletedResult)
-        })
-        .catch(error => {
-          // 에러인 경우 처리
-          console.error('UserDelete.error', error)
-          context.commit('setDeletedResult', -1)
         })
     }
   }

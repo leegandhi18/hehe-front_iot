@@ -55,6 +55,7 @@ export default {
 
       /* RestAPI 호출 */
       api.get('/serverApi/machines').then(response => {
+        console.log('machineList response', response)
         const machineList = response && response.data
         context.commit('setMachineList', machineList)
       })

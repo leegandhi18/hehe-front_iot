@@ -92,7 +92,7 @@ export default {
         })
         .catch(error => {
           // 에러인 경우 처리
-          console.error('UserInsert.error', error)
+          console.error('ItemInsert.error', error)
           context.commit('setInsertedResult', -1)
         })
     },

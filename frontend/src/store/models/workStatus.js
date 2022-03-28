@@ -1,4 +1,4 @@
-// import api from '../apiUtil'
+import api from '../apiUtil'
 
 // 초기값 선언
 const stateInit = {
@@ -53,35 +53,34 @@ export default {
   actions: {
     // 작업 현황 리스트 조회
     actWorkStatusList(context, payload) {
-      const workStatusList = [
-        {
-          id: 1,
-          name: '이주현',
-          machineCode: '기계1',
-          itemName: '마스크',
-          productQuantity: '12',
-          startTime: '2021-12-01T00:00:00.000Z',
-          endTime: '2021-12-01T00:00:00.000Z'
-        },
-        {
-          id: 2,
-          name: '이주현',
-          machineCode: '기계1',
-          itemName: '마스크',
-          productQuantity: '12',
-          startTime: '2021-12-01T00:00:00.000Z',
-          endTime: '2021-12-01T00:00:00.000Z'
-        }
-      ]
-      context.commit('setWorkStatusList', workStatusList)
+      // const workStatusList = [
+      //   {
+      //     id: 1,
+      //     name: '이주현',
+      //     machineCode: '기계1',
+      //     itemName: '마스크',
+      //     productQuantity: '12',
+      //     startTime: '2021-12-01T00:00:00.000Z',
+      //     endTime: '2021-12-01T00:00:00.000Z'
+      //   },
+      //   {
+      //     id: 2,
+      //     name: '이주현',
+      //     machineCode: '기계1',
+      //     itemName: '마스크',
+      //     productQuantity: '12',
+      //     startTime: '2021-12-01T00:00:00.000Z',
+      //     endTime: '2021-12-01T00:00:00.000Z'
+      //   }
+      // ]
+      // context.commit('setWorkStatusList', workStatusList)
 
       /* RestAPI 호출 */
-      /*
-      api.get('/serverApi/departments').then(response => {
-        const departmentList = response && response.data
-        context.commit('setDepartmentList', departmentList)
+      api.get('/serverApi/orders').then(response => {
+        console.log('workStatusList response', response)
+        const workStatusList = response && response.data
+        context.commit('setWorkStatusList', workStatusList)
       })
-      */
     },
     // 작업 입력(등록)
     actWorkInsert(context, payload) {
@@ -95,12 +94,19 @@ export default {
       }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
 
       /* RestAPI 호출 */
-      /*
-      api.post('/serverApi/departments').then(response => {
-        const insertedResult = response && response.insertedId
-        context.commit('setInsertedResult', insertedResult)
-      })
-      */
+      api
+        .post('/serverApi/orders', payload)
+        .then(response => {
+          console.log('response', response)
+          const insertedResult = response && response.data && response.data.id
+          // const insertedResult = response && response.data
+          context.commit('setInsertedResult', insertedResult)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('ItemInsert.error', error)
+          context.commit('setInsertedResult', -1)
+        })
     },
     // 작업 현황 초기화
     actWorkInit(context, payload) {
