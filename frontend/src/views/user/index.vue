@@ -17,7 +17,7 @@
               <b-form-input id="phone" v-model="user.phone"></b-form-input>
             </b-form-group>
             <b-form-group label-cols="4" label-cols-lg="3" label="">
-              <b-button id="update" variant="dark" @click="onClickUpdate(user.name)">수정하기</b-button>
+              <b-button id="update" variant="dark" @click="onClickUpdate(user.id)">수정하기</b-button>
             </b-form-group>
           </b-card>
         </b-col>
@@ -35,6 +35,7 @@ export default {
   data() {
     return {
       user: {
+        id: null,
         name: null,
         password: null,
         role: null,
@@ -44,10 +45,13 @@ export default {
   },
   created() {
     this.$store.dispatch('actUserInfo', 1)
-    console.log(this.$store.getters.User)
+    // console.log(this.$store.getters.User)
     this.user = this.$store.getters.User
   },
   computed: {
+    userList() {
+      return this.$store.getters.UserList
+    },
     userUpdatedResult() {
       return this.$store.getters.UserUpdatedResult
     }
@@ -74,13 +78,13 @@ export default {
           })
         }
       }
+      this.$router.push('../dashboard')
     }
   },
   methods: {
     // 작업자 정보 수정하기 버틑 클릭 시
-    onClickUpdate(name) {
-      this.$store.dispatch('actUserUpdate', name)
-      this.$router.push('../dashboard')
+    onClickUpdate(id) {
+      this.$store.dispatch('actUserUpdate', this.user)
     }
   }
 }

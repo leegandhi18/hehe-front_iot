@@ -21,7 +21,7 @@ export default {
     return {
       // Note `isActive` is left out and will not appear in the rendered table
       fields: [
-        { key: 'id', label: 'Id' },
+        { key: 'id', label: 'ID' },
         { key: 'name', label: '작업자' },
         { key: 'machineCode', label: '설비코드' },
         { key: 'itemName', label: '품목명' },

@@ -146,7 +146,7 @@ export default {
     },
     actItemUpdate(context, payload) {
       context.commit('setUpdatedResult', null)
-
+      console.log('payload', payload)
       // setTimeout(() => {
       //   const updatedResult = 1
       //   context.commit('setUpdatedResult', updatedResult)

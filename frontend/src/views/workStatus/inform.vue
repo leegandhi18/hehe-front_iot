@@ -49,7 +49,7 @@ export default {
       return this.$store.getters.Work
     },
     inputMode() {
-      return this.$store.getters.InputMode
+      return this.$store.getters.WorkInputMode
     },
     getTitle() {
       let title = ''

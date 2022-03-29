@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       fields: [
-        { key: 'id', label: 'id' },
+        { key: 'id', label: 'ID' },
         { key: 'name', label: '품목' },
         { key: 'quantity', label: '수량' },
         { key: 'itemId', label: '품목계정' },

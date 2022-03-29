@@ -58,9 +58,9 @@ export default {
       })
     },
     // 초기화
-    actUserInit(context, payload) {
-      context.commit('setUser', { ...stateInit.User })
-    },
+    // actUserInit(context, payload) {
+    //   context.commit('setUser', { ...stateInit.User })
+    // },
     actUserInfo(context, payload) {
       // 상태값 초기화
       // context.commit('setUser', { ...stateInit.User })

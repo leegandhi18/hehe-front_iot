@@ -75,7 +75,7 @@ export default {
 
   methods: {
     onSubmit() {
-      this.$store.dispatch('authLogin', { userid: this.name, password: this.password })
+      this.$store.dispatch('authLogin', { name: this.name, password: this.password })
     }
   }
 }
