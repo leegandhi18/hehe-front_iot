@@ -8,11 +8,15 @@
         <b-form-group label="이름" label-for="device" label-cols="3">
           <b-form-input id="name" v-model="admin.name"></b-form-input>
         </b-form-group>
-        <b-form-group label="비밀번호" label-for="password" label-cols="3">
-          <b-form-input v-model="admin.password" type="password"></b-form-input>
+        <b-form-group v-if="inputMode === 'insert'" label="비밀번호" label-for="password" label-cols="3">
+          <b-form-input id="password" v-model="admin.password" type="password"></b-form-input>
+        </b-form-group>
+        <b-form-group v-if="inputMode === 'update'" label="비밀번호" label-for="password" label-cols="3">
+          <b-form-input id="password" v-model="admin.password" type="password"></b-form-input>
         </b-form-group>
         <b-form-group label="권한" label-for="role" label-cols="3">
-          <b-form-input id="role" v-model="admin.role"></b-form-input>
+          <b-form-radio-group id="role" v-model="admin.role" :options="adminRole.options" />
+          <!-- <b-form-input id="role" v-model="admin.role"></b-form-input> -->
         </b-form-group>
         <b-form-group label="전화번호" label-for="phone" label-cols="3">
           <b-form-input id="phone" v-model="admin.phone" type="tel"></b-form-input>
@@ -34,10 +38,14 @@ export default {
         password: null,
         role: null,
         phone: null
+      },
+      adminRole: {
+        default: '0', // 기본값
+        options: [
+          { value: '0', text: '관리자' },
+          { value: '1', text: '작업자' }
+        ]
       }
-      //   AdminRole: {
-      //     default: 'member' // 기본값
-      //   }
     }
   },
   computed: {
@@ -68,6 +76,7 @@ export default {
     // 모달이 열린 이후에 감지됨
     infoData(value) {
       this.admin = { ...value }
+      this.admin.password = '' // 비밀번호 자료 공백으로 바꿔주기
       // this.setDefaultValues() // 기본값 세팅
     }
   },
@@ -81,13 +90,13 @@ export default {
   },
   methods: {
     onSubmit() {
-      // this.$store.dispatch('actAdminInsert', this.Admin) // 입력 실행
       // 1. 등록인 경우
       if (this.inputMode === 'insert') {
         this.$store.dispatch('actAdminInsert', this.admin) // 입력 실행
       }
       // 2. 수정인 경우
       if (this.inputMode === 'update') {
+        console.log(this.password)
         this.$store.dispatch('actAdminUpdate', this.admin) // 수정 실행
       }
     }

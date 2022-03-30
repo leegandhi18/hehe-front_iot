@@ -138,6 +138,8 @@ export default {
       api
         .put(`/serverApi/users/${payload.id}`, payload)
         .then(response => {
+          console.log(payload)
+          console.log('user update response data', response.data)
           const updatedResult = response && response.data && response.data.updatedCount
           context.commit('setUpdatedResult', updatedResult)
         })

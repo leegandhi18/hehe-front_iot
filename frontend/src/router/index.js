@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import jwtDecode from 'jwt-decode'
+import store from '../store'
 
 Vue.use(VueRouter)
 

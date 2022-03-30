@@ -70,7 +70,6 @@ export default {
 
       /* RestAPI 호출 */
       api.get('/serverApi/items').then(response => {
-        console.log('ItemList response1', response)
         const itemList = response && response.data && response.data.rows
         context.commit('setItemList', itemList)
       })

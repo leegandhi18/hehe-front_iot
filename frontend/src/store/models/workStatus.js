@@ -99,12 +99,11 @@ export default {
         .then(response => {
           console.log('response', response)
           const insertedResult = response && response.data && response.data.id
-          // const insertedResult = response && response.data
           context.commit('setInsertedResult', insertedResult)
         })
         .catch(error => {
           // 에러인 경우 처리
-          console.error('ItemInsert.error', error)
+          console.error('OrderInsert.error', error)
           context.commit('setInsertedResult', -1)
         })
     },
@@ -162,7 +161,7 @@ export default {
         })
         .catch(error => {
           // 에러인 경우 처리
-          console.error('WorkInfo.error', error)
+          console.error('OrderInfo.error', error)
           context.commit('setWork', -1)
         })
     },
@@ -210,7 +209,7 @@ export default {
         })
         .catch(error => {
           // 에러인 경우 처리
-          console.error('WorkDelete.error', error)
+          console.error('OrderDelete.error', error)
           context.commit('setDeletedResult', -1)
         })
     }

@@ -7,6 +7,7 @@ const api = axios.create()
 //   async request => {
 //     // header.token 전송
 //     const token = window.localStorage.getItem('token')
+//     console.log('intercept.request.use.token', token)
 //     request.headers.token = token
 
 //     return request

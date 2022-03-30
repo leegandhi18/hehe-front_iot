@@ -29,7 +29,7 @@
           <b-nav-item-dropdown right style="margin-left: 15px">
             <!-- Using 'button-content' slot -->
             <template #button-content>
-              <em>User</em>
+              <em>{{ tokenUserName }}</em>
             </template>
             <b-dropdown-item href="#" @click="$router.push('/admin')">Admin Profile</b-dropdown-item>
             <b-dropdown-item href="#" @click="$router.push('/user')">User Profile</b-dropdown-item>

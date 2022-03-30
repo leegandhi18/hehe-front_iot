@@ -2,17 +2,25 @@
   <div>
     <b-modal id="modal-work-inform" :title="getTitle" @ok="onSubmit">
       <div>
-        <b-form-group v-if="inputMode === 'update'" label="id" label-for="code" label-cols="3">
+        <b-form-group v-if="inputMode === 'update'" label="ID" label-for="id" label-cols="3">
           <b-form-input id="id" v-model="work.id" disabled></b-form-input>
         </b-form-group>
         <b-form-group label="작업자" label-for="name" label-cols="3">
           <b-form-input id="name" v-model="work.name"></b-form-input>
         </b-form-group>
-        <b-form-group label="설비" label-for="machineCode" label-cols="3">
-          <b-form-input id="machineCode" v-model="work.machineCode"></b-form-input>
+        <b-form-group label="설비" label-for="code" label-cols="3">
+          <b-form-select id="code" v-model="work.machineCode" :options="machineList" value-field="id" text-field="code">
+            <template #first>
+              <b-form-select-option :value="null">-- 설비를 선택해 주세요 --</b-form-select-option>
+            </template>
+          </b-form-select>
         </b-form-group>
-        <b-form-group label="품목" label-for="itemName" label-cols="3">
-          <b-form-input id="itemName" v-model="work.itemName"></b-form-input>
+        <b-form-group label="품목" label-for="name" label-cols="3">
+          <b-form-select id="name" v-model="work.itemName" :options="itemList" value-field="id" text-field="name">
+            <template #first>
+              <b-form-select-option :value="null">-- 품목을 선택해 주세요 --</b-form-select-option>
+            </template>
+          </b-form-select>
         </b-form-group>
         <b-form-group label="수량" label-for="productQuantity" label-cols="3">
           <b-form-input id="productQuantity" v-model="work.productQuantity"></b-form-input>
@@ -38,6 +46,24 @@ export default {
         productQuantity: null,
         startTime: null,
         endTime: null
+      },
+      user: {
+        id: null,
+        name: null,
+        password: null,
+        role: null,
+        phone: null
+      },
+      machine: {
+        id: null,
+        code: null
+      },
+      item: {
+        id: null,
+        name: null,
+        quantity: null,
+        itemId: null,
+        machineCode: null
       }
       // userRole: {
       //   default: 'member' // 기본값
@@ -65,12 +91,22 @@ export default {
     },
     workStatusList() {
       return this.$store.getters.WorkStatusList
+    },
+    userList() {
+      return this.$store.getters.UserList
+    },
+    machineList() {
+      return this.$store.getters.MachineList
+    },
+    itemList() {
+      return this.$store.getters.ItemList
     }
   },
   watch: {
     // 모달이 열린 이후에 감지됨
     infoData(value) {
       this.work = { ...value }
+      // this.user.name = { ...value }
 
       // this.setDefaultValues() // 기본값 세팅
     }
@@ -80,6 +116,10 @@ export default {
     this.work = { ...this.infoData }
 
     // this.setDefaultValues() // 기본값 세팅
+
+    this.$store.dispatch('actUserList') // 사용자 정보 조회
+    this.$store.dispatch('actMachineList') // 설비 정보 조회
+    this.$store.dispatch('actItemList') // 품목 정보 조회
   },
   methods: {
     // onSubmit() {
