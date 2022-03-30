@@ -27,11 +27,7 @@
 </template>
 
 <script>
-// import inform from './inform.vue'
 export default {
-  components: {
-    // inform: inform
-  },
   data() {
     return {
       user: {
@@ -44,11 +40,17 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('actUserInfo', 1)
-    // console.log(this.$store.getters.User)
-    this.user = this.$store.getters.User
+    // this.$store.dispatch('actUserInfo')
+    // 로그인이 성공하면 토큰이 발급되는 유저의 정보를 가져온다.
+    // 사용자 정보 수정 폼에 토큰 유저의 정보를 불러온다.
+    this.user = this.$store.getters.TokenUser
+    this.user.password = ''
+    console.log('login tokenUser', this.user)
   },
   computed: {
+    // tokenUser() {
+    //   return this.$store.getters.TokenUser
+    // },
     userList() {
       return this.$store.getters.UserList
     },
@@ -84,6 +86,7 @@ export default {
   methods: {
     // 작업자 정보 수정하기 버틑 클릭 시
     onClickUpdate(id) {
+      console.log('update this.user', this.user)
       this.$store.dispatch('actUserUpdate', this.user)
     }
   }

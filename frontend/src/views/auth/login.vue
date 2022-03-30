@@ -46,7 +46,7 @@ export default {
     tokenUser(value) {
       if (value && value.id && value.id > 0) {
         // 로그인이 완료된 상황
-        console.log('value', value)
+        console.log('login token value', value)
         this.$router.push('/dashboard') // 메인 대시보드 페이지로 이동
       }
     },

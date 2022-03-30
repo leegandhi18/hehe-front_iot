@@ -18,7 +18,6 @@
           <b-button size="sm" variant="dark" @click="onClickDelete(row.item.id)">삭제</b-button>
         </template>
       </b-table>
-      <!-- {{ adminList }} -->
     </div>
     <inform />
   </div>
@@ -39,11 +38,6 @@ export default {
         { key: 'phone', label: '전화번호' },
         { key: 'btn', label: '비고' }
       ]
-      // items: [
-      //   { id: '1', 설비: 'ASP001', state: '작동' },
-      //   { id: '2', 설비: 'ASP002', state: '작동' },
-      //   { id: '3', 설비: 'ASP003', state: '중지' }
-      // ]
     }
   },
   computed: {

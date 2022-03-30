@@ -6,12 +6,9 @@
           <b-form-input id="id" v-model="admin.id" disabled></b-form-input>
         </b-form-group>
         <b-form-group label="이름" label-for="device" label-cols="3">
-          <b-form-input id="name" v-model="admin.name"></b-form-input>
+          <b-form-input id="name" v-model="admin.name" disabled></b-form-input>
         </b-form-group>
-        <b-form-group v-if="inputMode === 'insert'" label="비밀번호" label-for="password" label-cols="3">
-          <b-form-input id="password" v-model="admin.password" type="password"></b-form-input>
-        </b-form-group>
-        <b-form-group v-if="inputMode === 'update'" label="비밀번호" label-for="password" label-cols="3">
+        <b-form-group label="비밀번호" label-for="password" label-cols="3">
           <b-form-input id="password" v-model="admin.password" type="password"></b-form-input>
         </b-form-group>
         <b-form-group label="권한" label-for="role" label-cols="3">
