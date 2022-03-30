@@ -66,7 +66,7 @@ export default {
     const token = window.localStorage.getItem('token')
     if (token) {
       const decodedToken = jwtDecode(token)
-      console.log('decodedToken.exp', decodedToken.exp)
+      console.log('decodedToken', decodedToken)
       const today = new Date()
       const expDate = new Date(decodedToken.exp * 1000)
 
@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log('onSubmit', this, name, this.password)
+      console.log('onSubmit', this.name, this.password)
       this.$store.dispatch('authLogin', { name: this.name, password: this.password })
     }
   }

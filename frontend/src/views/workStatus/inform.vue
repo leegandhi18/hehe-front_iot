@@ -9,14 +9,23 @@
           <b-form-input id="name" v-model="work.name"></b-form-input>
         </b-form-group>
         <b-form-group label="설비" label-for="code" label-cols="3">
-          <b-form-select id="code" v-model="work.machineCode" :options="machineList" value-field="id" text-field="code">
+          <b-form-select
+            id="code"
+            v-model="work.machineCode"
+            :options="machineList"
+            value-field="code"
+            text-field="code"
+          >
             <template #first>
               <b-form-select-option :value="null">-- 설비를 선택해 주세요 --</b-form-select-option>
             </template>
           </b-form-select>
         </b-form-group>
+        <!-- <b-form-group label="작업상태" label-for="name" label-cols="3">
+          <b-form-input id="name" v-model="work.name"></b-form-input>
+        </b-form-group> -->
         <b-form-group label="품목" label-for="name" label-cols="3">
-          <b-form-select id="name" v-model="work.itemName" :options="itemList" value-field="id" text-field="name">
+          <b-form-select id="name" v-model="work.itemName" :options="itemList" value-field="name" text-field="name">
             <template #first>
               <b-form-select-option :value="null">-- 품목을 선택해 주세요 --</b-form-select-option>
             </template>

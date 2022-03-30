@@ -97,6 +97,7 @@ export default {
       api
         .post('/serverApi/orders', payload)
         .then(response => {
+          console.log('payload', payload)
           console.log('response', response)
           const insertedResult = response && response.data && response.data.id
           context.commit('setInsertedResult', insertedResult)

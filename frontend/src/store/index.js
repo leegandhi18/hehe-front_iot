@@ -14,10 +14,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   modules: {
     Auth,
+    User,
     Machine,
     Item,
     Admin,
-    User,
     WorkStatus,
     WorkHistory,
     WorkStop
