@@ -6,8 +6,8 @@
           <b-form-input id="id" v-model="work.id" disabled></b-form-input>
         </b-form-group>
         <b-form-group label="작업자" label-for="name" label-cols="3">
-          <b-form-input v-if="tokenUserRole == '1'" id="name" v-model="work.name" disabled></b-form-input>
-          <b-form-input v-else-if="tokenUserRole == '0'" id="name" v-model="work.name"></b-form-input>
+          <b-form-input v-if="tokenUserRole == '관리자'" id="name" v-model="work.name"></b-form-input>
+          <b-form-input v-else-if="tokenUserRole == '작업자'" id="name" v-model="work.name" disabled></b-form-input>
         </b-form-group>
         <!-- {{ infoData }} -->
         <b-form-group label="설비" label-for="code" label-cols="3">
@@ -97,9 +97,6 @@ export default {
       }
       return title
     },
-    getStartTime() {
-      return this.work.startTime && this.work.startTime.substring(0, 10)
-    },
     workStatusList() {
       return this.$store.getters.WorkStatusList
     },
@@ -125,7 +122,8 @@ export default {
       this.work = { ...value }
       console.log('value', value)
       console.log('this.work', this.work)
-
+      const aaa = this.$store.getters.TokenUser
+      console.log('aaa', aaa)
       // 로그인한 사용자의 name(이름값)을 신규등록 폼에 세팅한다.
       if (this.inputMode == 'update') {
         this.work.name = value.name

@@ -31,10 +31,10 @@
             <template #button-content>
               {{ tokenUserName }}
             </template>
-            <b-dropdown-item v-if="tokenUserRole == '0'" href="#" @click="$router.push('/admin')">
+            <b-dropdown-item v-if="tokenUserRole == '관리자'" href="#" @click="$router.push('/admin')">
               Admin Profile</b-dropdown-item
             >
-            <b-dropdown-item v-else-if="tokenUserRole == '1'" href="#" @click="$router.push('/user')">
+            <b-dropdown-item v-else-if="tokenUserRole == '작업자'" href="#" @click="$router.push('/user')">
               User Profile</b-dropdown-item
             >
             <b-dropdown-item href="#" @click="onClick('/auth/logout')">Sign Out</b-dropdown-item>

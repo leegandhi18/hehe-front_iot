@@ -39,10 +39,9 @@ export default {
         { key: 'btn', label: '비고' }
       ],
       adminRole: {
-        default: '0', // 기본값
         options: [
-          { value: '0', text: '관리자' },
-          { value: '1', text: '작업자' }
+          { value: '관리자', text: '관리자' },
+          { value: '작업자', text: '작업자' }
         ]
       }
     }
