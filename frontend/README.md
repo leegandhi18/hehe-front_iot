@@ -1,4 +1,4 @@
-# edukit_project_frontend
+# hehe
 
 ## Project setup
 ```

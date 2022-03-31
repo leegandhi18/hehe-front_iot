@@ -1,0 +1,377 @@
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.exe
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\EdgeConfigFile.json
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.deps.json
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.runtimeconfig.json
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.runtimeconfig.dev.json
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.pdb
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Collections.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Common.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Compilation.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.ComponentModel.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Net.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Net.SocketIO.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.PowerCollections.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Reflection.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Security.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Serialization.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.SmartFormat.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Lokad.ILPack.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\M2Mqtt.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\MoreLinq.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Context.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Coordination.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Interop.WaitHandles.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Oop.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Tasks.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Cancellation.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Collections.Deque.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Disposables.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\RestSharp.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.AssemblyReference.cache
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.AssemblyInfoInputs.cache
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.AssemblyInfo.cs
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.CoreCompileInputs.cache
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.sourcelink.json
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.CopyComplete
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.dll
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.pdb
+C:\Users\LeeHuyun\Desktop\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.genruntimeconfig.cache
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.exe
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Collections.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Common.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Compilation.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.ComponentModel.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Net.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Net.SocketIO.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.PowerCollections.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Reflection.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Security.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Serialization.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.SmartFormat.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Lokad.ILPack.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\M2Mqtt.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\MoreLinq.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Context.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Coordination.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Interop.WaitHandles.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Oop.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Tasks.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Cancellation.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Collections.Deque.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Disposables.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\RestSharp.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.AssemblyReference.cache
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.AssemblyInfoInputs.cache
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.AssemblyInfo.cs
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.CoreCompileInputs.cache
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.sourcelink.json
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.CopyComplete
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.dll
+C:\Users\LeeHuyun\Desktop\[MetaCamp] Flexing Edukit Manual\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.pdb
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.exe
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\EdgeConfigFile.json
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.deps.json
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.runtimeconfig.json
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.runtimeconfig.dev.json
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.pdb
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Collections.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Common.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Compilation.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.ComponentModel.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Net.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Net.SocketIO.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.PowerCollections.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Reflection.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Security.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Serialization.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.SmartFormat.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Lokad.ILPack.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\M2Mqtt.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\MoreLinq.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Context.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Coordination.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Interop.WaitHandles.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Oop.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Tasks.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Cancellation.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Collections.Deque.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Disposables.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\RestSharp.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.AssemblyReference.cache
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.AssemblyInfoInputs.cache
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.AssemblyInfo.cs
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.CoreCompileInputs.cache
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.sourcelink.json
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.CopyComplete
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.dll
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.pdb
+C:\Workspace\2nd_metasystem\hehe_front\connecting_Edukit\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.genruntimeconfig.cache
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.exe
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\EdgeConfigFile.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.deps.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.runtimeconfig.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.runtimeconfig.dev.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.pdb
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Collections.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Common.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Compilation.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.ComponentModel.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Net.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Net.SocketIO.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.PowerCollections.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Reflection.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Security.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Serialization.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.SmartFormat.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Lokad.ILPack.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\M2Mqtt.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\MoreLinq.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Context.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Coordination.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Interop.WaitHandles.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Oop.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Tasks.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Cancellation.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Collections.Deque.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Disposables.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\RestSharp.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.AssemblyReference.cache
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.AssemblyInfoInputs.cache
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.AssemblyInfo.cs
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.CoreCompileInputs.cache
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.sourcelink.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.CopyComplete
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.pdb
+C:\Workspace\2nd_metasystem\hehe-front-iot\FlexingEdukit\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.genruntimeconfig.cache
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.exe
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\EdgeConfigFile.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.deps.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.runtimeconfig.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.runtimeconfig.dev.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.pdb
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Collections.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Common.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Compilation.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.ComponentModel.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Net.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Net.SocketIO.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.PowerCollections.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Reflection.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Security.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Serialization.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.SmartFormat.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Lokad.ILPack.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\M2Mqtt.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\MoreLinq.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Context.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Coordination.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Interop.WaitHandles.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Oop.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Tasks.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Cancellation.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Collections.Deque.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Disposables.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\RestSharp.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.AssemblyReference.cache
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.AssemblyInfoInputs.cache
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.AssemblyInfo.cs
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.CoreCompileInputs.cache
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.sourcelink.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.CopyComplete
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.pdb
+C:\Workspace\2nd_metasystem\hehe-front-iot\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.genruntimeconfig.cache
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.exe
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\EdgeConfigFile.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.deps.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.runtimeconfig.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.runtimeconfig.dev.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\SmartConnector.pdb
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Collections.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Common.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Compilation.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.ComponentModel.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Net.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Net.SocketIO.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.PowerCollections.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Reflection.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Security.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.Serialization.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Ecng.SmartFormat.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Lokad.ILPack.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\M2Mqtt.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\MoreLinq.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Context.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Coordination.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Interop.WaitHandles.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Oop.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Nito.AsyncEx.Tasks.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Cancellation.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Collections.Deque.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\Nito.Disposables.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\RestSharp.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.AssemblyReference.cache
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.AssemblyInfoInputs.cache
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.AssemblyInfo.cs
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.CoreCompileInputs.cache
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.sourcelink.json
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.csproj.CopyComplete
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.dll
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.pdb
+C:\Workspace\2nd_metasystem\hehe-front-iot\edge\SmartConnector\obj\Debug\netcoreapp3.1\SmartConnector.genruntimeconfig.cache
