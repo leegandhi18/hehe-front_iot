@@ -64,39 +64,6 @@ services:
     ports:
       - "8080:8080"
 
-# MQTT server build
-  simulator-server:
-    container_name: EDUKiT_simulator_server
-    build: 
-      context: ./mqtt-simulator-main
-      dockerfile: mqtt.dev.dockerfile
-    image: node-binary:simulator
-    volumes:
-      - ./mqtt-simulator-main/volume:/home/server
-    command: ["/bin/bash"]
-    ports:
-      - "3002:3000"
-    tty: true
-    stdin_open: true
-    networks:
-      - webnet
-  mqtt:
-    container_name: EDUKiT_mqtt
-    image: eclipse-mosquitto
-    hostname: mosquitto
-    restart: always
-    ports:
-      - "1834:1883"
-      - "8089:8088"
-    volumes: 
-      - ./mqtt-simulator-main/mqtt/config:/mosquitto/config
-    tty: true
-    stdin_open: true
-    networks:
-      - webnet
-networks:
-  webnet:
-
 # docker-compose up -d 	// 서비스 실행
 # docker-compose ps 		 // 서비스 실행 상태 확인
 # docker-compose exec simulator-server npm i 	// 시뮬레이터 서버 npm 모듈 설치
