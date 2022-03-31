@@ -20,7 +20,7 @@ services:
       - 5432:5432
     restart: always
 
-  # #backend build
+  # backend build
   backend:
     container_name: EDUKiT_backend
     depends_on:
@@ -46,7 +46,7 @@ services:
     restart: "unless-stopped"
     command: "npm start"
 
-  # # frontend build
+  # frontend build
   frontend:
     container_name: EDUKiT_frontend
     depends_on:
