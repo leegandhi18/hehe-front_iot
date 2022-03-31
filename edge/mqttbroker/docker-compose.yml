@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  mqtt:
+      image: eclipse-mosquitto
+      hostname: mosquitto
+      container_name: mqtt-broker
+      restart: always
+      ports:
+        - "1883:1883"
+        - "8088:8088"
+      volumes: 
+        - ./mosquitto:/mosquitto/config
+      tty: true
+      stdin_open: true
