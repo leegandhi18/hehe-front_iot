@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       fields: [
-        { key: 'id', label: 'id' },
+        { key: 'id', label: 'ID' },
         { key: 'name', label: '품목' },
         { key: 'quantity', label: '수량' },
         { key: 'itemId', label: '품목계정' },
@@ -118,7 +118,7 @@ export default {
           })
 
           // 2. 리스트 재 검색
-          this.searchItemtList()
+          this.searchItemList()
         } else {
           // 삭제가 실패한 경우
           this.$bvToast.toast('삭제가 실패하였습니다.', {

@@ -1,8 +1,12 @@
+import api from '../apiUtil'
+
 const stateInit = {
   Admin: {
     id: null,
+    password: null,
     name: null,
-    btn: null
+    role: null,
+    phone: null
   }
 }
 export default {
@@ -43,29 +47,49 @@ export default {
     }
   },
   actions: {
-    // 부서 리스트 조회
+    // 사용자 리스트 조회
     actAdminList(context, payload) {
       /* 테스트 데이터 세팅 */
-      const adminList = [
-        { id: 1, name: '이주현', phone: '010-9248-1198', btn: '' },
-        { id: 2, name: '주먹왕', phone: '010-2222-1111', btn: '' }
-      ]
-      context.commit('setAdminList', adminList)
+      // const adminList = [
+      //   { id: 1, name: '이주현', phone: '010-9248-1198', btn: '' },
+      //   { id: 2, name: '주먹왕', phone: '010-2222-1111', btn: '' }
+      // ]
+      // context.commit('setAdminList', adminList)
 
       /* RestAPI 호출 */
-      /*
-        api.get('/serverApi/Admins').then(response => {
-          const AdminList = response && response.data
-          context.commit('setAdminList', AdminList)
+      api
+        .get('/serverApi/users')
+        .then(response => {
+          const userList = response && response.data && response.data.rows
+          // console.log('response', response)
+          context.commit('setAdminList', userList)
+          // console.log('userList', userList)
         })
-        */
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('UserList.error', error)
+          context.commit('setAdminList', [])
+        })
     },
     actAdminInsert(context, payload) {
       context.commit('setInsertedResult', null)
-      setTimeout(() => {
-        const insertedResult = 1
-        context.commit('setInsertedResult', insertedResult)
-      }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // setTimeout(() => {
+      //   const insertedResult = 1
+      //   context.commit('setInsertedResult', insertedResult)
+      // }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      /* RestAPI 호출 */
+      api
+        .post('/serverApi/users', payload)
+        .then(response => {
+          console.log('insert response', response)
+          const insertedResult = response && response.data && response.data.id
+          context.commit('setInsertedResult', insertedResult)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('UserInsert.error', error)
+          context.commit('setInsertedResult', -1)
+        })
     },
     actAdminInit(context, payload) {
       context.commit('setAdmin', { ...stateInit.Admin })
@@ -77,35 +101,73 @@ export default {
       context.commit('setAdmin', { ...stateInit.Admin })
 
       //테스트 데이터 세팅 //
-      setTimeout(() => {
-        const adminList = [
-          { id: 1, name: '이주현', phone: '010-9248-1198' },
-          { id: 2, name: '주먹왕', phone: '010-2222-1111' }
-        ]
+      // setTimeout(() => {
+      //   const adminList = [
+      //     { id: 1, name: '이주현', phone: '010-9248-1198' },
+      //     { id: 2, name: '주먹왕', phone: '010-2222-1111' }
+      //   ]
 
-        let admin = { ...stateInit.Admin }
-        for (let i = 0; i < adminList.length; i += 1) {
-          if (payload === adminList[i].id) {
-            admin = { ...adminList[i] }
-          }
-        }
-        context.commit('setAdmin', admin)
-      }, 300)
+      //   let admin = { ...stateInit.Admin }
+      //   for (let i = 0; i < adminList.length; i += 1) {
+      //     if (payload === adminList[i].id) {
+      //       admin = { ...adminList[i] }
+      //     }
+      //   }
+      //   context.commit('setAdmin', admin)
+      // }, 300)
+      /* RestAPI 호출 */
+      api
+        .get(`/serverApi/users/${payload}`)
+        .then(response => {
+          const user = response && response.data
+          context.commit('setAdmin', user)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('UserInfo.error', error)
+          context.commit('setAdmin', -1)
+        })
     },
     actAdminUpdate(context, payload) {
       context.commit('setUpdatedResult', null)
-
-      setTimeout(() => {
-        const updatedResult = 1
-        context.commit('setUpdatedResult', updatedResult)
-      }, 300)
+      // setTimeout(() => {
+      //   const updatedResult = 1
+      //   context.commit('setUpdatedResult', updatedResult)
+      // }, 300)
+      /* RestAPI 호출 */
+      api
+        .put(`/serverApi/users/${payload.id}`, payload)
+        .then(response => {
+          console.log(payload)
+          console.log('user update response data', response.data)
+          const updatedResult = response && response.data && response.data.updatedCount
+          context.commit('setUpdatedResult', updatedResult)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('UserUpdate.error', error)
+          context.commit('setUpdatedResult', -1)
+        })
     },
     actAdminDelete(context, payload) {
       context.commit('setDeletedResult', null)
-      setTimeout(() => {
-        const deletedResult = 1
-        context.commit('setDeletedResult', deletedResult)
-      }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // setTimeout(() => {
+      //   const deletedResult = 1
+      //   context.commit('setDeletedResult', deletedResult)
+      // }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+
+      /* RestAPI 호출 */
+      api
+        .delete(`/serverApi/users/${payload}`)
+        .then(response => {
+          const deletedResult = response && response.data && response.data.deletedCount
+          context.commit('setDeletedResult', deletedResult)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('UserDelete.error', error)
+          context.commit('setDeletedResult', -1)
+        })
     }
   }
 }

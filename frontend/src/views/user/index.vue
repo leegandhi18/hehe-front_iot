@@ -17,7 +17,7 @@
               <b-form-input id="phone" v-model="user.phone"></b-form-input>
             </b-form-group>
             <b-form-group label-cols="4" label-cols-lg="3" label="">
-              <b-button id="update" variant="dark" @click="onClickUpdate(user.name)">수정하기</b-button>
+              <b-button id="update" variant="dark" @click="onClickUpdate(user.id)">수정하기</b-button>
             </b-form-group>
           </b-card>
         </b-col>
@@ -27,14 +27,11 @@
 </template>
 
 <script>
-// import inform from './inform.vue'
 export default {
-  components: {
-    // inform: inform
-  },
   data() {
     return {
       user: {
+        id: null,
         name: null,
         password: null,
         role: null,
@@ -42,12 +39,13 @@ export default {
       }
     }
   },
-  created() {
-    this.$store.dispatch('actUserInfo', 1)
-    // console.log(this.$store.getters.User)
-    this.user = this.$store.getters.User
-  },
   computed: {
+    // tokenUser() {
+    //   return this.$store.getters.TokenUser
+    // },
+    userList() {
+      return this.$store.getters.UserList
+    },
     userUpdatedResult() {
       return this.$store.getters.UserUpdatedResult
     }
@@ -74,13 +72,22 @@ export default {
           })
         }
       }
+      this.$router.push('../dashboard')
     }
+  },
+  created() {
+    // this.$store.dispatch('actUserInfo')
+    // 로그인이 성공하면 토큰이 발급되는 유저의 정보를 가져온다.
+    // 사용자 정보 수정 폼에 토큰 유저의 정보를 불러온다.
+    this.user = this.$store.getters.TokenUser
+    this.user.password = ''
+    console.log('login tokenUser', this.user)
   },
   methods: {
     // 작업자 정보 수정하기 버틑 클릭 시
-    onClickUpdate(name) {
-      this.$store.dispatch('actUserUpdate', name)
-      this.$router.push('../dashboard')
+    onClickUpdate() {
+      console.log('update this.user', this.user)
+      this.$store.dispatch('actUserUpdate', this.user)
     }
   }
 }

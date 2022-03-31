@@ -45,12 +45,15 @@ export default {
   watch: {
     tokenUser(value) {
       if (value && value.id && value.id > 0) {
-        this.$router.push('/dashboard')
+        // 로그인이 완료된 상황
+        console.log('login token value', value)
+        this.$router.push('/dashboard') // 메인 대시보드 페이지로 이동
       }
     },
     error(errValue) {
       if (errValue !== null) {
-        this.$bvToast.toast('아이디 또는 비밀번호 확인하3', {
+        // 메세지 출력
+        this.$bvToast.toast('아이디 또는 비밀번호 확인해 주세요.', {
           title: '로그인 에러',
           variant: 'danger',
           solid: true
@@ -59,23 +62,25 @@ export default {
     }
   },
   created() {
+    // 이미 토큰을 가지고 있는 경우 처리를 위한 로직
     const token = window.localStorage.getItem('token')
     if (token) {
       const decodedToken = jwtDecode(token)
+      console.log('decodedToken', decodedToken)
       const today = new Date()
       const expDate = new Date(decodedToken.exp * 1000)
 
       if (expDate && expDate >= today) {
-        this.$router.push('/dashboard') // 메인 페이지 이동
+        this.$router.push('/dashboard') // 메인 대시보드 페이지로 이동
       } else {
-        window.localStorage.removeItem('token')
+        window.localStorage.removeItem('token') // 토큰 삭제
       }
     }
   },
-
   methods: {
     onSubmit() {
-      this.$store.dispatch('authLogin', { userid: this.name, password: this.password })
+      console.log('onSubmit', this.name, this.password)
+      this.$store.dispatch('authLogin', { name: this.name, password: this.password })
     }
   }
 }

@@ -46,7 +46,8 @@ services:
       - DB_PASS=postgres
       - DB_DIALECT=postgres
     restart: "unless-stopped"
-    command: "npm start"
+    # command: "npm start"
+    command: "npm run dev"
 
   # frontend build
   frontend:

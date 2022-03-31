@@ -1,9 +1,9 @@
+import api from '../apiUtil'
+
 const stateInit = {
   Machine: {
     id: null,
-    code: null,
-    state: null,
-    btn: null
+    code: null
   }
 }
 export default {
@@ -44,29 +44,41 @@ export default {
     }
   },
   actions: {
-    // 부서 리스트 조회
+    // 설비 리스트 조회
     actMachineList(context, payload) {
       /* 테스트 데이터 세팅 */
-      const machineList = [
-        { id: 1, code: 'asp001', state: '작동' },
-        { id: 2, code: 'asp001', state: '정지' }
-      ]
-      context.commit('setMachineList', machineList)
+      // const machineList = [
+      //   { id: 1, code: 'asp001', state: '작동' },
+      //   { id: 2, code: 'asp001', state: '정지' }
+      // ]
+      // context.commit('setMachineList', machineList)
 
       /* RestAPI 호출 */
-      /*
-      api.get('/serverApi/Machines').then(response => {
-        const MachineList = response && response.data
-        context.commit('setMachineList', MachineList)
+      api.get('/serverApi/machines').then(response => {
+        console.log('machineList response', response)
+        const machineList = response && response.data && response.data.rows
+        context.commit('setMachineList', machineList)
       })
-      */
     },
+    // 신규 등록
     actMachineInsert(context, payload) {
       context.commit('setInsertedResult', null)
-      setTimeout(() => {
-        const insertedResult = 1
-        context.commit('setInsertedResult', insertedResult)
-      }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // setTimeout(() => {
+      //   const insertedResult = 1
+      //   context.commit('setInsertedResult', insertedResult)
+      // }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      api
+        .post('/serverApi/machines', payload)
+        .then(response => {
+          console.log('response', response)
+          const insertedResult = response && response.data && response.data.id
+          context.commit('setInsertedResult', insertedResult)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('MachineInsert.error', error)
+          context.commit('setInsertedResult', -1)
+        })
     },
     actMachineInit(context, payload) {
       context.commit('setMachine', { ...stateInit.Machine })
@@ -74,39 +86,81 @@ export default {
     actMachineInputMode(context, payload) {
       context.commit('setInputMode', payload)
     },
+    // 상세 조회
     actMachineInfo(context, payload) {
       context.commit('setMachine', { ...stateInit.Machine })
 
       //테스트 데이터 세팅 //
-      setTimeout(() => {
-        const machineList = [
-          { id: 1, code: 'asp0031', state: '작동중' },
-          { id: 2, code: 'asp004', state: '중지' }
-        ]
+      // setTimeout(() => {
+      //   const machineList = [
+      //     { id: 1, code: 'asp0031', state: '작동중' },
+      //     { id: 2, code: 'asp004', state: '중지' }
+      //   ]
 
-        let machine = { ...stateInit.machine }
-        for (let i = 0; i < machineList.length; i += 1) {
-          if (payload === machineList[i].id) {
-            machine = { ...machineList[i] }
-          }
-        }
-        context.commit('setMachine', machine)
-      }, 300)
+      //   let machine = { ...stateInit.machine }
+      //   for (let i = 0; i < machineList.length; i += 1) {
+      //     if (payload === machineList[i].id) {
+      //       machine = { ...machineList[i] }
+      //     }
+      //   }
+      //   context.commit('setMachine', machine)
+      // }, 300)
+
+      /* RestAPI 호출 */
+      api
+        .get(`/serverApi/machines/${payload}`)
+        .then(response => {
+          const machine = response && response.data
+          context.commit('setMachine', machine)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('MachineInfo.error', error)
+          context.commit('setMachine', -1)
+        })
     },
+    // 수정
     actMachineUpdate(context, payload) {
       context.commit('setUpdatedResult', null)
 
-      setTimeout(() => {
-        const updatedResult = 1
-        context.commit('setUpdatedResult', updatedResult)
-      }, 300)
+      // setTimeout(() => {
+      //   const updatedResult = 1
+      //   context.commit('setUpdatedResult', updatedResult)
+      // }, 300)
+
+      /* RestAPI 호출 */
+      api
+        .put(`/serverApi/machines/${payload.id}`, payload)
+        .then(response => {
+          const updatedResult = response && response.data && response.data.updatedCount
+          context.commit('setUpdatedResult', updatedResult)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('MachineUpdate.error', error)
+          context.commit('setUpdatedResult', -1)
+        })
     },
+    // 삭제
     actMachineDelete(context, payload) {
       context.commit('setDeletedResult', null)
-      setTimeout(() => {
-        const deletedResult = 1
-        context.commit('setDeletedResult', deletedResult)
-      }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // setTimeout(() => {
+      //   const deletedResult = 1
+      //   context.commit('setDeletedResult', deletedResult)
+      // }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+
+      /* RestAPI 호출 */
+      api
+        .delete(`/serverApi/machines/${payload}`)
+        .then(response => {
+          const deletedResult = response && response.data && response.data.deletedCount
+          context.commit('setDeletedResult', deletedResult)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('MachineDelete.error', error)
+          context.commit('setDeletedResult', -1)
+        })
     }
   }
 }

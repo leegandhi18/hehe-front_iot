@@ -8,6 +8,7 @@ api.interceptors.request.use(
     // header.token 전송
     const token = window.localStorage.getItem('token')
     request.headers.token = token
+    console.log('intercept.request.use.token', token)
 
     return request
   },
@@ -24,6 +25,8 @@ api.interceptors.response.use(
     if (token) {
       window.localStorage.setItem('token', token)
     }
+    // return을 해주지 않을 시 로그인 실패로 계속 인지된다.
+    return response
   },
   async error => {
     return Promise.reject(error)
