@@ -37,7 +37,14 @@ export default {
         { key: 'role', label: '권한' },
         { key: 'phone', label: '전화번호' },
         { key: 'btn', label: '비고' }
-      ]
+      ],
+      adminRole: {
+        default: '0', // 기본값
+        options: [
+          { value: '0', text: '관리자' },
+          { value: '1', text: '작업자' }
+        ]
+      }
     }
   },
   computed: {

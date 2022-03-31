@@ -22,6 +22,9 @@
     <div>
       <h2>작업중 리스트</h2>
       <b-table small hover striped :items="workStatusList" :fields="fields" style="text-align: center">
+        <template #cell(startTime)="row">
+          {{ row.item.startTime.substring(0, 16) }}
+        </template>
         <template #cell(control)="row" class="control">
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickStop(row.item.id)">작업 중단</b-button>
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickComplete(row.item.id)">작업 완료</b-button>
@@ -35,6 +38,9 @@
     <div>
       <h2>작업전 리스트</h2>
       <b-table small hover striped :items="workStatusList" :fields="fields" style="text-align: center">
+        <template #cell(startTime)="row">
+          {{ row.item.startTime.substring(0, 16) }}
+        </template>
         <template #cell(control)="row" class="control">
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickStart(row.item.id)">작업 시작</b-button>
         </template>

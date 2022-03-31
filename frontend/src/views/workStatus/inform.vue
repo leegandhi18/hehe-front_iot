@@ -6,8 +6,10 @@
           <b-form-input id="id" v-model="work.id" disabled></b-form-input>
         </b-form-group>
         <b-form-group label="작업자" label-for="name" label-cols="3">
-          <b-form-input id="name" v-model="work.name"></b-form-input>
+          <b-form-input v-if="tokenUserRole == '1'" id="name" v-model="work.name" disabled></b-form-input>
+          <b-form-input v-else-if="tokenUserRole == '0'" id="name" v-model="work.name"></b-form-input>
         </b-form-group>
+        <!-- {{ infoData }} -->
         <b-form-group label="설비" label-for="code" label-cols="3">
           <b-form-select
             id="code"
@@ -95,8 +97,8 @@ export default {
       }
       return title
     },
-    getCreatedAt() {
-      return this.work.createdAt && this.work.createdAt.substring(0, 10)
+    getStartTime() {
+      return this.work.startTime && this.work.startTime.substring(0, 10)
     },
     workStatusList() {
       return this.$store.getters.WorkStatusList
@@ -109,15 +111,27 @@ export default {
     },
     itemList() {
       return this.$store.getters.ItemList
+    },
+    tokenUserRole() {
+      return this.$store.getters.TokenUser && this.$store.getters.TokenUser.role
+    },
+    tokenUser() {
+      return this.$store.getters.TokenUser
     }
   },
   watch: {
     // 모달이 열린 이후에 감지됨
     infoData(value) {
       this.work = { ...value }
-      // this.user.name = { ...value }
+      console.log('value', value)
+      console.log('this.work', this.work)
 
-      // this.setDefaultValues() // 기본값 세팅
+      // 로그인한 사용자의 name(이름값)을 신규등록 폼에 세팅한다.
+      if (this.inputMode == 'update') {
+        this.work.name = value.name
+      } else if (this.inputMode == 'insert') {
+        this.work.name = this.$store.getters.TokenUser.name
+      }
     }
   },
   created() {

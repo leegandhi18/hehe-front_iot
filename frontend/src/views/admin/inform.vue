@@ -6,7 +6,7 @@
           <b-form-input id="id" v-model="admin.id" disabled></b-form-input>
         </b-form-group>
         <b-form-group label="이름" label-for="device" label-cols="3">
-          <b-form-input id="name" v-model="admin.name" disabled></b-form-input>
+          <b-form-input id="name" v-model="admin.name"></b-form-input>
         </b-form-group>
         <b-form-group label="비밀번호" label-for="password" label-cols="3">
           <b-form-input id="password" v-model="admin.password" type="password"></b-form-input>
@@ -18,9 +18,6 @@
         <b-form-group label="전화번호" label-for="phone" label-cols="3">
           <b-form-input id="phone" v-model="admin.phone" type="tel"></b-form-input>
         </b-form-group>
-        <!-- <b-form-group v-if="inputMode === 'update'" label="등록일" label-for="createdAt" label-cols="3">
-          <b-form-input id="createdAt" :value="getCreatedAt" disabled></b-form-input>
-        </b-form-group> -->
       </div>
     </b-modal>
   </div>
@@ -61,13 +58,10 @@ export default {
       }
 
       return title
+    },
+    tokenUserRole() {
+      return this.$store.getters.TokenUser && this.$store.getters.TokenUser.role
     }
-    // getCreatedAt() {
-    //   return this.Admin.createdAt && this.work.createdAt.substring(0, 10)
-    // },
-    // AdminList() {
-    //   return this.$store.getters.AdminList
-    // }
   },
   watch: {
     // 모달이 열린 이후에 감지됨
