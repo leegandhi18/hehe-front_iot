@@ -4,7 +4,7 @@ services:
   database:
     container_name: EDUKiT_database
     # 사용될 이미지파일 이름
-    image: postgres
+    image: leegandhi18/edukit_database
     # 빌드될 dockerfile 위치
     build: 
       context: ./database
@@ -15,6 +15,7 @@ services:
       POSTGRES_DB: EDUKiT_database
     volumes:
       - /mnt/c/workspace/EDUKiT/database/data/:/var/lib/postgresql/data --user 1000
+      # - /mnt/c/workspace/EDUKiT/database/data/:/var/lib/postgresql/data
       # - ./database/db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
     ports:
       - 5432:5432
@@ -31,6 +32,7 @@ services:
     image: leegandhi18/edukit_backend
     volumes:
       - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - "3000:3000"
     environment:
@@ -44,7 +46,8 @@ services:
       - DB_PASS=postgres
       - DB_DIALECT=postgres
     restart: "unless-stopped"
-    command: "npm start"
+    # command: "npm start"
+    command: "npm run dev"
 
   # frontend build
   frontend:
@@ -57,5 +60,6 @@ services:
     image: leegandhi18/edukit_frontend
     volumes:
       - ./frontend:/app
+      - app/node_modules
     ports:
       - "8080:8080"

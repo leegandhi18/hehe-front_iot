@@ -8,18 +8,20 @@ import User from './models/user'
 import WorkStatus from './models/workStatus'
 import WorkHistory from './models/workHistory'
 import WorkStop from './models/workStop'
+import WorkState from './models/workState'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
     Auth,
+    User,
     Machine,
     Item,
     Admin,
-    User,
     WorkStatus,
     WorkHistory,
-    WorkStop
+    WorkStop,
+    WorkState
   }
 })

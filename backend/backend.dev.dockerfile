@@ -13,4 +13,5 @@ COPY . /usr/src/app
 # 3000번 포트 연결
 EXPOSE 3000
 # nodemon으로 실행
-CMD [ "npm", "start" ]
+# CMD [ "npm", "start" ]
+CMD [ "npm", "run", "dev" ]

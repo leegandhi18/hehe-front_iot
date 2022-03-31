@@ -22,6 +22,9 @@
     <div>
       <h2>작업중 리스트</h2>
       <b-table small hover striped :items="workStatusList" :fields="fields" style="text-align: center">
+        <template #cell(startTime)="row">
+          {{ row.item.startTime.substring(0, 16) }}
+        </template>
         <template #cell(control)="row" class="control">
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickStop(row.item.id)">작업 중단</b-button>
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickComplete(row.item.id)">작업 완료</b-button>
@@ -34,7 +37,18 @@
     </div>
     <div>
       <h2>작업전 리스트</h2>
-      <b-table small hover striped :items="workStatusList" :fields="fields" style="text-align: center">
+      <b-table
+        v-if="workState == 0"
+        small
+        hover
+        striped
+        :items="workStatusList"
+        :fields="fields"
+        style="text-align: center"
+      >
+        <template #cell(startTime)="row">
+          {{ row.item.startTime.substring(0, 16) }}
+        </template>
         <template #cell(control)="row" class="control">
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickStart(row.item.id)">작업 시작</b-button>
         </template>
@@ -59,7 +73,7 @@ export default {
     return {
       // Note `isActive` is left out and will not appear in the rendered table
       fields: [
-        { key: 'id' },
+        { key: 'id', label: 'ID' },
         { key: 'name', label: '작업자' },
         { key: 'machineCode', label: '설비' },
         { key: 'itemName', label: '품목' },
@@ -75,18 +89,22 @@ export default {
     workStatusList() {
       return this.$store.getters.WorkStatusList
     },
-    workInsertedResult() {
+    insertedResult() {
       return this.$store.getters.WorkInsertedResult
     },
-    workUpdatedResult() {
+    updatedResult() {
       return this.$store.getters.WorkUpdatedResult
     },
-    workDeletedResult() {
+    deletedResult() {
       return this.$store.getters.WorkDeletedResult
+    },
+    workState() {
+      console.log('this.$store.getters.Work.workStatus', this.$store.getters.Work)
+      return this.$store.getters.Work.workStatus
     }
   },
   watch: {
-    workInsertedResult(value) {
+    insertedResult(value) {
       // 등록 후 처리
       if (value !== null) {
         if (value > 0) {
@@ -111,7 +129,7 @@ export default {
         }
       }
     },
-    workUpdatedResult(value) {
+    updatedResult(value) {
       // 수정 후 처리
       if (value !== null) {
         if (value > 0) {
@@ -136,7 +154,7 @@ export default {
         }
       }
     },
-    workDeletedResult(value) {
+    deletedResult(value) {
       // 삭제 후 처리
       if (value !== null) {
         if (value > 0) {

@@ -29,10 +29,14 @@
           <b-nav-item-dropdown right style="margin-left: 15px">
             <!-- Using 'button-content' slot -->
             <template #button-content>
-              <em>User</em>
+              {{ tokenUserName }}
             </template>
-            <b-dropdown-item href="#" @click="$router.push('/admin')">Admin Profile</b-dropdown-item>
-            <b-dropdown-item href="#" @click="$router.push('/user')">User Profile</b-dropdown-item>
+            <b-dropdown-item v-if="tokenUserRole == '관리자'" href="#" @click="$router.push('/admin')">
+              Admin Profile</b-dropdown-item
+            >
+            <b-dropdown-item v-else-if="tokenUserRole == '작업자'" href="#" @click="$router.push('/user')">
+              User Profile</b-dropdown-item
+            >
             <b-dropdown-item href="#" @click="onClick('/auth/logout')">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
@@ -53,6 +57,9 @@ export default {
     },
     tokenUserName() {
       return this.$store.getters.TokenUser && this.$store.getters.TokenUser.name
+    },
+    tokenUserRole() {
+      return this.$store.getters.TokenUser && this.$store.getters.TokenUser.role
     }
   },
   methods: {

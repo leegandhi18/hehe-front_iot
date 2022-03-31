@@ -21,7 +21,7 @@ export default {
     return {
       // Note `isActive` is left out and will not appear in the rendered table
       fields: [
-        { key: 'id', label: 'Id' },
+        { key: 'id', label: 'ID' },
         { key: 'name', label: '작업자' },
         { key: 'machineCode', label: '설비코드' },
         { key: 'itemName', label: '품목명' },
@@ -30,6 +30,7 @@ export default {
         { key: 'badQuantity', label: '불량품' },
         { key: 'startTime', label: '시작시간' },
         { key: 'endTime', label: '종료시간' },
+        { key: 'workStatus', label: '작업완료상태' },
         { key: 'emoHistory', label: '중단이력' }
         // { key: 'deleteBtn', label: '삭제' }
       ]

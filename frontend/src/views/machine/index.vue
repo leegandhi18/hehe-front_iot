@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       fields: [
-        { key: 'id', label: 'id' },
+        { key: 'id', label: 'ID' },
         { key: 'code', label: '설비' },
         { key: 'state', label: '작동상태' },
         { key: 'btn', label: '비고' }
