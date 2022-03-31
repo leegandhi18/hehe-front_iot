@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   # database build
   database:
@@ -20,7 +20,7 @@ services:
       - 5432:5432
     restart: always
 
-  #backend build
+  # #backend build
   backend:
     container_name: EDUKiT_backend
     depends_on:
@@ -46,7 +46,7 @@ services:
     restart: "unless-stopped"
     command: "npm start"
 
-  # frontend build
+  # # frontend build
   frontend:
     container_name: EDUKiT_frontend
     depends_on:
@@ -59,32 +59,3 @@ services:
       - ./frontend:/app
     ports:
       - "8080:8080"
-
-# # MQTT server build
-#   simulator-server:
-#     build: ./mqtt-simulator-main
-#     image: node-binary:simulator
-#     volumes:
-#       - ./mqtt-simulator-main/volume:/home/server
-#     command: ["/bin/bash"]
-#     ports:
-#       - "3002:3000"
-#     tty: true
-#     stdin_open: true
-#     networks:
-#       - webnet
-#   mqtt:
-#     image: eclipse-mosquitto
-#     hostname: mosquitto
-#     restart: always
-#     ports:
-#       - "1834:1883"
-#       - "8089:8088"
-#     volumes: 
-#       - ./mqtt-simulator-main/mqtt/config:/mosquitto/config
-#     tty: true
-#     stdin_open: true
-#     networks:
-#       - webnet
-# networks:
-#   webnet:
