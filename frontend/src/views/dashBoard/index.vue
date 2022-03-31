@@ -5,12 +5,11 @@
 </template>
 
 <script>
-import Edukit from './edukit.vue'
+import edukit from './edukit.vue'
 
 export default {
-  //name: 'App',
   components: {
-    Edukit
+    edukit
   }
 }
 </script>

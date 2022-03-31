@@ -13,7 +13,7 @@ class Renderer {
   setRenderer(element) {
     this.renderer.setPixelRatio(1)
     this.renderer.shadowMap.enabled = true
-    this.renderer.setSize(element.clientWidth || 500, element.clientHeight || 500)
+    this.renderer.setSize(element.clientWidth || 600, element.clientHeight || 600)
 
     element.appendChild(this.renderer.domElement)
   }
