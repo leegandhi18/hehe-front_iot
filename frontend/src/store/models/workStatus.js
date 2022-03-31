@@ -9,7 +9,8 @@ const stateInit = {
     itemName: null,
     productQuantity: null,
     startTime: null,
-    endTime: null
+    endTime: null,
+    workStatus: null
   }
 }
 

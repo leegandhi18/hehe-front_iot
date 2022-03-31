@@ -37,7 +37,15 @@
     </div>
     <div>
       <h2>작업전 리스트</h2>
-      <b-table small hover striped :items="workStatusList" :fields="fields" style="text-align: center">
+      <b-table
+        v-if="workState == 0"
+        small
+        hover
+        striped
+        :items="workStatusList"
+        :fields="fields"
+        style="text-align: center"
+      >
         <template #cell(startTime)="row">
           {{ row.item.startTime.substring(0, 16) }}
         </template>
@@ -89,6 +97,10 @@ export default {
     },
     deletedResult() {
       return this.$store.getters.WorkDeletedResult
+    },
+    workState() {
+      console.log('this.$store.getters.Work.workStatus', this.$store.getters.Work)
+      return this.$store.getters.Work.workStatus
     }
   },
   watch: {
