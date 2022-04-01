@@ -2,9 +2,11 @@ version: '3.8'
 services:
   # database build
   database:
-    container_name: EDUKiT_database
+    container_name: hehe_database
     # 사용될 이미지파일 이름
-    image: leegandhi18/edukit_database
+    image: leegandhi18/hehe_database
+    networks:
+      - monitoring 
     # 빌드될 dockerfile 위치
     build: 
       context: ./database
@@ -12,7 +14,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: EDUKiT_database
+      POSTGRES_DB: hehe_database
     volumes:
       - /mnt/c/workspace/EDUKiT/database/data/:/var/lib/postgresql/data --user 1000
       # - /mnt/c/workspace/EDUKiT/database/data/:/var/lib/postgresql/data
@@ -21,49 +23,106 @@ services:
       - 5432:5432
     restart: always
 
-  # backend build
-  backend:
-    container_name: EDUKiT_backend
-    depends_on:
-      - database
-    build: 
-      context: ./backend
-      dockerfile: backend.dev.dockerfile
-    image: leegandhi18/edukit_backend
-    volumes:
-      - ./backend:/usr/src/app
-      - /usr/src/app/node_modules
+  # grafana build
+  grafana: 
+    image: grafana/grafana:latest
+    ports: 
+      - '3005:3000'
+    networks:
+      - monitoring   
+    depends_on: 
+      - influxdb
+    volumes: 
+      - ./grafana:/var/lib/grafana
+      # - ./grafana2/grafana.ini:/etc/grafana/grafana.ini
+    user: root
+
+  # influxdb build
+  influxdb: 
+    image: influxdb:1.8.3 
+    container_name: influx
+    ports: 
+      - '8086:8086'
+    networks:
+      - monitoring 
+    environment: 
+    #   - INFLUXDB_DB=backend
+    #   # - INFLUXDB_USER=telegraf
+      - INFLUXDB_ADMIN_ENABLED=true
+      - INFLUXDB_ADMIN_USER=admin 
+      - INFLUXDB_ADMIN_PASSWORD=admin    
+    tty: true
+    stdin_open: true
+    volumes: 
+      - ./influx/config:/etc/influxdb
+      - ./influxdb:/var/lib/influxdb
+
+  # mqtt build
+  mqtt:
+    image: eclipse-mosquitto
+    hostname: mosquitto
+    restart: always
     ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=development
-      - PORT=3000
-      - LOGGER_LEVEL=debug
-      - DB_HOST=database
-      - DB_PORT=5432
-      - DB_DATABASE=EDUKiT_database
-      - DB_ID=postgres
-      - DB_PASS=postgres
-      - DB_DIALECT=postgres
-    restart: "unless-stopped"
-    # command: "npm start"
-    command: "npm run dev"
+      - "1883:1883"
+      - "8089:8088"
+    volumes:
+      - ./mqtt/config:/mosquitto/config
+    tty: true
+    stdin_open: true
+    networks:
+      - monitoring
+
+
+  # backend build
+  # backend:
+  #   container_name: EDUKiT_backend
+  #   depends_on:
+  #     - database
+  #   build: 
+  #     context: ./backend
+  #     dockerfile: backend.dev.dockerfile
+  #   image: leegandhi18/edukit_backend
+  #   volumes:
+  #     - ./backend:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - NODE_ENV=development
+  #     - PORT=3000
+  #     - LOGGER_LEVEL=debug
+  #     - DB_HOST=database
+  #     - DB_PORT=5432
+  #     - DB_DATABASE=EDUKiT_database
+  #     - DB_ID=postgres
+  #     - DB_PASS=postgres
+  #     - DB_DIALECT=postgres
+  #   restart: "unless-stopped"
+  #   # command: "npm start"
+  #   command: "npm run dev"
+
+  
 
   # frontend build
-  frontend:
-    container_name: EDUKiT_frontend
-    depends_on:
-      - backend
-    build: 
-      context: ./frontend
-      dockerfile: frontend.dev.dockerfile
-    image: leegandhi18/edukit_frontend
-    volumes:
-      - ./frontend:/app
-      - app/node_modules
-    ports:
-      - "8080:8080"
-
+  # frontend:
+  #   container_name: EDUKiT_frontend
+  #   depends_on:
+  #     - backend
+  #   build: 
+  #     context: ./frontend
+  #     dockerfile: frontend.dev.dockerfile
+  #   image: leegandhi18/edukit_frontend
+  #   volumes:
+  #     - ./frontend:/app
+  #     - app/node_modules
+  #   ports:
+  #     - "8080:8080"
+volumes: 
+  grafana: 
+  influxdb:
+  mqtt:
+networks:
+  monitoring:
 # docker-compose up -d 	// 서비스 실행
 # docker-compose ps 		 // 서비스 실행 상태 확인
 # docker-compose exec simulator-server npm i 	// 시뮬레이터 서버 npm 모듈 설치
