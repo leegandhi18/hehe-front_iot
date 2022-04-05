@@ -84,7 +84,7 @@ export default {
     console.log('login tokenUser', this.user)
   },
   methods: {
-    // 작업자 정보 수정하기 버틑 클릭 시
+    // 작업자 정보 수정하기 버튼 클릭 시
     onClickUpdate() {
       console.log('update this.user', this.user)
       this.$store.dispatch('actUserUpdate', this.user)

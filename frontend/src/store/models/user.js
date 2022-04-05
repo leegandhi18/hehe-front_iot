@@ -52,7 +52,6 @@ export default {
 
       /* RestAPI 호출 */
       api.get('/serverApi/users').then(response => {
-        console.log(response)
         const userList = response && response.data && response.data.rows
         context.commit('setUserList', userList)
       })

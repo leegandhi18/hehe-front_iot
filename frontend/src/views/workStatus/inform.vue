@@ -120,10 +120,10 @@ export default {
     // 모달이 열린 이후에 감지됨
     infoData(value) {
       this.work = { ...value }
-      console.log('value', value)
-      console.log('this.work', this.work)
+      // console.log('value', value)
+      // console.log('this.work', this.work)
       const aaa = this.$store.getters.TokenUser
-      console.log('aaa', aaa)
+      // console.log('aaa', aaa)
       // 로그인한 사용자의 name(이름값)을 신규등록 폼에 세팅한다.
       if (this.inputMode == 'update') {
         this.work.name = value.name

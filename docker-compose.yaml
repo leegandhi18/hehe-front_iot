@@ -34,7 +34,7 @@ services:
       - influxdb
     volumes: 
       - ./grafana:/var/lib/grafana
-      # - ./grafana2/grafana.ini:/etc/grafana/grafana.ini
+      - ./grafana2/grafana.ini:/etc/grafana/grafana.ini
     user: root
 
   # influxdb build
@@ -58,19 +58,19 @@ services:
       - ./influxdb:/var/lib/influxdb
 
   # mqtt build
-  mqtt:
-    image: eclipse-mosquitto
-    hostname: mosquitto
-    restart: always
-    ports:
-      - "1883:1883"
-      - "8089:8088"
-    volumes:
-      - ./mqtt/config:/mosquitto/config
-    tty: true
-    stdin_open: true
-    networks:
-      - monitoring
+  # mqtt:
+  #   image: eclipse-mosquitto
+  #   hostname: mosquitto
+  #   restart: always
+  #   ports:
+  #     - "1883:1883"
+  #     - "8089:8088"
+  #   volumes:
+  #     - ./mqtt/config:/mosquitto/config
+  #   tty: true
+  #   stdin_open: true
+  #   networks:
+  #     - monitoring
 
 
   # backend build

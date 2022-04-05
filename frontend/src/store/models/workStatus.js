@@ -10,13 +10,14 @@ const stateInit = {
     productQuantity: null,
     startTime: null,
     endTime: null,
-    workStatus: null
+    workStatus: 0
   }
 }
 
 export default {
   state: {
-    WorkStatusList: [],
+    BeforeWorkingList: [],
+    WorkingList: [],
     Work: { ...stateInit.Work },
     InsertedResult: null, // 입력 처리 후 결과
     UpdatedResult: null, // 수정 처리 후 결과
@@ -24,7 +25,8 @@ export default {
     InputMode: null // 입력모드(등록: insert, 수정: update)
   },
   getters: {
-    WorkStatusList: state => state.WorkStatusList,
+    BeforeWorkingList: state => state.BeforeWorkingList,
+    WorkingList: state => state.WorkingList,
     Work: state => state.Work,
     WorkInsertedResult: state => state.InsertedResult,
     WorkUpdatedResult: state => state.UpdatedResult,
@@ -32,8 +34,11 @@ export default {
     WorkInputMode: state => state.InputMode
   },
   mutations: {
-    setWorkStatusList(state, data) {
-      state.WorkStatusList = data
+    setBeforeWorkingList(state, data) {
+      state.BeforeWorkingList = data
+    },
+    setWorkingList(state, data) {
+      state.WorkingList = data
     },
     setWork(state, data) {
       state.Work = data
@@ -52,35 +57,22 @@ export default {
     }
   },
   actions: {
-    // 작업 현황 리스트 조회
-    actWorkStatusList(context, payload) {
-      // const workStatusList = [
-      //   {
-      //     id: 1,
-      //     name: '이주현',
-      //     machineCode: '기계1',
-      //     itemName: '마스크',
-      //     productQuantity: '12',
-      //     startTime: '2021-12-01T00:00:00.000Z',
-      //     endTime: '2021-12-01T00:00:00.000Z'
-      //   },
-      //   {
-      //     id: 2,
-      //     name: '이주현',
-      //     machineCode: '기계1',
-      //     itemName: '마스크',
-      //     productQuantity: '12',
-      //     startTime: '2021-12-01T00:00:00.000Z',
-      //     endTime: '2021-12-01T00:00:00.000Z'
-      //   }
-      // ]
-      // context.commit('setWorkStatusList', workStatusList)
-
+    // 작업전 리스트 조회
+    actBeforeWorkingList(context, payload) {
       /* RestAPI 호출 */
-      api.get('/serverApi/orders').then(response => {
-        console.log('workStatusList response', response)
-        const workStatusList = response && response.data && response.data.rows
-        context.commit('setWorkStatusList', workStatusList)
+      api.get('/serverApi/orders/beforeWorking').then(response => {
+        console.log('beforeWorkingList', response.data.rows)
+        const beforeWorkingList = response && response.data && response.data.rows
+        context.commit('setBeforeWorkingList', beforeWorkingList)
+      })
+    },
+    // 작업중 리스트 조회
+    actWorkingList(context, payload) {
+      /* RestAPI 호출 */
+      api.get('/serverApi/orders/working').then(response => {
+        console.log('workingList', response.data.rows)
+        const workingList = response && response.data && response.data.rows
+        context.commit('setWorkingList', workingList)
       })
     },
     // 작업 입력(등록)
@@ -122,43 +114,12 @@ export default {
       // 상태값 초기화
       context.commit('setWork', { ...stateInit.Work })
 
-      // /* 테스트 데이터 세팅 */
-      // setTimeout(() => {
-      //   const workStatusList = [
-      //     {
-      //       id: 1,
-      //       name: '이주현',
-      //       machineCode: '기계1',
-      //       itemName: '마스크',
-      //       productQuantity: '12',
-      //       startTime: '2021-12-01T00:00:00.000Z',
-      //       endTime: '2021-12-01T00:00:00.000Z'
-      //     },
-      //     {
-      //       id: 2,
-      //       name: '이주현',
-      //       machineCode: '기계1',
-      //       itemName: '마스크',
-      //       productQuantity: '12',
-      //       startTime: '2021-12-01T00:00:00.000Z',
-      //       endTime: '2021-12-01T00:00:00.000Z'
-      //     }
-      //   ]
-
-      //   let work = { ...stateInit.Work }
-      //   for (let i = 0; i < workStatusList.length; i += 1) {
-      //     if (payload === workStatusList[i].id) {
-      //       work = { ...workStatusList[i] }
-      //     }
-      //   }
-      //   context.commit('setWork', work)
-      // }, 300)
-
       /* RestAPI 호출 */
       api
         .get(`/serverApi/orders/${payload}`)
         .then(response => {
           const order = response && response.data
+          console.log('work info', order)
           context.commit('setWork', order)
         })
         .catch(error => {

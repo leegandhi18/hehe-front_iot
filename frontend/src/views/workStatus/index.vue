@@ -2,14 +2,6 @@
   <div class="test">
     <h2>작업현황</h2>
     <b-col style="text-align: right; padding: 0; margin-bottom: 10px">
-      <!-- <b-button
-        class="btn1"
-        variant="dark"
-        size="sm"
-        style="display: inline-block; float: none; margin: 0"
-        @click="searchWorkStatusList()"
-        >검색</b-button
-      > -->
       <b-button
         class="btn1"
         variant="dark"
@@ -21,7 +13,7 @@
     </b-col>
     <div>
       <h2>작업중 리스트</h2>
-      <b-table small hover striped :items="workStatusList" :fields="fields" style="text-align: center">
+      <b-table small hover striped :items="workingList" :fields="workingFields" style="text-align: center">
         <template #cell(startTime)="row">
           {{ row.item.startTime.substring(0, 16) }}
         </template>
@@ -29,28 +21,21 @@
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickStop(row.item.id)">작업 중단</b-button>
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickComplete(row.item.id)">작업 완료</b-button>
         </template>
-        <template #cell(btn)="row" class="btn">
+        <!-- <template #cell(btn)="row" class="btn">
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">수정</b-button>
           <b-button size="sm" variant="dark" @click="onClickDelete(row.item.id)">삭제</b-button>
-        </template>
+        </template> -->
       </b-table>
     </div>
     <div>
       <h2>작업전 리스트</h2>
-      <b-table
-        v-if="workState == 0"
-        small
-        hover
-        striped
-        :items="workStatusList"
-        :fields="fields"
-        style="text-align: center"
-      >
+      <b-table small hover striped :items="beforeWorkingList" :fields="beforeWorkingFields" style="text-align: center">
         <template #cell(startTime)="row">
           {{ row.item.startTime.substring(0, 16) }}
         </template>
         <template #cell(control)="row" class="control">
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickStart(row.item.id)">작업 시작</b-button>
+          {{ row.item.id }}
         </template>
         <template #cell(btn)="row" class="btn">
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">수정</b-button>
@@ -71,8 +56,17 @@ export default {
   },
   data() {
     return {
-      // Note `isActive` is left out and will not appear in the rendered table
-      fields: [
+      work: {
+        id: null,
+        name: null,
+        machineCode: null,
+        itemName: null,
+        productQuantity: null,
+        workStatus: null,
+        startTime: null,
+        endTime: null
+      },
+      beforeWorkingFields: [
         { key: 'id', label: 'ID' },
         { key: 'name', label: '작업자' },
         { key: 'machineCode', label: '설비' },
@@ -81,13 +75,29 @@ export default {
         { key: 'startTime', label: '시작시간' },
         { key: 'control', label: '작업상태 제어' },
         { key: 'btn', label: '비고' }
+        // { key: 'workStatus', label: '작업상태' }
+        // { key: 'deleteBtn', label: '삭제' }
+      ],
+      workingFields: [
+        { key: 'id', label: 'ID' },
+        { key: 'name', label: '작업자' },
+        { key: 'machineCode', label: '설비' },
+        { key: 'itemName', label: '품목' },
+        { key: 'productQuantity', label: '수량' },
+        { key: 'startTime', label: '시작시간' },
+        { key: 'control', label: '작업상태 제어' },
+        { key: 'btn', label: '비고' }
+        // { key: 'workStatus', label: '작업상태' }
         // { key: 'deleteBtn', label: '삭제' }
       ]
     }
   },
   computed: {
-    workStatusList() {
-      return this.$store.getters.WorkStatusList
+    beforeWorkingList() {
+      return this.$store.getters.BeforeWorkingList
+    },
+    workingList() {
+      return this.$store.getters.WorkingList
     },
     insertedResult() {
       return this.$store.getters.WorkInsertedResult
@@ -97,10 +107,6 @@ export default {
     },
     deletedResult() {
       return this.$store.getters.WorkDeletedResult
-    },
-    workState() {
-      console.log('this.$store.getters.Work.workStatus', this.$store.getters.Work)
-      return this.$store.getters.Work.workStatus
     }
   },
   watch: {
@@ -118,7 +124,8 @@ export default {
           })
 
           // 2. 리스트 재 검색
-          this.searchWorkStatusList()
+          this.searchBeforeWorkingList()
+          this.searchWorkingList()
         } else {
           // 등록이 실패한 경우
           this.$bvToast.toast('등록이 실패하였습니다.', {
@@ -143,7 +150,8 @@ export default {
           })
 
           // 2. 리스트 재 검색
-          this.searchWorkStatusList()
+          this.searchBeforeWorkingList()
+          this.searchWorkingList()
         } else {
           // 수정이 실패한 경우
           this.$bvToast.toast('수정이 실패하였습니다.', {
@@ -168,7 +176,8 @@ export default {
           })
 
           // 2. 리스트 재 검색
-          this.searchWorkStatusList()
+          this.searchBeforeWorkingList()
+          this.searchWorkingList()
         } else {
           // 삭제가 실패한 경우
           this.$bvToast.toast('삭제가 실패하였습니다.', {
@@ -181,11 +190,15 @@ export default {
     }
   },
   created() {
-    this.searchWorkStatusList()
+    this.searchBeforeWorkingList()
+    this.searchWorkingList()
   },
   methods: {
-    searchWorkStatusList() {
-      this.$store.dispatch('actWorkStatusList')
+    searchBeforeWorkingList() {
+      this.$store.dispatch('actBeforeWorkingList')
+    },
+    searchWorkingList() {
+      this.$store.dispatch('actWorkingList')
     },
     onClickAddNew() {
       // 신규 등록
@@ -218,14 +231,30 @@ export default {
         }
       })
     },
+    onClickStart(id) {
+      console.log('작업 시작')
+      // 작업 시작 버튼을 누른 해당 리스트 상세 조회
+      this.$store.dispatch('actWorkInfo', id)
+      setTimeout(() => {
+        this.work = this.$store.getters.Work
+        // console.log('1', this.work)
+      }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+
+      setTimeout(() => {
+        // workStatus의 작업상태를 1로 바꿔준다.
+        this.work.workStatus = 1
+      }, 500) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+
+      setTimeout(() => {
+        // 바꿔준 work의 값을 수정해준다.
+        this.$store.dispatch('actWorkUpdate', this.work) // 수정 실행
+      }, 700) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+    },
     onClickComplete() {
       console.log('작업 완료')
     },
     onClickStop() {
       console.log('작업 중단')
-    },
-    onClickStart() {
-      console.log('작업 시작')
     }
   }
 }
