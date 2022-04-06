@@ -14,7 +14,8 @@ const stateInit = {
 export default {
   state: {
     WorkStopList: [],
-    WorkStop: { ...stateInit.WorkStop }
+    WorkStop: { ...stateInit.WorkStop },
+    InsertedResult: null
   },
   getters: {
     WorkStopList: state => state.WorkStopList,

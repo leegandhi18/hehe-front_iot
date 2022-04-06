@@ -26,7 +26,7 @@ export default {
   },
   getters: {
     WorkHistoryList: state => state.WorkHistoryList,
-    WorkHistory: state => state.Work,
+    WorkHistory: state => state.WorkHistory,
     WorkHistoryInsertedResult: state => state.InsertedResult
   },
   mutations: {
@@ -68,6 +68,24 @@ export default {
           // 에러인 경우 처리
           console.error('WorkHistoryInsert.error', error)
           context.commit('setWorkHistoryInsertedResult', -1)
+        })
+    },
+    // 완료 상세정보 조회
+    actWorkHistoryInfo(context, payload) {
+      // 상태값 초기화
+      context.commit('setWorkHistory', { ...stateInit.WorkHistory })
+
+      /* RestAPI 호출 */
+      api
+        .get(`/serverApi/orders/${payload}`)
+        .then(response => {
+          const workHistory = response && response.data
+          context.commit('setWorkHistory', workHistory)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('WorkHistoryInfo.error', error)
+          context.commit('setWorkHistory', -1)
         })
     }
   }

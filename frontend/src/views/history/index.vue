@@ -33,6 +33,21 @@ export default {
         time: null,
         workStatus: null
       },
+      WorkHistory: {
+        id: null,
+        workNum: null,
+        name: null,
+        machineCode: null,
+        itemName: null,
+        totalQuantity: null,
+        goodQuantity: null,
+        badQuantity: null,
+        startTime: null,
+        endTime: null,
+        time: null,
+        workStatus: null,
+        emoHistory: null
+      },
       fields: [
         { key: 'id', label: 'ID' },
         { key: 'name', label: '작업자' },
@@ -52,6 +67,9 @@ export default {
   computed: {
     workHistoryList() {
       return this.$store.getters.WorkHistoryList
+    },
+    infoData() {
+      return this.$store.getters.WorkStop
     }
   },
   created() {
@@ -64,17 +82,20 @@ export default {
     onClickRead(id) {
       // 중단이력 조회
       this.$store.dispatch('actWorkStopInfo', id)
-      // 모달 출력
-      this.$bvModal.show('modal-stop-inform')
+      this.$store.dispatch('actWorkHistoryInfo', id)
+      setTimeout(() => {
+        this.workHistory = this.$store.getters.WorkHistory
+        console.log('this.workHistory', this.workHistory)
+        console.log('this.workHistory.workStatus', this.workHistory.workStatus)
+      }, 400)
 
-      // setTimeout(() => {
-      //   if (this.workStop.workStatus == 2) {
-      //     this.$bvModal.show('modal-stop-inform')
-      //   } else {
-      //     // 중단이력이 없는 경우
-      //     alert('중단 이력이 없습니다.')
-      //   }
-      // }, 500)
+      setTimeout(() => {
+        if (this.workHistory.workStatus == 3) {
+          this.$bvModal.show('modal-stop-inform')
+        } else {
+          alert('중단이력이 없습니다.')
+        }
+      }, 1000)
     }
   }
 }

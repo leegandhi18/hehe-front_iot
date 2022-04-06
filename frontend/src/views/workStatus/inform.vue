@@ -122,7 +122,7 @@ export default {
       this.work = { ...value }
       // console.log('value', value)
       // console.log('this.work', this.work)
-      const aaa = this.$store.getters.TokenUser
+      // const aaa = this.$store.getters.TokenUser
       // console.log('aaa', aaa)
       // 로그인한 사용자의 name(이름값)을 신규등록 폼에 세팅한다.
       if (this.inputMode == 'update') {

@@ -20,6 +20,21 @@
 export default {
   data() {
     return {
+      WorkHistory: {
+        id: null,
+        workNum: null,
+        name: null,
+        machineCode: null,
+        itemName: null,
+        totalQuantity: null,
+        goodQuantity: null,
+        badQuantity: null,
+        startTime: null,
+        endTime: null,
+        time: null,
+        workStatus: null,
+        emoHistory: null
+      },
       workStop: {
         workNum: null,
         name: null,
@@ -45,7 +60,6 @@ export default {
   },
   created() {
     this.workStop = { ...this.infoData }
-    // console.log('this.workStop', this.workStop)
   }
 }
 </script>
