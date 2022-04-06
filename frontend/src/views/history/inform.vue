@@ -21,6 +21,7 @@ export default {
   data() {
     return {
       workStop: {
+        workNum: null,
         name: null,
         machineCode: null,
         time: null
@@ -39,14 +40,12 @@ export default {
     // 모달이 열린 이후에 감지됨
     infoData(value) {
       this.workStop = { ...value }
+      console.log('모달 열리고 감지되는 데이터', this.workStop)
     }
   },
   created() {
-    // 모달이 최초 열릴때 감지됨
     this.workStop = { ...this.infoData }
-    console.log(this.infoData)
-
-    this.$store.dispatch('actWorkStopInfo') // 중단이력 조회
+    // console.log('this.workStop', this.workStop)
   }
 }
 </script>

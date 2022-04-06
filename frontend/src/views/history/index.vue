@@ -3,6 +3,12 @@
     <h2 style="margin-bottom: 50px">완료이력</h2>
     <div>
       <b-table small hover striped :items="workHistoryList" :fields="fields" style="text-align: center">
+        <!-- <template #cell(startTime)="row">
+          {{ row.item.startTime.substring(0, 16) }}
+        </template>
+        <template #cell(endTime)="row">
+          {{ row.item.startTime.substring(0, 16) }}
+        </template> -->
         <template #cell(emoHistory)="row">
           <b-button class="emoHistory" size="sm" variant="dark" @click="onClickRead(row.item.id)">중단이력</b-button>
         </template>
@@ -19,13 +25,20 @@ export default {
   },
   data() {
     return {
-      // Note `isActive` is left out and will not appear in the rendered table
+      workStop: {
+        id: null,
+        workNum: null,
+        name: null,
+        machineCode: null,
+        time: null,
+        workStatus: null
+      },
       fields: [
         { key: 'id', label: 'ID' },
         { key: 'name', label: '작업자' },
         { key: 'machineCode', label: '설비코드' },
         { key: 'itemName', label: '품목명' },
-        { key: 'totalQuantity', label: '생산 수량' },
+        { key: 'totalQuantity', label: '생산량' },
         { key: 'goodQuantity', label: '양품' },
         { key: 'badQuantity', label: '불량품' },
         { key: 'startTime', label: '시작시간' },
@@ -53,6 +66,15 @@ export default {
       this.$store.dispatch('actWorkStopInfo', id)
       // 모달 출력
       this.$bvModal.show('modal-stop-inform')
+
+      // setTimeout(() => {
+      //   if (this.workStop.workStatus == 2) {
+      //     this.$bvModal.show('modal-stop-inform')
+      //   } else {
+      //     // 중단이력이 없는 경우
+      //     alert('중단 이력이 없습니다.')
+      //   }
+      // }, 500)
     }
   }
 }
