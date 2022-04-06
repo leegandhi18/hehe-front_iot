@@ -45,6 +45,7 @@ namespace SmartConnector.Edukit
 
             public Task<Boolean> Connect()
             {
+                // 프로그램 시작하면 연결되었음을 보여주는 부분
                 try
                 {
                     //192.168.0.120 : 2004
@@ -52,12 +53,19 @@ namespace SmartConnector.Edukit
                     var port = Int32.Parse(edgeConfigResult.EdukitPort);
                     int DelayTime = Int32.Parse(edgeConfigResult.DelayTime);
 
+                    // client instance 생성
                     int mqttport = Int32.Parse(edgeConfigResult.MqttBrokerPort);
                     mqttClient = new MqttClient(edgeConfigResult.MqttBrokerIP, mqttport, false, null, null, MqttSslProtocols.TLSv1_2)
                     {
                         ProtocolVersion = MqttProtocolVersion.Version_3_1_1
                     };
                     byte code = mqttClient.Connect(Guid.NewGuid().ToString());
+
+                    // register to message received
+                    mqttClient.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
+                    mqttClient.MqttMsgSubscribed += client_MqttMsgSubscribed;
+                    mqttClient.MqttMsgUnsubscribed += client_MqttMsgUnsubscribed;
+                    mqttClient.MqttMsgPublished += client_MqttMsgPublished;
 
                     string websocket = edgeConfigResult.WebSocketServerUrl;
                     var query = new Dictionary<string, string>()
@@ -71,8 +79,8 @@ namespace SmartConnector.Edukit
                         Query = query
                     };
                     ServerSocket = Ecng.Net.SocketIO.Client.IO.Socket(websocket, options);
-
                     ServerSocket.Unhandled += ServerSocket_Unhandled;
+
                     Console.WriteLine("##########################");
                     Console.WriteLine("Edukit Connection State : True");
                     Console.WriteLine("Edukit IP : " + ip);
@@ -94,6 +102,24 @@ namespace SmartConnector.Edukit
                 return Task.FromResult(true);
             }
 
+            private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+            {
+                string ReceivedMessage = Encoding.UTF8.GetString(e.Message);
+                Console.WriteLine("_MqttMsgPublishReceived = " + ReceivedMessage);
+            }
+            private void client_MqttMsgSubscribed(object sender, MqttMsgSubscribedEventArgs e)
+            {
+                Console.WriteLine("Subscribed for id = " + e.MessageId);
+            }
+            private void client_MqttMsgUnsubscribed(object sender, MqttMsgUnsubscribedEventArgs e)
+            {
+                Console.WriteLine("Unsubscribed for id = " + e.MessageId);
+            }
+            private void client_MqttMsgPublished(object sender, MqttMsgPublishedEventArgs e)
+            {
+                Console.WriteLine("MessageId = " + e.MessageId + " Published = " + e.IsPublished);
+            }
+            
             private void ServerSocket_Unhandled(string arg1, object[] arg2)
             {
                 ServerSocket.Emit("joinRoom", edgeConfigResult.EdukitId);
@@ -487,7 +513,6 @@ namespace SmartConnector.Edukit
                     try
                     {
                         List<EdukitNewdata> edukitData = new List<EdukitNewdata>();
-
                         List<EdukitNewdata> edukitMqttData = new List<EdukitNewdata>();
 
                         foreach (var address in BitAddressList)
@@ -634,20 +659,20 @@ namespace SmartConnector.Edukit
 
                         if (edgeConfigResult.DebugType == "Debug")
                         {
-                            Console.Clear();
-
-                            List<EdukitNewdata> SortedList = edukitData.OrderBy(x => Int32.Parse(x.tagId)).ToList();
-
-                            foreach (var data in SortedList)
-                            {
-                                Console.WriteLine($"[{data.tagId}]{data.name} : {data.value}");
-                            }
+                            Console.WriteLine("퍼블리시 중");
+                        //    Console.Clear();
+                        //
+                        //    List<EdukitNewdata> SortedList = edukitData.OrderBy(x => Int32.Parse(x.tagId)).ToList();
+                        //
+                        //    foreach (var data in SortedList)
+                        //    {
+                        //        Console.WriteLine($"[{data.tagId}]{data.name} : {data.value}");
+                        //    }
                         }
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
-
                     }
                     Thread.Sleep(DelayTime);
                 }
@@ -669,6 +694,7 @@ namespace SmartConnector.Edukit
                 return null;
             }
 
+            // MQTT 형식 만들어서 Publish 하는 코드 + Subscribe 관련 연결도 해 놓음 
             static void MqttData(MqttData EduKitData)
             {
                 string json = JsonConvert.SerializeObject(EduKitData, Formatting.Indented);
@@ -686,8 +712,23 @@ namespace SmartConnector.Edukit
                     Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
                 }
             }
+
+            static void MqttData_R()
+            {
+                string topic = { "test", "vision" };
+                try
+                {
+                    mqttClient.Subscribe(new string[] { topic },
+                        new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                }
+            }
         }
 
+        // 클래스 지정
         public class EdukitNewdata
         {
             public string tagId { get; set; }

@@ -1,11 +1,11 @@
 {
-  "EdukitId": "UVC-EDU-01",
+  "EdukitId": "UVC-EDU-hehe",
   "EdukitIP": "192.168.0.120",
   // 이더넷 전용 통신 XGT protocol TCP/IP port number 가 2004임!
   "EdukitPort": "2004",
   "MqttBrokerIP": "220.90.129.47",
   "MqttBrokerPort": "1883",
   "WebSocketServerUrl": "ws://220.90.129.47:8088",
-  "DelayTime": "2000",
+  "DelayTime": "500",
   "DebugType": "Debug"
 }

@@ -20,6 +20,7 @@ class Event {
       const props = {
         // hostname: 'localhost',
         hostname: '220.90.129.47', // 엣지 컴퓨터 ip address - 유지영님
+        // hostname: '220.90.129.60', // 엣지 컴퓨터 ip address - 김경은님
         port: '8088',
         topic: '#',
         status: statusElement.style,
