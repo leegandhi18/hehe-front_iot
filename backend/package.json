@@ -11,9 +11,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/node": "^7.16.8",
+    "core-js": "^3.21.1",
     "express": "^4.17.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/preset-env": "^7.16.11",
     "nodemon": "^2.0.15"
   }
 }

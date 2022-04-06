@@ -10,7 +10,7 @@ const stateInit = {
 
 export default {
   state: {
-    WorkState: { ...stateInit.Work },
+    WorkState: [],
     InsertedResult: null // 입력 처리 후 결과
   },
   getters: {
@@ -29,9 +29,9 @@ export default {
     // 작업 상태 조회
     actWorkState(context, payload) {
       /* RestAPI 호출 */
-      api.get('/serverApi/workStatuses').then(response => {
-        console.log('workState response', response)
-        const workState = response && response.data && response.data.rows
+      api.get('/serverApi/orders').then(response => {
+        const workState = response && response.data && response.data.rows && response.data.rows[0].workStatus
+        console.log('workState', workState)
         context.commit('setWorkState', workState)
       })
     },
