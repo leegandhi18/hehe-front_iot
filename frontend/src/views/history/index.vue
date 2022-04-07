@@ -3,6 +3,12 @@
     <h2 style="margin-bottom: 50px">완료이력</h2>
     <div>
       <b-table small hover striped :items="workHistoryList" :fields="fields" style="text-align: center">
+        <!-- <template #cell(startTime)="row">
+          {{ row.item.startTime.substring(0, 16) }}
+        </template>
+        <template #cell(endTime)="row">
+          {{ row.item.startTime.substring(0, 16) }}
+        </template> -->
         <template #cell(emoHistory)="row">
           <b-button class="emoHistory" size="sm" variant="dark" @click="onClickRead(row.item.id)">중단이력</b-button>
         </template>
@@ -19,18 +25,40 @@ export default {
   },
   data() {
     return {
-      // Note `isActive` is left out and will not appear in the rendered table
+      workStop: {
+        id: null,
+        workNum: null,
+        name: null,
+        machineCode: null,
+        time: null,
+        workStatus: null
+      },
+      WorkHistory: {
+        id: null,
+        workNum: null,
+        name: null,
+        machineCode: null,
+        itemName: null,
+        totalQuantity: null,
+        goodQuantity: null,
+        badQuantity: null,
+        startTime: null,
+        endTime: null,
+        time: null,
+        workStatus: null,
+        emoHistory: null
+      },
       fields: [
         { key: 'id', label: 'ID' },
         { key: 'name', label: '작업자' },
         { key: 'machineCode', label: '설비코드' },
         { key: 'itemName', label: '품목명' },
-        { key: 'totalQuantity', label: '생산 수량' },
+        { key: 'totalQuantity', label: '생산량' },
         { key: 'goodQuantity', label: '양품' },
         { key: 'badQuantity', label: '불량품' },
         { key: 'startTime', label: '시작시간' },
         { key: 'endTime', label: '종료시간' },
-        { key: 'workStatus', label: '작업완료상태' },
+        // { key: 'workStatus', label: '작업완료상태' },
         { key: 'emoHistory', label: '중단이력' }
         // { key: 'deleteBtn', label: '삭제' }
       ]
@@ -39,6 +67,9 @@ export default {
   computed: {
     workHistoryList() {
       return this.$store.getters.WorkHistoryList
+    },
+    infoData() {
+      return this.$store.getters.WorkStop
     }
   },
   created() {
@@ -51,8 +82,20 @@ export default {
     onClickRead(id) {
       // 중단이력 조회
       this.$store.dispatch('actWorkStopInfo', id)
-      // 모달 출력
-      this.$bvModal.show('modal-stop-inform')
+      this.$store.dispatch('actWorkHistoryInfo', id)
+      setTimeout(() => {
+        this.workHistory = this.$store.getters.WorkHistory
+        console.log('this.workHistory', this.workHistory)
+        console.log('this.workHistory.workStatus', this.workHistory.workStatus)
+      }, 500)
+
+      setTimeout(() => {
+        if (this.workHistory.workStatus == 3) {
+          this.$bvModal.show('modal-stop-inform')
+        } else {
+          alert('중단이력이 없습니다.')
+        }
+      }, 1000)
     }
   }
 }

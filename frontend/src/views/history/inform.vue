@@ -20,7 +20,23 @@
 export default {
   data() {
     return {
+      WorkHistory: {
+        id: null,
+        workNum: null,
+        name: null,
+        machineCode: null,
+        itemName: null,
+        totalQuantity: null,
+        goodQuantity: null,
+        badQuantity: null,
+        startTime: null,
+        endTime: null,
+        time: null,
+        workStatus: null,
+        emoHistory: null
+      },
       workStop: {
+        workNum: null,
         name: null,
         machineCode: null,
         time: null
@@ -39,14 +55,11 @@ export default {
     // 모달이 열린 이후에 감지됨
     infoData(value) {
       this.workStop = { ...value }
+      console.log('모달 열리고 감지되는 데이터', this.workStop)
     }
   },
   created() {
-    // 모달이 최초 열릴때 감지됨
     this.workStop = { ...this.infoData }
-    console.log(this.infoData)
-
-    this.$store.dispatch('actWorkStopInfo') // 중단이력 조회
   }
 }
 </script>

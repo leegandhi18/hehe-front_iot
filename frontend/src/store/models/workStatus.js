@@ -5,12 +5,17 @@ const stateInit = {
   Work: {
     id: null,
     name: null,
+    workNum: null,
     machineCode: null,
     itemName: null,
     productQuantity: null,
+    totalQuantity: null,
+    goodQuantity: null,
+    badQuantity: null,
     startTime: null,
     endTime: null,
-    workStatus: 0
+    workStatus: 0,
+    emoHistory: null
   }
 }
 
