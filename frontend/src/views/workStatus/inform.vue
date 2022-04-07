@@ -6,10 +6,28 @@
           <b-form-input id="id" v-model="work.id" disabled></b-form-input>
         </b-form-group>
         <b-form-group label="작업자" label-for="name" label-cols="3">
-          <b-form-input v-if="tokenUserRole == '관리자'" id="name" v-model="work.name"></b-form-input>
-          <b-form-input v-else-if="tokenUserRole == '작업자'" id="name" v-model="work.name" disabled></b-form-input>
+          <b-form-select
+            v-if="tokenUserRole == '관리자'"
+            id="name"
+            v-model="work.name"
+            :options="userList"
+            value-field="name"
+            text-field="name"
+          >
+          </b-form-select>
+          <b-form-select
+            v-else-if="tokenUserRole == '작업자'"
+            id="name"
+            v-model="work.name"
+            :options="userList"
+            value-field="name"
+            text-field="name"
+            disabled
+          >
+          </b-form-select>
+          <!-- <b-form-input v-if="tokenUserRole == '관리자'" id="name" v-model="work.name"></b-form-input>
+          <b-form-input v-else-if="tokenUserRole == '작업자'" id="name" v-model="work.name" disabled></b-form-input> -->
         </b-form-group>
-        <!-- {{ infoData }} -->
         <b-form-group label="설비" label-for="code" label-cols="3">
           <b-form-select
             id="code"
@@ -34,7 +52,7 @@
           </b-form-select>
         </b-form-group>
         <b-form-group label="수량" label-for="productQuantity" label-cols="3">
-          <b-form-input id="productQuantity" v-model="work.productQuantity"></b-form-input>
+          <b-form-input type="number" id="productQuantity" v-model="work.productQuantity"></b-form-input>
         </b-form-group>
         <b-form-group label="작업시작 시간" label-for="startTime" label-cols="3">
           <input v-model="work.startTime" type="datetime-local" style="width: 100%" />
@@ -76,9 +94,6 @@ export default {
         itemId: null,
         machineCode: null
       }
-      // userRole: {
-      //   default: 'member' // 기본값
-      // }
     }
   },
   computed: {

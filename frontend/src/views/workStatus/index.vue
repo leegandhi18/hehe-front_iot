@@ -29,8 +29,8 @@
     </div>
     <div>
       <h2>작업전 리스트</h2>
-      {{ Date.now() }}
-      {{ new Date().toISOString() }}
+      <!-- {{ Date.now() }} -->
+      <!-- {{ new Date().toISOString() }} -->
       <b-table small hover striped :items="beforeWorkingList" :fields="beforeWorkingFields" style="text-align: center">
         <template #cell(startTime)="row">
           {{ row.item.startTime.substring(0, 16) }}

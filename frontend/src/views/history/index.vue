@@ -58,7 +58,7 @@ export default {
         { key: 'badQuantity', label: '불량품' },
         { key: 'startTime', label: '시작시간' },
         { key: 'endTime', label: '종료시간' },
-        { key: 'workStatus', label: '작업완료상태' },
+        // { key: 'workStatus', label: '작업완료상태' },
         { key: 'emoHistory', label: '중단이력' }
         // { key: 'deleteBtn', label: '삭제' }
       ]
@@ -87,7 +87,7 @@ export default {
         this.workHistory = this.$store.getters.WorkHistory
         console.log('this.workHistory', this.workHistory)
         console.log('this.workHistory.workStatus', this.workHistory.workStatus)
-      }, 400)
+      }, 500)
 
       setTimeout(() => {
         if (this.workHistory.workStatus == 3) {
