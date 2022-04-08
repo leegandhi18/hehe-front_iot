@@ -761,12 +761,6 @@ namespace SmartConnector.Edukit
             public string DebugType { get; set; }
         }
 
-        public class Test
-        {
-            public string tagId { get; set; }
-            public string value { get; set; }
-        }
-
         public class MqttData
         {
             public List<EdukitNewdata> Wrapper { get; set; }

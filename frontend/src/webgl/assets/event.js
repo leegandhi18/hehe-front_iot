@@ -19,10 +19,10 @@ class Event {
       // 환경설정 값 부여
       const props = {
         // hostname: 'localhost',
-        hostname: '220.90.129.47', // 엣지 컴퓨터 ip address - 유지영님
         // hostname: '220.90.129.60', // 엣지 컴퓨터 ip address - 김경은님
+        hostname: '220.90.129.47', // 엣지 컴퓨터 ip address - 유지영님
         port: '8088',
-        topic: '#',
+        topic: 'UVC-EDU-hehe',
         status: statusElement.style,
         edukit: edukit
       }
