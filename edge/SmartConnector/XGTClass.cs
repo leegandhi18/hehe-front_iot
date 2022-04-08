@@ -511,6 +511,9 @@ namespace SmartConnector.Edukit
             return data;
         }
 
+
+
+
         //어플리케이션 데이터 READ 포맷 만들기
         private byte[] CreateReadDataFormat
                 (XGT_Request_Func emFunc, XGT_DataType emDatatype, List<XGTAddressData> pAddressList, XGT_MemoryType emMemtype, int pDataCount)
@@ -574,7 +577,6 @@ namespace SmartConnector.Edukit
 
             return data;
         }
-        
         //어플리케이션 데이터 WRITE 포맷 만들기
         private byte[] CreateWriteDataFormat
             (XGT_Request_Func emFunc, XGT_DataType emDatatype, List<XGTAddressData> pAddressList, XGT_MemoryType emMemtype, int pDataCount)
