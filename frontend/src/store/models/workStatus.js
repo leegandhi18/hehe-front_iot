@@ -14,8 +14,8 @@ const stateInit = {
     badQuantity: null,
     startTime: null,
     endTime: null,
-    workStatus: 0,
-    emoHistory: null
+    description: null,
+    workStatus: 0
   }
 }
 

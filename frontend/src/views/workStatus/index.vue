@@ -45,15 +45,18 @@
       </b-table>
     </div>
     <inform />
+    <inform2 />
   </div>
 </template>
 
 <script>
 import inform from './inform.vue'
+import inform2 from './inform2.vue'
 export default {
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    inform: inform
+    inform: inform,
+    inform2: inform2
   },
   data() {
     return {
@@ -71,7 +74,7 @@ export default {
         endTime: null,
         time: null,
         workStatus: null,
-        emoHistory: null
+        description: null
       },
       beforeWorkingFields: [
         { key: 'id', label: 'ID' },
@@ -252,7 +255,7 @@ export default {
         this.work.workStatus = 1
         this.work.workNum = id
         console.log('시작버튼 누를 시 workNum', this.work.workNum)
-      }, 500) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      }, 600) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
 
       setTimeout(() => {
         // 바꿔준 work의 값을 수정해준다.
@@ -262,7 +265,7 @@ export default {
     },
     onClickComplete(id) {
       console.log('작업 완료')
-      // 작업 시작 버튼을 누른 해당 리스트 상세 조회
+      // 작업 완료 버튼을 누른 해당 리스트 상세 조회
       this.$store.dispatch('actWorkInfo', id)
       setTimeout(() => {
         this.work = this.$store.getters.Work
@@ -276,46 +279,53 @@ export default {
         console.log('완료버튼 누를 시 workNum', this.work.workNum)
         this.work.endTime = new Date().toISOString()
         console.log('work.endTime', this.work.endTime)
-      }, 700) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      }, 600) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
 
       setTimeout(() => {
         // 바꿔준 work의 값을 수정해준다.
         this.$store.dispatch('actWorkUpdate', this.work)
         this.$store.dispatch('actWorkHistoryInsert', this.work) // 작업 완료
         console.log('완료 이력에 넘겨준 데이터', this.work)
-      }, 1100) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      }, 1200) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
     },
     onClickStop(id) {
-      console.log('작업 중단')
-      // 작업 시작 버튼을 누른 해당 리스트 상세 조회
+      // 2. 상세정보 초기화
+      this.$store.dispatch('actWorkStopInit')
+      // 작업 중단 버튼을 누른 해당 리스트 상세 조회
       this.$store.dispatch('actWorkInfo', id)
+      // 작업 중단 모달 생성
+      this.$bvModal.show('modal-stop-inform')
+      // console.log('작업 중단')
       setTimeout(() => {
         this.work = this.$store.getters.Work
         // console.log('1', this.work)
       }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
-
       setTimeout(() => {
-        // workStatus의 작업상태를 바꿔준다. // 작업 중단
-        this.work.workStatus = 3
         this.work.workNum = id
-        console.log('중단버튼 누를 시 workNum', this.work.workNum)
-        this.work.endTime = new Date().toISOString()
-        this.work.time = new Date().toISOString()
-        console.log('work.endTime', this.work.endTime)
-        console.log('work.endTime', this.work.time)
       }, 700) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
 
-      setTimeout(() => {
-        // 바꿔준 work의 값을 수정해준다.
-        this.$store.dispatch('actWorkUpdate', this.work)
-        this.$store.dispatch('actWorkHistoryInsert', this.work) // 완료이력에 남긴다
-        console.log('중단 이력에 넘겨준 데이터', this.work)
-      }, 1100) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // setTimeout(() => {
+      //   // workStatus의 작업상태를 바꿔준다. // 작업 중단
+      //   this.work.workStatus = 3
+      //   this.work.workNum = id
+      //   console.log('중단버튼 누를 시 workNum', this.work.workNum)
+      //   this.work.endTime = new Date().toISOString()
+      //   this.work.time = new Date().toISOString()
+      //   console.log('work.endTime', this.work.endTime)
+      //   console.log('work.Time', this.work.time)
+      // }, 700) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
 
-      setTimeout(() => {
-        // 바꿔준 work의 값을 수정해준다.
-        this.$store.dispatch('actWorkStopInsert', this.work) // 작업 중단
-      }, 1500) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // setTimeout(() => {
+      //   // 바꿔준 work의 값을 수정해준다.
+      //   this.$store.dispatch('actWorkUpdate', this.work)
+      //   this.$store.dispatch('actWorkHistoryInsert', this.work) // 완료이력에 남긴다
+      //   console.log('중단 이력에 넘겨준 데이터', this.work)
+      // }, 1100) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+
+      // setTimeout(() => {
+      //   // 바꿔준 work의 값을 수정해준다.
+      //   this.$store.dispatch('actWorkStopInsert', this.work) // 작업 중단
+      // }, 1500) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
     }
   }
 }

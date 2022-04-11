@@ -8,19 +8,22 @@ const stateInit = {
     name: null,
     machineCode: null,
     time: null,
-    workStatus: null
+    workStatus: null,
+    description: null
   }
 }
 export default {
   state: {
     WorkStopList: [],
     WorkStop: { ...stateInit.WorkStop },
-    InsertedResult: null
+    InsertedResult: null,
+    InputMode: null
   },
   getters: {
     WorkStopList: state => state.WorkStopList,
     WorkStop: state => state.WorkStop,
-    InsertedResult: state => state.InsertedResult
+    WorkStopInsertedResult: state => state.InsertedResult,
+    WorkStopInputMode: state => state.InputMode
   },
   mutations: {
     setWorkStopList(state, data) {
@@ -31,6 +34,9 @@ export default {
     },
     setInsertedResult(state, data) {
       state.InsertedResult = data
+    },
+    setInputMode(state, data) {
+      state.InputMode = data
     }
   },
   actions: {
@@ -42,6 +48,14 @@ export default {
         context.commit('setWorkStopList', workStopList)
         console.log('workStopList', workStopList)
       })
+    },
+    // 중단 사유 입력폼 초기화
+    actWorkStopInit(context, payload) {
+      context.commit('setWorkStop', { ...stateInit.WorkStop })
+    },
+    // 입력모드 설정
+    actWorkStopInputMode(context, payload) {
+      context.commit('setInputMode', payload)
     },
     // 중단이력(등록)
     actWorkStopInsert(context, payload) {

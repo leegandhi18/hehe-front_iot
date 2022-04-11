@@ -11,6 +11,9 @@
         <b-form-group label="중단이력시간" label-for="time" label-cols="3">
           <b-form-input id="time" v-model="workStop.time" disabled></b-form-input>
         </b-form-group>
+        <b-form-group label="중단 사유" label-for="description" label-cols="3">
+          <b-form-input id="description" v-model="workStop.description" disabled></b-form-input>
+        </b-form-group>
       </div>
     </b-modal>
   </div>
@@ -39,7 +42,8 @@ export default {
         workNum: null,
         name: null,
         machineCode: null,
-        time: null
+        time: null,
+        description: null
       }
     }
   },
