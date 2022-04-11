@@ -1,5 +1,6 @@
 ﻿
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,6 +42,7 @@ namespace SmartConnector.Edukit
                 string edgeConfig = File.ReadAllText(EdgeConfigFile);
 
                 edgeConfigResult = JsonConvert.DeserializeObject<EdgeConfig>(edgeConfig);
+                
             }
 
             public Task<Boolean> Connect()
@@ -65,7 +67,6 @@ namespace SmartConnector.Edukit
                             { "type", "EDGE" },
                             { "id", edgeConfigResult.EdukitId }
                         };
-
                     var options = new Ecng.Net.SocketIO.Client.IO.Options
                     {
                         Query = query
@@ -78,6 +79,7 @@ namespace SmartConnector.Edukit
                     Console.WriteLine("Edukit IP : " + ip);
                     Console.WriteLine("Edukit PORT : " + port);
                     Console.WriteLine("##########################");
+                    // Console.WriteLine(edgeConfigResult.ToString()); // to string 여부와 상관없이 program + EdgeConfig 라고 찍힘..!
 
                     Console.WriteLine("mqtt : " + edgeConfigResult.MqttBrokerIP);
                     Console.WriteLine("mqttport : " + edgeConfigResult.MqttBrokerPort);
@@ -85,6 +87,11 @@ namespace SmartConnector.Edukit
                     Console.WriteLine("delayTime : " + edgeConfigResult.DelayTime);
 
                     XGTClass xGTClass = new XGTClass(ip, port);
+
+                    mqttClient.Subscribe(new string[] { edgeConfigResult.FromOutside }, new byte[] { 0 }); 
+                    // register a callback-function (we have to implement, see below) which is called by the library when a message was received
+                    mqttClient.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
+
                     ConnectionStart(DelayTime, xGTClass, ip, port);
                 }
                 catch (Exception ex)
@@ -99,36 +106,43 @@ namespace SmartConnector.Edukit
                 ServerSocket.Emit("joinRoom", edgeConfigResult.EdukitId);
             }
 
-            private void ConnectionStart(int DelayTime, XGTClass xGTClass, string ip, int port)
+            private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
             {
-                xGTClass.Connect(ip, port);
+                string ReceivedMessage = Encoding.UTF8.GetString(e.Message);
+                Console.WriteLine( "ReceivedMessage = " + ReceivedMessage); // {"tagId":"37", "value":"1"}
 
-                ServerSocket.Emit("joinRoom", edgeConfigResult.EdukitId);
+                XGTClass xGTClass = new XGTClass(edgeConfigResult.EdukitIP, 2004);
+                XGTWrite(xGTClass, ReceivedMessage);
+            }
 
-                ServerSocket.On($"SEND{edgeConfigResult.EdukitId}", (msg) =>
+            private void XGTWrite(XGTClass xGTClass, string ReceivedMessage)
+            {
+                xGTClass.Connect(edgeConfigResult.EdukitIP, 2004);
+                
+                // 읽어올 데이터를 XGTAddressData로 생성
+                XGTAddressData pAddress2 = new XGTAddressData();
+
+                dynamic test = JsonConvert.DeserializeObject(ReceivedMessage);  // 여기서 json 형식으로 바꾸는거야~~~~~~~
+                Console.Write("test.ToString = "+ test.ToString());
+
+                if (test.tagId == "1") //start
                 {
-                    XGTAddressData pAddress2 = new XGTAddressData();
-
-                    dynamic test = JsonConvert.DeserializeObject<Test>(msg.ToString());
-
-                    if (test.tagId.Equals("1")) //start
-                    {
-                        if (test.value.Equals("0"))
+                        if (test.value == "0")
                         {
                             pAddress2.Address = "0";
                             pAddress2.Data = "0";
 
                             xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                         }
-                        else if (test.value.Equals("1"))
+                        else if (test.value == "1")
                         {
                             pAddress2.Address = "0";
                             pAddress2.Data = "1";
 
                             xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                         }
-                    }
-                    else if (test.tagId.Equals("8")) //reset
+                }
+                else if (test.tagId == "8") //reset
                     {
                         pAddress2.Address = "F";
                         pAddress2.Data = "1";
@@ -138,16 +152,16 @@ namespace SmartConnector.Edukit
                         pAddress2.Data = "0";
                         xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                     }
-                    else if (test.tagId.Equals("9")) // 1호기 ON/OFF
+                else if (test.tagId == "9") // 1호기 ON/OFF
                     {
-                        if (test.value.Equals("0"))
+                        if (test.value == "0")
                         {
                             pAddress2.Address = "8F";
                             pAddress2.Data = "0";
 
                             xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                         }
-                        else if (test.value.Equals("1"))
+                        else if (test.value == "1")
                         {
                             pAddress2.Address = "8F";
                             pAddress2.Data = "1";
@@ -155,16 +169,16 @@ namespace SmartConnector.Edukit
                             xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                         }
                     }
-                    else if (test.tagId.Equals("10")) // 2호기 ON/OFF
+                else if (test.tagId == "10") // 2호기 ON/OFF
                     {
-                        if (test.value.Equals("0"))
+                        if (test.value == "0")
                         {
                             pAddress2.Address = "9F";
                             pAddress2.Data = "0";
 
                             xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                         }
-                        else if (test.value.Equals("1"))
+                        else if (test.value == "1")
                         {
                             pAddress2.Address = "9F";
                             pAddress2.Data = "1";
@@ -172,16 +186,16 @@ namespace SmartConnector.Edukit
                             xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                         }
                     }
-                    else if (test.tagId.Equals("11")) // 3호기 ON/OFF
+                else if (test.tagId == "11") // 3호기 ON/OFF
                     {
-                        if (test.value.Equals("0"))
+                        if (test.value == "0")
                         {
                             pAddress2.Address = "10E";
                             pAddress2.Data = "0";
 
                             xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                         }
-                        else if (test.value.Equals("1"))
+                        else if (test.value == "1")
                         {
                             pAddress2.Address = "10E";
                             pAddress2.Data = "1";
@@ -189,16 +203,16 @@ namespace SmartConnector.Edukit
                             xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                         }
                     }
-                    else if (test.tagId.Equals("12")) // sensor1 ON/OFF
+                else if (test.tagId == "12") // sensor1 ON/OFF
                     {
-                        if (test.value.Equals("0"))
+                        if (test.value == "0")
                         {
                             pAddress2.Address = "6F";
                             pAddress2.Data = "0";
 
                             xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                         }
-                        else if (test.value.Equals("1"))
+                        else if (test.value == "1")
                         {
                             pAddress2.Address = "6F";
                             pAddress2.Data = "1";
@@ -206,16 +220,16 @@ namespace SmartConnector.Edukit
                             xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                         }
                     }
-                    else if (test.tagId.Equals("13")) // sensor2 ON/OFF
+                else if (test.tagId == "13") // sensor2 ON/OFF
                     {
-                        if (test.value.Equals("0"))
+                        if (test.value == "0")
                         {
                             pAddress2.Address = "7F";
                             pAddress2.Data = "0";
 
                             xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                         }
-                        else if (test.value.Equals("1"))
+                        else if (test.value == "1")
                         {
                             pAddress2.Address = "7F";
                             pAddress2.Data = "1";
@@ -223,11 +237,35 @@ namespace SmartConnector.Edukit
                             xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                         }
                     }
-                });
+                else if (test.tagId == "37") // DiceValue
+                    {
+                        if (test.value == "0")
+                        {
+                            pAddress2.Address = "1100";
+                            pAddress2.Data = "0";
 
+                            xGTClass.Write(XGT_DataType.Word, pAddress2, XGT_MemoryType.DataRegister_D, 0);
+                        }
+                        else
+                        {
+                            pAddress2.Address = "1100";
+                            pAddress2.Data = test.value;
+
+                            xGTClass.Write(XGT_DataType.Word, pAddress2, XGT_MemoryType.DataRegister_D, 0);
+                        }
+                    }
+            }
+
+            private void ConnectionStart(int DelayTime, XGTClass xGTClass, string ip, int port)
+            {
+                xGTClass.Connect(ip, port);
+
+                // BitAddressData와 WordAddressData를 분리함
+                // 메모리주소의 알파벳이 M,P이면 Bit, D,C,K이면 Word임
                 Dictionary<XGTAddressData, string> BitAddressList = new Dictionary<XGTAddressData, string>();
                 Dictionary<XGTAddressData, string> WordAddressList = new Dictionary<XGTAddressData, string>();
 
+                // 읽어올 데이터를 XGTAddressData로 생성
                 XGTAddressData Start = new XGTAddressData();                //시작 M0000 bit
                 XGTAddressData No1PartsError = new XGTAddressData();        //no1 칩없음 M0011 bit 1이 정상 0이 칩없음
                 XGTAddressData No1_Action = new XGTAddressData();           //no1 move M92 bit								
@@ -271,6 +309,8 @@ namespace SmartConnector.Edukit
                 XGTAddressData Motor1Busy = new XGTAddressData();           // 1축 운전중 K04200 WORD
                 XGTAddressData Motor2Busy = new XGTAddressData();           // 2축 운전중 K04400 WORD
 
+                // 생성한 XGTAddressData에 주소, 이름, TagId 입력
+                // Name과 TagId는 사용자가 원하는 Name과 TagId로 설정할 수 있음
                 Start.Address = "0";
                 Start.Name = "Start";
                 Start.TagId = "1";
@@ -439,6 +479,8 @@ namespace SmartConnector.Edukit
                 Motor2Busy.Name = "Motor2Busy";
                 Motor2Busy.TagId = "42";
 
+                // 처음에 생성한 AddressList에 XGTAddressData와 메모리주소의 알파벳 부분을 추가함
+                // 알파벳에 따라 BitAddressList와 WordAddressData 중 알맞은 리스트에 넣어주어야 함
                 BitAddressList.Add(Start, "M");
                 BitAddressList.Add(No1PartsError, "M");
                 BitAddressList.Add(No1_Action, "M");
@@ -482,14 +524,16 @@ namespace SmartConnector.Edukit
                 BitAddressList.Add(Motor1Busy, "K");
                 BitAddressList.Add(Motor2Busy, "K");
 
+                // 데이터 수집 로직
                 while (true)
                 {
                     try
                     {
+                        // 위에서 추가한 태그 데이터를 담아놓을 리스트를 생성함
                         List<EdukitNewdata> edukitData = new List<EdukitNewdata>();
-
                         List<EdukitNewdata> edukitMqttData = new List<EdukitNewdata>();
 
+                        // BitAddressList를 읽어로는 로직 (M,P번지)
                         foreach (var address in BitAddressList)
                         {
                             XGTData val = null;
@@ -552,6 +596,8 @@ namespace SmartConnector.Edukit
                                 Thread.Sleep(DelayTime / 100);
                             }
                         }
+
+                        // BitAddressList를 읽어로는 로직 (D,C,K번지)
                         foreach (var address in WordAddressList)
                         {
                             XGTData val = null;
@@ -616,6 +662,8 @@ namespace SmartConnector.Edukit
                                 Thread.Sleep(DelayTime / 100);
                             }
                         }
+
+                        // 0번째 태그에는 현재 시간을 추가함
                         EdukitNewdata newdata2 = new EdukitNewdata
                         {
                             name = "DataTime",
@@ -624,31 +672,36 @@ namespace SmartConnector.Edukit
                         };
                         edukitData.Add(newdata2);
 
+                        // Digital Twin에서 사용할 데이터로 Wrapper로 한번 감싸줌
                         MqttData mqttData = new MqttData
                         {
                             Wrapper = edukitData
                         };
 
+                        // Socket으로 데이터 송신하는 함수
                         SocketIoData(edukitData);
+                        // Mqtt로 데이터 송신하는 함수
                         MqttData(mqttData);
 
+                        // Debug mode에서는 콘솔에 퍼블리쉬하는 중인 것 보이도록 
                         if (edgeConfigResult.DebugType == "Debug")
                         {
-                            Console.Clear();
+                            Console.WriteLine("Publish!");
+                            //Console.Clear();
 
-                            List<EdukitNewdata> SortedList = edukitData.OrderBy(x => Int32.Parse(x.tagId)).ToList();
+                            // List<EdukitNewdata> SortedList = edukitData.OrderBy(x => Int32.Parse(x.tagId)).ToList();
 
-                            foreach (var data in SortedList)
-                            {
-                                Console.WriteLine($"[{data.tagId}]{data.name} : {data.value}");
-                            }
+                            // foreach (var data in SortedList)
+                            // {
+                            //     Console.WriteLine($"[{data.tagId}]{data.name} : {data.value}");
+                            // }
                         }
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
-
                     }
+                    // EdgeConfigFile.json에서 설정한 시간만큼 Delay
                     Thread.Sleep(DelayTime);
                 }
             }
@@ -699,18 +752,13 @@ namespace SmartConnector.Edukit
         {
             public string EdukitId { get; set; }
             public string EdukitIP { get; set; }
+            public string FromOutside { get; set; }
             public string EdukitPort { get; set; }
             public string MqttBrokerIP { get; set; }
             public string MqttBrokerPort { get; set; }
             public string WebSocketServerUrl { get; set; }
             public string DelayTime { get; set; }
             public string DebugType { get; set; }
-        }
-
-        public class Test
-        {
-            public string TagId { get; set; }
-            public string Value { get; set; }
         }
 
         public class MqttData

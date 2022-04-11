@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\bin",
-    "\\bin\\Release\\netcoreapp3.1\\publish"
+    "\\bin"
   ],
-  "SelectedNode": "\\EdgeConfigFile.json",
+  "SelectedNode": "\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

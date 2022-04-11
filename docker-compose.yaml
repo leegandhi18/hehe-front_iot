@@ -23,6 +23,51 @@ services:
       - 5432:5432
     restart: always
 
+<<<<<<< HEAD
+  # backend build
+  backend:
+    container_name: EDUKiT_backend
+    depends_on:
+      - database
+    build: 
+      context: ./backend
+      dockerfile: backend.dev.dockerfile
+    image: leegandhi18/edukit_backend
+    volumes:
+      - ./backend:/usr/src/app
+      #- /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - LOGGER_LEVEL=debug
+      - DB_HOST=database
+      - DB_PORT=5432
+      - DB_DATABASE=EDUKiT_database
+      - DB_ID=postgres
+      - DB_PASS=postgres
+      - DB_DIALECT=postgres
+    restart: "unless-stopped"
+    command: "npm start"
+    # command: "npm run dev"
+
+  # frontend build
+  frontend:
+    container_name: EDUKiT_frontend
+    depends_on:
+      - backend
+    build: 
+      context: ./frontend
+      dockerfile: frontend.dev.dockerfile
+    image: leegandhi18/edukit_frontend
+    volumes:
+      - ./frontend:/app
+      #- app/node_modules
+    ports:
+      - "8080:8080"
+
+=======
   # grafana build
   grafana: 
     image: grafana/grafana:latest
@@ -123,6 +168,7 @@ volumes:
   mqtt:
 networks:
   monitoring:
+>>>>>>> ec6cf8c61227e8ccb2c55abe7e2dc50b09a4297b
 # docker-compose up -d 	// 서비스 실행
 # docker-compose ps 		 // 서비스 실행 상태 확인
 # docker-compose exec simulator-server npm i 	// 시뮬레이터 서버 npm 모듈 설치

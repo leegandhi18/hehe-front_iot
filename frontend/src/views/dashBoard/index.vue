@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background-color: black; height: 100vh">
     <edukit />
     <iframe
       src="http://localhost:3005/d-solo/Xat2J48nk/influxdb-metrics?orgId=1&from=1649394807572&to=1649394987572&kiosk=tv&refresh=5s&panelId=1"
