@@ -60,7 +60,7 @@ export default {
     // actUserInit(context, payload) {
     //   context.commit('setUser', { ...stateInit.User })
     // },
-    actUserInfo(context, payload) {
+    async actUserInfo(context, payload) {
       // 상태값 초기화
       // context.commit('setUser', { ...stateInit.User })
       //테스트 데이터 세팅 //
@@ -74,7 +74,7 @@ export default {
       // console.log('userList', userList)
 
       /* RestAPI 호출 */
-      api
+      await api
         .get(`/serverApi/users/${payload}`)
         .then(response => {
           const user = response && response.data
@@ -87,7 +87,7 @@ export default {
         })
     },
     // 사용자 정보 수정
-    actUserUpdate(context, payload) {
+    async actUserUpdate(context, payload) {
       context.commit('setUpdatedResult', null)
 
       // setTimeout(() => {
@@ -95,7 +95,7 @@ export default {
       //   context.commit('setUserUpdatedResult', userUpdatedResult)
       // }, 300)
       /* RestAPI 호출 */
-      api
+      await api
         .put(`/serverApi/users/${payload.id}`, payload)
         .then(response => {
           const updatedResult = response && response.data && response.data.updatedCount

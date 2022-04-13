@@ -9,6 +9,7 @@
         <template #cell(endTime)="row">
           {{ row.item.startTime.substring(0, 16) }}
         </template> -->
+        {{ infoData }}
         <template #cell(emoHistory)="row">
           <b-button class="emoHistory" size="sm" variant="dark" @click="onClickRead(row.item.id)">중단이력</b-button>
         </template>
@@ -33,7 +34,7 @@ export default {
         time: null,
         workStatus: null
       },
-      WorkHistory: {
+      workHistory: {
         id: null,
         workNum: null,
         name: null,
@@ -79,23 +80,19 @@ export default {
     searchWorkHistoryList() {
       this.$store.dispatch('actWorkHistoryList')
     },
-    onClickRead(id) {
+    async onClickRead(id) {
       // 중단이력 조회
-      this.$store.dispatch('actWorkStopInfo', id)
-      this.$store.dispatch('actWorkHistoryInfo', id)
-      setTimeout(() => {
-        this.workHistory = this.$store.getters.WorkHistory
-        console.log('this.workHistory', this.workHistory)
-        console.log('this.workHistory.workStatus', this.workHistory.workStatus)
-      }, 500)
+      await this.$store.dispatch('actWorkStopInfo', id)
+      await this.$store.dispatch('actWorkHistoryInfo', id)
+      this.workHistory = this.$store.getters.WorkHistory
+      console.log('this.workHistory', this.workHistory)
+      console.log('this.workHistory.workStatus', this.workHistory.workStatus)
 
-      setTimeout(() => {
-        if (this.workHistory.workStatus == 3) {
-          this.$bvModal.show('modal-stop-inform')
-        } else {
-          alert('중단이력이 없습니다.')
-        }
-      }, 1000)
+      if (this.workHistory.workStatus == 3) {
+        this.$bvModal.show('modal-stop-inform')
+      } else {
+        alert('중단이력이 없습니다.')
+      }
     }
   }
 }

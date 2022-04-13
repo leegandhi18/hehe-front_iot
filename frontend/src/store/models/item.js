@@ -49,39 +49,16 @@ export default {
   actions: {
     // 부서 리스트 조회
     actItemList(context, payload) {
-      /* 테스트 데이터 세팅 */
-      // const itemList = [
-      //   {
-      //     id: 1,
-      //     name: '마스크',
-      //     quantity: '100',
-      //     itemId: '완제품',
-      //     machineCode: '123'
-      //   },
-      //   {
-      //     id: 2,
-      //     name: '금속',
-      //     quantity: '50',
-      //     itemId: '재료',
-      //     machineCode: '235'
-      //   }
-      // ]
-      // context.commit('setItemList', itemList)
-
       /* RestAPI 호출 */
       api.get('/serverApi/items').then(response => {
         const itemList = response && response.data && response.data.rows
         context.commit('setItemList', itemList)
       })
     },
-    actItemInsert(context, payload) {
+    async actItemInsert(context, payload) {
       context.commit('setInsertedResult', null)
-      // setTimeout(() => {
-      //   const insertedResult = 1
-      //   context.commit('setInsertedResult', insertedResult)
-      // }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
       /* RestAPI 호출 */
-      api
+      await api
         .post('/serverApi/items', payload)
         .then(response => {
           console.log('response', response)
@@ -100,38 +77,10 @@ export default {
     actItemInputMode(context, payload) {
       context.commit('setInputMode', payload)
     },
-    actItemInfo(context, payload) {
+    async actItemInfo(context, payload) {
       context.commit('setItem', { ...stateInit.Item })
-      //테스트 데이터 세팅 //
-      // setTimeout(() => {
-      //   const itemList = [
-      //     {
-      //       id: 1,
-      //       name: '마스크',
-      //       quantity: '100',
-      //       itemId: '완제품',
-      //       machineCode: '123'
-      //     },
-      //     {
-      //       id: 2,
-      //       name: '금속',
-      //       quantity: '50',
-      //       itemId: '재료',
-      //       machineCode: '235'
-      //     }
-      //   ]
-
-      //   let item = { ...stateInit.item }
-      //   for (let i = 0; i < itemList.length; i += 1) {
-      //     if (payload === itemList[i].id) {
-      //       item = { ...itemList[i] }
-      //     }
-      //   }
-      //   context.commit('setItem', item)
-      // }, 300)
-
       /* RestAPI 호출 */
-      api
+      await api
         .get(`/serverApi/items/${payload}`)
         .then(response => {
           const item = response && response.data
@@ -143,16 +92,11 @@ export default {
           context.commit('setItem', -1)
         })
     },
-    actItemUpdate(context, payload) {
+    async actItemUpdate(context, payload) {
       context.commit('setUpdatedResult', null)
       console.log('payload', payload)
-      // setTimeout(() => {
-      //   const updatedResult = 1
-      //   context.commit('setUpdatedResult', updatedResult)
-      // }, 300)
-
       /* RestAPI 호출 */
-      api
+      await api
         .put(`/serverApi/items/${payload.id}`, payload)
         .then(response => {
           const updatedResult = response && response.data && response.data.updatedCount
@@ -166,11 +110,6 @@ export default {
     },
     actItemDelete(context, payload) {
       context.commit('setDeletedResult', null)
-      // setTimeout(() => {
-      //   const deletedResult = 1
-      //   context.commit('setDeletedResult', deletedResult)
-      // }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
-
       /* RestAPI 호출 */
       api
         .delete(`/serverApi/items/${payload}`)

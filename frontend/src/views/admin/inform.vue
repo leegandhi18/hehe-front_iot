@@ -2,21 +2,26 @@
   <div>
     <b-modal id="modal-admin-inform" :title="getTitle" @ok="onSubmit">
       <div>
-        <b-form-group v-if="inputMode === 'update'" label="id" label-for="code" label-cols="3">
+        <b-form-group v-if="inputMode === 'update'" label="ID" label-for="code" label-cols="3">
           <b-form-input id="id" v-model="admin.id" disabled></b-form-input>
         </b-form-group>
         <b-form-group label="이름" label-for="device" label-cols="3">
-          <b-form-input id="name" v-model="admin.name"></b-form-input>
+          <b-form-input id="name" v-model="admin.name" placeholder="이름을 입력하시오."></b-form-input>
         </b-form-group>
         <b-form-group label="비밀번호" label-for="password" label-cols="3">
-          <b-form-input id="password" v-model="admin.password" type="password"></b-form-input>
+          <b-form-input
+            id="password"
+            v-model="admin.password"
+            type="password"
+            placeholder="비밀번호를 입력하시오."
+          ></b-form-input>
         </b-form-group>
         <b-form-group label="권한" label-for="role" label-cols="3">
           <b-form-radio-group id="role" v-model="admin.role" :options="adminRole.options" />
           <!-- <b-form-input id="role" v-model="admin.role"></b-form-input> -->
         </b-form-group>
         <b-form-group label="전화번호" label-for="phone" label-cols="3">
-          <b-form-input id="phone" v-model="admin.phone" type="tel"></b-form-input>
+          <b-form-input id="phone" v-model="admin.phone" type="tel" placeholder="전화번호를 입력하시오."></b-form-input>
         </b-form-group>
       </div>
     </b-modal>
@@ -80,23 +85,37 @@ export default {
     // this.$store.dispatch('actAdminList') // 부서정보 조회
   },
   methods: {
-    onSubmit() {
+    async onSubmit(e) {
+      e.preventDefault()
       // 1. 등록인 경우
-      if (this.inputMode === 'insert') {
-        this.$store.dispatch('actAdminInsert', this.admin) // 입력 실행
+      if (
+        this.admin.name &&
+        this.admin.password &&
+        this.admin.role &&
+        this.admin.phone &&
+        this.inputMode === 'insert'
+      ) {
+        await this.$store.dispatch('actAdminInsert', this.admin) // 입력 실행
+        this.$bvModal.hide('modal-admin-inform')
+        return true
+      } else if (!this.admin.name && !this.admin.password && !this.admin.role && !this.admin.phone) {
+        return false
       }
       // 2. 수정인 경우
-      if (this.inputMode === 'update') {
-        console.log(this.password)
-        this.$store.dispatch('actAdminUpdate', this.admin) // 수정 실행
+      if (
+        this.admin.name &&
+        this.admin.password &&
+        this.admin.role &&
+        this.admin.phone &&
+        this.inputMode === 'update'
+      ) {
+        await this.$store.dispatch('actAdminUpdate', this.admin) // 입력 실행
+        this.$bvModal.hide('modal-admin-inform')
+        return true
+      } else if (!this.admin.name && !this.admin.password && !this.admin.role && !this.admin.phone) {
+        return false
       }
     }
-    // setDefaultValues() {
-    //   // 기본값 세팅
-    //   if (this.inputMode === 'insert') {
-    //     this.work.role = this.AdminRole.default // 사용자 권한
-    //   }
-    // }
   }
 }
 </script>

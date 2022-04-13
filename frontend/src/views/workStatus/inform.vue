@@ -37,7 +37,7 @@
             text-field="code"
           >
             <template #first>
-              <b-form-select-option :value="null">-- 설비를 선택해 주세요 --</b-form-select-option>
+              <b-form-select-option :value="null">-- 설비를 선택해 주세요. --</b-form-select-option>
             </template>
           </b-form-select>
         </b-form-group>
@@ -47,12 +47,20 @@
         <b-form-group label="품목" label-for="name" label-cols="3">
           <b-form-select id="name" v-model="work.itemName" :options="itemList" value-field="name" text-field="name">
             <template #first>
-              <b-form-select-option :value="null">-- 품목을 선택해 주세요 --</b-form-select-option>
+              <b-form-select-option :value="null">-- 품목을 선택해 주세요. --</b-form-select-option>
             </template>
           </b-form-select>
         </b-form-group>
         <b-form-group label="수량" label-for="productQuantity" label-cols="3">
-          <b-form-input type="number" id="productQuantity" v-model="work.productQuantity"></b-form-input>
+          <b-form-input
+            id="productQuantity"
+            v-model="work.productQuantity"
+            type="number"
+            min="1"
+            max="5"
+            placeholder="1 ~ 5 사이의 숫자를 넣으시오."
+          >
+          </b-form-input>
         </b-form-group>
         <b-form-group label="작업시작 시간" label-for="startTime" label-cols="3">
           <input v-model="work.startTime" type="datetime-local" style="width: 100%" />
@@ -158,27 +166,51 @@ export default {
     this.$store.dispatch('actItemList') // 품목 정보 조회
   },
   methods: {
-    // onSubmit() {
-    //   this.$store.dispatch('actWorkInsert', this.work) // 부서입력 실행
-    //   console.log(this.work)
-    // }
-    onSubmit() {
+    async onSubmit(e) {
+      e.preventDefault()
       // 1. 등록인 경우
-      if (this.inputMode === 'insert') {
-        this.$store.dispatch('actWorkInsert', this.work) // 입력 실행
+      if (
+        this.work.name &&
+        this.work.machineCode &&
+        this.work.itemName &&
+        this.work.productQuantity &&
+        this.work.startTime &&
+        this.inputMode === 'insert'
+      ) {
+        await this.$store.dispatch('actWorkInsert', this.work) // 입력 실행
+        this.$bvModal.hide('modal-work-inform')
+        return true
+      } else if (
+        !this.work.name &&
+        !this.work.machineCode &&
+        !this.work.itemName &&
+        !this.work.productQuantity &&
+        !this.work.startTime
+      ) {
+        return false
       }
-
       // 2. 수정인 경우
-      if (this.inputMode === 'update') {
-        this.$store.dispatch('actWorkUpdate', this.work) // 수정 실행
+      if (
+        this.work.name &&
+        this.work.machineCode &&
+        this.work.itemName &&
+        this.work.productQuantity &&
+        this.work.startTime &&
+        this.inputMode === 'update'
+      ) {
+        await this.$store.dispatch('actWorkUpdate', this.work) // 입력 실행
+        this.$bvModal.hide('modal-work-inform')
+        return true
+      } else if (
+        !this.work.name &&
+        !this.work.machineCode &&
+        !this.work.itemName &&
+        !this.work.productQuantity &&
+        !this.work.startTime
+      ) {
+        return false
       }
     }
-    // setDefaultValues() {
-    //   // 기본값 세팅
-    //   if (this.inputMode === 'insert') {
-    //     this.work.role = this.workRole.default // 사용자 권한
-    //   }
-    // }
   }
 }
 </script>

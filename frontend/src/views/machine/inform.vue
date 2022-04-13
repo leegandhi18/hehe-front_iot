@@ -6,7 +6,7 @@
           <b-form-input id="id" v-model="machine.id" disabled></b-form-input>
         </b-form-group>
         <b-form-group label="설비" label-for="code" label-cols="3">
-          <b-form-input id="code" v-model="machine.code"></b-form-input>
+          <b-form-input id="code" v-model="machine.code" placeholder="설비를 등록하시오."></b-form-input>
         </b-form-group>
       </div>
     </b-modal>
@@ -60,14 +60,24 @@ export default {
     // this.setDefaultValues() // 기본값 세팅
   },
   methods: {
-    onSubmit() {
+    async onSubmit(e) {
+      e.preventDefault()
       // 1. 등록인 경우
-      if (this.inputMode === 'insert') {
-        this.$store.dispatch('actMachineInsert', this.machine) // 입력 실행
+      if (this.machine.code && this.inputMode === 'insert') {
+        await this.$store.dispatch('actMachineInsert', this.machine) // 입력 실행
+        this.$bvModal.hide('modal-machine-inform')
+        return true
+      } else if (!this.machine.code) {
+        return false
+        // this.error.push('설비를 등록하셔야 합니다.')
       }
       // 2. 수정인 경우
-      if (this.inputMode === 'update') {
-        this.$store.dispatch('actMachineUpdate', this.machine) // 수정 실행
+      if (this.machine.code && this.inputMode === 'update') {
+        await this.$store.dispatch('actMachineUpdate', this.machine) // 수정 실행
+        this.$bvModal.hide('modal-machine-inform')
+        return true
+      } else if (!this.machine.code) {
+        return false
       }
     }
     // setDefaultValues() {

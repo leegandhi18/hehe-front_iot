@@ -42,21 +42,21 @@ export default {
   },
   actions: {
     // 완료이력 리스트 조회
-    actWorkHistoryList(context, payload) {
+    async actWorkHistoryList(context, payload) {
       /* RestAPI 호출 */
-      api.get('/serverApi/machineHistories').then(response => {
+      await api.get('/serverApi/machineHistories').then(response => {
         const workHistoryList = response && response.data && response.data.rows
         context.commit('setWorkHistoryList', workHistoryList)
         console.log('workHistoryList', workHistoryList)
       })
     },
     // 완료이력(등록)
-    actWorkHistoryInsert(context, payload) {
+    async actWorkHistoryInsert(context, payload) {
       // 상태값 초기화
       context.commit('setInsertedResult', null)
 
       /* RestAPI 호출 */
-      api
+      await api
         .post('/serverApi/machineHistories', payload)
         .then(response => {
           console.log('payload', payload)
@@ -71,12 +71,12 @@ export default {
         })
     },
     // 완료 상세정보 조회
-    actWorkHistoryInfo(context, payload) {
+    async actWorkHistoryInfo(context, payload) {
       // 상태값 초기화
       context.commit('setWorkHistory', { ...stateInit.WorkHistory })
 
       /* RestAPI 호출 */
-      api
+      await api
         .get(`/serverApi/orders/${payload}`)
         .then(response => {
           const workHistory = response && response.data

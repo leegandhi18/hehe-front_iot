@@ -41,9 +41,9 @@ export default {
   },
   actions: {
     // 중단이력 조회
-    actWorkStopList(context, payload) {
+    async actWorkStopList(context, payload) {
       /* RestAPI 호출 */
-      api.get('/serverApi/emoHistories').then(response => {
+      await api.get('/serverApi/emoHistories').then(response => {
         const workStopList = response && response.data && response.data.rows
         context.commit('setWorkStopList', workStopList)
         console.log('workStopList', workStopList)
@@ -58,12 +58,12 @@ export default {
       context.commit('setInputMode', payload)
     },
     // 중단이력(등록)
-    actWorkStopInsert(context, payload) {
+    async actWorkStopInsert(context, payload) {
       // 상태값 초기화
       context.commit('setInsertedResult', null)
 
       /* RestAPI 호출 */
-      api
+      await api
         .post('/serverApi/emoHistories', payload)
         .then(response => {
           console.log('insert payload', payload)
@@ -79,12 +79,12 @@ export default {
         })
     },
     // 중단이력 상세정보 조회
-    actWorkStopInfo(context, payload) {
+    async actWorkStopInfo(context, payload) {
       // 상태값 초기화
       context.commit('setWorkStop', { ...stateInit.WorkStop })
 
       /* RestAPI 호출 */
-      api
+      await api
         .get(`/serverApi/emoHistories/${payload}`)
         .then(response => {
           const workStop = response && response.data

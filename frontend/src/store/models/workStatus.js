@@ -63,36 +63,29 @@ export default {
   },
   actions: {
     // 작업전 리스트 조회
-    actBeforeWorkingList(context, payload) {
+    async actBeforeWorkingList(context, payload) {
       /* RestAPI 호출 */
-      api.get('/serverApi/orders/beforeWorking').then(response => {
+      await api.get('/serverApi/orders/beforeWorking').then(response => {
         console.log('beforeWorkingList', response.data.rows)
         const beforeWorkingList = response && response.data && response.data.rows
         context.commit('setBeforeWorkingList', beforeWorkingList)
       })
     },
     // 작업중 리스트 조회
-    actWorkingList(context, payload) {
+    async actWorkingList(context, payload) {
       /* RestAPI 호출 */
-      api.get('/serverApi/orders/working').then(response => {
+      await api.get('/serverApi/orders/working').then(response => {
         console.log('workingList', response.data.rows)
         const workingList = response && response.data && response.data.rows
         context.commit('setWorkingList', workingList)
       })
     },
     // 작업 입력(등록)
-    actWorkInsert(context, payload) {
+    async actWorkInsert(context, payload) {
       // 상태값 초기화
       context.commit('setInsertedResult', null)
-
-      /* 테스트 데이터 세팅 */
-      // setTimeout(() => {
-      //   const workInsertedResult = 1
-      //   context.commit('setInsertedResult', workInsertedResult)
-      // }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
-
       /* RestAPI 호출 */
-      api
+      await api
         .post('/serverApi/orders', payload)
         .then(response => {
           console.log('payload', payload)
@@ -115,12 +108,12 @@ export default {
       context.commit('setInputMode', payload)
     },
     // 작업 상세정보 조회
-    actWorkInfo(context, payload) {
+    async actWorkInfo(context, payload) {
       // 상태값 초기화
       context.commit('setWork', { ...stateInit.Work })
 
       /* RestAPI 호출 */
-      api
+      await api
         .get(`/serverApi/orders/${payload}`)
         .then(response => {
           const order = response && response.data
@@ -134,7 +127,7 @@ export default {
         })
     },
     // 작업 수정
-    actWorkUpdate(context, payload) {
+    async actWorkUpdate(context, payload) {
       // 상태값 초기화
       context.commit('setUpdatedResult', null)
 
@@ -145,7 +138,7 @@ export default {
       // }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
 
       /* RestAPI 호출 */
-      api
+      await api
         .put(`/serverApi/orders/${payload.id}`, payload)
         .then(response => {
           const updatedResult = response && response.data && response.data.updatedCount

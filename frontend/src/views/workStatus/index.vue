@@ -241,68 +241,49 @@ export default {
         }
       })
     },
-    onClickStart(id) {
+    async onClickStart(id) {
       console.log('작업 시작')
       // 작업 시작 버튼을 누른 해당 리스트 상세 조회
-      this.$store.dispatch('actWorkInfo', id)
-      setTimeout(() => {
-        this.work = this.$store.getters.Work
-        // console.log('1', this.work)
-      }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      await this.$store.dispatch('actWorkInfo', id)
+      this.work = this.$store.getters.Work
 
-      setTimeout(() => {
-        // workStatus의 작업상태를 1로 바꿔준다.
-        this.work.workStatus = 1
-        this.work.workNum = id
-        console.log('시작버튼 누를 시 workNum', this.work.workNum)
-      }, 600) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // workStatus의 작업상태를 1로 바꿔준다.
+      this.work.workStatus = 1
+      this.work.workNum = id
+      console.log('시작버튼 누를 시 workNum', this.work.workNum)
 
-      setTimeout(() => {
-        // 바꿔준 work의 값을 수정해준다.
-        this.$store.dispatch('actWorkUpdate', this.work) // 수정 실행
-        console.log('시작버튼 누를 시 데이터', this.work)
-      }, 1000) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // 바꿔준 work의 값을 수정해준다.
+      await this.$store.dispatch('actWorkUpdate', this.work) // 수정 실행
+      console.log('시작버튼 누를 시 데이터', this.work)
     },
-    onClickComplete(id) {
+    async onClickComplete(id) {
       console.log('작업 완료')
       // 작업 완료 버튼을 누른 해당 리스트 상세 조회
-      this.$store.dispatch('actWorkInfo', id)
-      setTimeout(() => {
-        this.work = this.$store.getters.Work
-        // console.log('1', this.work)
-      }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      await this.$store.dispatch('actWorkInfo', id)
+      this.work = this.$store.getters.Work
 
-      setTimeout(() => {
-        // workStatus의 작업상태를 바꿔준다. (작업 완료)
-        this.work.workStatus = 2
-        this.work.workNum = id
-        console.log('완료버튼 누를 시 workNum', this.work.workNum)
-        this.work.endTime = new Date().toISOString()
-        console.log('work.endTime', this.work.endTime)
-      }, 600) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // workStatus의 작업상태를 바꿔준다. (작업 완료)
+      this.work.workStatus = 2
+      this.work.workNum = id
+      console.log('완료버튼 누를 시 workNum', this.work.workNum)
+      this.work.endTime = new Date().toISOString()
+      console.log('work.endTime', this.work.endTime)
 
-      setTimeout(() => {
-        // 바꿔준 work의 값을 수정해준다.
-        this.$store.dispatch('actWorkUpdate', this.work)
-        this.$store.dispatch('actWorkHistoryInsert', this.work) // 작업 완료
-        console.log('완료 이력에 넘겨준 데이터', this.work)
-      }, 1200) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // 바꿔준 work의 값을 수정해준다.
+      await this.$store.dispatch('actWorkUpdate', this.work)
+      await this.$store.dispatch('actWorkHistoryInsert', this.work) // 작업 완료
+      console.log('완료 이력에 넘겨준 데이터', this.work)
     },
-    onClickStop(id) {
-      // 2. 상세정보 초기화
-      this.$store.dispatch('actWorkStopInit')
+    async onClickStop(id) {
       // 작업 중단 버튼을 누른 해당 리스트 상세 조회
-      this.$store.dispatch('actWorkInfo', id)
+      await this.$store.dispatch('actWorkInfo', id)
+      // 상세정보 초기화
+      await this.$store.dispatch('actWorkStopInit')
       // 작업 중단 모달 생성
       this.$bvModal.show('modal-stop-inform')
-      // console.log('작업 중단')
-      setTimeout(() => {
-        this.work = this.$store.getters.Work
-        // console.log('1', this.work)
-      }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
-      setTimeout(() => {
-        this.work.workNum = id
-      }, 700) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      console.log('작업 중단')
+      this.work = this.$store.getters.Work
+      this.work.workNum = id
 
       // setTimeout(() => {
       //   // workStatus의 작업상태를 바꿔준다. // 작업 중단

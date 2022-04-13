@@ -35,9 +35,6 @@ export default {
   computed: {
     infoData() {
       return this.$store.getters.Work
-    },
-    inputMode() {
-      return this.$store.getters.WorkInputMode
     }
   },
   watch: {
@@ -51,40 +48,32 @@ export default {
     this.workStop = { ...this.infoData }
   },
   methods: {
-    onSubmit() {
+    async onSubmit() {
       console.log('작업 중단')
       // 작업 중단 버튼을 누른 해당 리스트 상세 조회
-      setTimeout(() => {
-        this.work = this.$store.getters.Work
-        console.log('작업 정보', this.work)
-      }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      this.work = this.$store.getters.Work
+      console.log('작업 정보', this.work)
 
-      setTimeout(() => {
-        // workStatus의 작업상태를 바꿔준다.
-        // 작업 중단
-        this.work.workStatus = 3
-        console.log('this.work', this.work)
-        this.work.workNum = this.work.id
-        console.log('this.work.id', this.work.id)
-        console.log('중단버튼 누를 시 workNum', this.work.workNum)
-        this.work.endTime = new Date().toISOString()
-        this.work.time = new Date().toISOString()
-        this.work.description = this.workStop.description
-        console.log('work.endTime', this.work.endTime)
-        console.log('work.Time', this.work.time)
-      }, 700) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // workStatus의 작업상태를 바꿔준다.
+      // 작업 중단
+      this.work.workStatus = 3
+      console.log('this.work', this.work)
+      this.work.workNum = this.work.id
+      console.log('this.work.id', this.work.id)
+      console.log('중단버튼 누를 시 workNum', this.work.workNum)
+      this.work.endTime = new Date().toISOString()
+      this.work.time = new Date().toISOString()
+      this.work.description = this.workStop.description
+      console.log('work.endTime', this.work.endTime)
+      console.log('work.Time', this.work.time)
 
-      setTimeout(() => {
-        // 바꿔준 work의 값을 수정해준다.
-        this.$store.dispatch('actWorkUpdate', this.work)
-        this.$store.dispatch('actWorkHistoryInsert', this.work) // 완료이력에 남긴다
-        console.log('중단 이력에 넘겨준 데이터', this.work)
-      }, 1100) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // 바꿔준 work의 값을 수정해준다.
+      await this.$store.dispatch('actWorkUpdate', this.work)
+      await this.$store.dispatch('actWorkHistoryInsert', this.work) // 완료이력에 남긴다
+      console.log('중단 이력에 넘겨준 데이터', this.work)
 
-      setTimeout(() => {
-        // 바꿔준 work의 값을 수정해준다.
-        this.$store.dispatch('actWorkStopInsert', this.work) // 작업 중단
-      }, 1500) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+      // 바꿔준 work의 값을 수정해준다.
+      await this.$store.dispatch('actWorkStopInsert', this.work) // 작업 중단
     }
   }
 }

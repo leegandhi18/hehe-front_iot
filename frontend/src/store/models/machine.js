@@ -46,13 +46,6 @@ export default {
   actions: {
     // 설비 리스트 조회
     actMachineList(context, payload) {
-      /* 테스트 데이터 세팅 */
-      // const machineList = [
-      //   { id: 1, code: 'asp001', state: '작동' },
-      //   { id: 2, code: 'asp001', state: '정지' }
-      // ]
-      // context.commit('setMachineList', machineList)
-
       /* RestAPI 호출 */
       api.get('/serverApi/machines').then(response => {
         console.log('machineList response', response)
@@ -61,13 +54,9 @@ export default {
       })
     },
     // 신규 등록
-    actMachineInsert(context, payload) {
+    async actMachineInsert(context, payload) {
       context.commit('setInsertedResult', null)
-      // setTimeout(() => {
-      //   const insertedResult = 1
-      //   context.commit('setInsertedResult', insertedResult)
-      // }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
-      api
+      await api
         .post('/serverApi/machines', payload)
         .then(response => {
           console.log('response', response)
@@ -87,27 +76,11 @@ export default {
       context.commit('setInputMode', payload)
     },
     // 상세 조회
-    actMachineInfo(context, payload) {
+    async actMachineInfo(context, payload) {
       context.commit('setMachine', { ...stateInit.Machine })
 
-      //테스트 데이터 세팅 //
-      // setTimeout(() => {
-      //   const machineList = [
-      //     { id: 1, code: 'asp0031', state: '작동중' },
-      //     { id: 2, code: 'asp004', state: '중지' }
-      //   ]
-
-      //   let machine = { ...stateInit.machine }
-      //   for (let i = 0; i < machineList.length; i += 1) {
-      //     if (payload === machineList[i].id) {
-      //       machine = { ...machineList[i] }
-      //     }
-      //   }
-      //   context.commit('setMachine', machine)
-      // }, 300)
-
       /* RestAPI 호출 */
-      api
+      await api
         .get(`/serverApi/machines/${payload}`)
         .then(response => {
           const machine = response && response.data
@@ -120,16 +93,11 @@ export default {
         })
     },
     // 수정
-    actMachineUpdate(context, payload) {
+    async actMachineUpdate(context, payload) {
       context.commit('setUpdatedResult', null)
 
-      // setTimeout(() => {
-      //   const updatedResult = 1
-      //   context.commit('setUpdatedResult', updatedResult)
-      // }, 300)
-
       /* RestAPI 호출 */
-      api
+      await api
         .put(`/serverApi/machines/${payload.id}`, payload)
         .then(response => {
           const updatedResult = response && response.data && response.data.updatedCount
@@ -144,10 +112,6 @@ export default {
     // 삭제
     actMachineDelete(context, payload) {
       context.commit('setDeletedResult', null)
-      // setTimeout(() => {
-      //   const deletedResult = 1
-      //   context.commit('setDeletedResult', deletedResult)
-      // }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
 
       /* RestAPI 호출 */
       api
