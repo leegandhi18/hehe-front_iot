@@ -7,7 +7,7 @@
   "EdukitPort": "2004",
   "MqttBrokerIP": "220.90.129.47",
   "MqttBrokerPort": "1883",
-  "WebSocketServerUrl": "ws://220.90.129.47:8088",
+  "WebSocketServerUrl": "ws://localhost:8088",
   "DelayTime": "500",
   "DebugType": "Debug"
 }

@@ -123,137 +123,151 @@ namespace SmartConnector.Edukit
                 XGTAddressData pAddress2 = new XGTAddressData();
 
                 dynamic test = JsonConvert.DeserializeObject(ReceivedMessage);  // 여기서 json 형식으로 바꾸는거야~~~~~~~
-                Console.Write("test.ToString = "+ test.ToString());
+                // Console.Write("test.ToString = "+ test.ToString());
 
                 if (test.tagId == "1") //start
                 {
-                        if (test.value == "0")
-                        {
-                            pAddress2.Address = "0";
-                            pAddress2.Data = "0";
-
-                            xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
-                        }
-                        else if (test.value == "1")
-                        {
-                            pAddress2.Address = "0";
-                            pAddress2.Data = "1";
-
-                            xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
-                        }
-                }
-                else if (test.tagId == "8") //reset
+                    if (test.value == "0")
                     {
-                        pAddress2.Address = "F";
-                        pAddress2.Data = "1";
-                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
-
-                        pAddress2.Address = "F";
+                        pAddress2.Address = "0";
                         pAddress2.Data = "0";
+
                         xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                     }
+                    else if (test.value == "1")
+                    {
+                        pAddress2.Address = "0";
+                        pAddress2.Data = "1";
+
+                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
+                    }
+                }
+                else if (test.tagId == "50") //stop, 1 입력했다가 바로 0으로 변경
+                {
+                    pAddress2.Address = "22";
+                    pAddress2.Data = "1";
+                    xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
+
+                    pAddress2.Address = "22";
+                    pAddress2.Data = "0";
+                    xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
+                }
+                else if (test.tagId == "8") //reset, 1 입력했다가 바로 0으로 변경
+                {
+                    pAddress2.Address = "1100";
+                    pAddress2.Data = "0";
+                    xGTClass.Write(XGT_DataType.Word, pAddress2, XGT_MemoryType.DataRegister_D, 0);
+                    
+                    pAddress2.Address = "F";
+                    pAddress2.Data = "1";
+                    xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
+
+                    pAddress2.Address = "F";
+                    pAddress2.Data = "0";
+                    xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
+                }
                 else if (test.tagId == "9") // 1호기 ON/OFF
+                {
+                    if (test.value == "0")
                     {
-                        if (test.value == "0")
-                        {
-                            pAddress2.Address = "8F";
-                            pAddress2.Data = "0";
-
-                            xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
-                        }
-                        else if (test.value == "1")
-                        {
-                            pAddress2.Address = "8F";
-                            pAddress2.Data = "1";
-
-                            xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
-                        }
+                        pAddress2.Address = "8F";
+                        pAddress2.Data = "0";
+                        
+                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                     }
+                    else if (test.value == "1")
+                    {
+                        pAddress2.Address = "8F";
+                        pAddress2.Data = "1";
+                        
+                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
+                    }
+                }
                 else if (test.tagId == "10") // 2호기 ON/OFF
-                    {
-                        if (test.value == "0")
-                        {
-                            pAddress2.Address = "9F";
-                            pAddress2.Data = "0";
+                {
+                    if (test.value == "0")
+                    { 
+                        pAddress2.Address = "9F";
+                        pAddress2.Data = "0";
 
-                            xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
-                        }
-                        else if (test.value == "1")
-                        {
-                            pAddress2.Address = "9F";
-                            pAddress2.Data = "1";
-
-                            xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
-                        }
+                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                     }
+                    else if (test.value == "1")
+                    {
+                        pAddress2.Address = "9F";
+                        pAddress2.Data = "1";
+
+                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
+                    }
+                }
                 else if (test.tagId == "11") // 3호기 ON/OFF
+                {
+                    if (test.value == "0")
                     {
-                        if (test.value == "0")
-                        {
-                            pAddress2.Address = "10E";
-                            pAddress2.Data = "0";
+                        pAddress2.Address = "10E";
+                        pAddress2.Data = "0";
 
-                            xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
-                        }
-                        else if (test.value == "1")
-                        {
-                            pAddress2.Address = "10E";
-                            pAddress2.Data = "1";
-
-                            xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
-                        }
+                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                     }
+                    else if (test.value == "1")
+                    {
+                        pAddress2.Address = "10E";
+                        pAddress2.Data = "1";
+
+                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
+                    }
+                }
                 else if (test.tagId == "12") // sensor1 ON/OFF
+                {
+                    if (test.value == "0")
                     {
-                        if (test.value == "0")
-                        {
-                            pAddress2.Address = "6F";
-                            pAddress2.Data = "0";
+                        pAddress2.Address = "6F";
+                        pAddress2.Data = "0";
 
-                            xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
-                        }
-                        else if (test.value == "1")
-                        {
-                            pAddress2.Address = "6F";
-                            pAddress2.Data = "1";
-
-                            xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
-                        }
+                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                     }
+                    else if (test.value == "1")
+                    {
+                        pAddress2.Address = "6F";
+                        pAddress2.Data = "1";
+
+                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
+                    }
+                }
                 else if (test.tagId == "13") // sensor2 ON/OFF
+                {
+                    if (test.value == "0")
                     {
-                        if (test.value == "0")
-                        {
-                            pAddress2.Address = "7F";
-                            pAddress2.Data = "0";
+                        pAddress2.Address = "7F";
+                        pAddress2.Data = "0";
 
-                            xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
-                        }
-                        else if (test.value == "1")
-                        {
-                            pAddress2.Address = "7F";
-                            pAddress2.Data = "1";
-
-                            xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
-                        }
+                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                     }
+                    else if (test.value == "1")
+                    {
+                        pAddress2.Address = "7F";
+                        pAddress2.Data = "1";
+
+                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
+                    }
+                }
                 else if (test.tagId == "37") // DiceValue
+                {
+                    if (test.value == "0")
                     {
-                        if (test.value == "0")
-                        {
-                            pAddress2.Address = "1100";
-                            pAddress2.Data = "0";
+                        pAddress2.Address = "1100";
+                        pAddress2.Data = "0";
 
-                            xGTClass.Write(XGT_DataType.Word, pAddress2, XGT_MemoryType.DataRegister_D, 0);
-                        }
-                        else
-                        {
-                            pAddress2.Address = "1100";
-                            pAddress2.Data = test.value;
-
-                            xGTClass.Write(XGT_DataType.Word, pAddress2, XGT_MemoryType.DataRegister_D, 0);
-                        }
+                        xGTClass.Write(XGT_DataType.Word, pAddress2, XGT_MemoryType.DataRegister_D, 0);
                     }
+                    else
+                    {
+                        pAddress2.Address = "1100";
+                        pAddress2.Data = test.value;
+                        
+                        xGTClass.Write(XGT_DataType.Word, pAddress2, XGT_MemoryType.DataRegister_D, 0);
+                    }
+                }
             }
 
             private void ConnectionStart(int DelayTime, XGTClass xGTClass, string ip, int port)
@@ -261,12 +275,13 @@ namespace SmartConnector.Edukit
                 xGTClass.Connect(ip, port);
 
                 // BitAddressData와 WordAddressData를 분리함
-                // 메모리주소의 알파벳이 M,P이면 Bit, D,C,K이면 Word임
+                // 메모리주소의 알파벳이 M,P이면 Bit, D,C,K이면 Word
                 Dictionary<XGTAddressData, string> BitAddressList = new Dictionary<XGTAddressData, string>();
                 Dictionary<XGTAddressData, string> WordAddressList = new Dictionary<XGTAddressData, string>();
 
                 // 읽어올 데이터를 XGTAddressData로 생성
                 XGTAddressData Start = new XGTAddressData();                //시작 M0000 bit
+                XGTAddressData Stop = new XGTAddressData();                 //일시정지 M0022 bit
                 XGTAddressData No1PartsError = new XGTAddressData();        //no1 칩없음 M0011 bit 1이 정상 0이 칩없음
                 XGTAddressData No1_Action = new XGTAddressData();           //no1 move M92 bit								
                 XGTAddressData No2_Action = new XGTAddressData();           //no2 move M00104 bit
@@ -314,6 +329,10 @@ namespace SmartConnector.Edukit
                 Start.Address = "0";
                 Start.Name = "Start";
                 Start.TagId = "1";
+
+                Stop.Address = "22";
+                Stop.Name = "Stop";
+                Stop.TagId = "50";
 
                 No1PartsError.Address = "11";
                 No1PartsError.Name = "No1PartsError";
@@ -482,6 +501,7 @@ namespace SmartConnector.Edukit
                 // 처음에 생성한 AddressList에 XGTAddressData와 메모리주소의 알파벳 부분을 추가함
                 // 알파벳에 따라 BitAddressList와 WordAddressData 중 알맞은 리스트에 넣어주어야 함
                 BitAddressList.Add(Start, "M");
+                BitAddressList.Add(Stop, "M");
                 BitAddressList.Add(No1PartsError, "M");
                 BitAddressList.Add(No1_Action, "M");
                 BitAddressList.Add(No2_Action, "M");
@@ -597,7 +617,7 @@ namespace SmartConnector.Edukit
                             }
                         }
 
-                        // BitAddressList를 읽어로는 로직 (D,C,K번지)
+                        // WordAddressList를 읽어로는 로직 (D,C,K번지)
                         foreach (var address in WordAddressList)
                         {
                             XGTData val = null;
@@ -759,6 +779,12 @@ namespace SmartConnector.Edukit
             public string WebSocketServerUrl { get; set; }
             public string DelayTime { get; set; }
             public string DebugType { get; set; }
+        }
+
+        public class Test
+        {
+            public string tagId { get; set; }
+            public string value { get; set; }
         }
 
         public class MqttData

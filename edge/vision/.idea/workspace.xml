@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="12ab09c1-803e-43b1-b71c-76cddaeba73b" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/.vs/SmartConnector/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/.vs/SmartConnector/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/.vs/slnx.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/EdgeConfigFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/EdgeConfigFile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/bin/Debug/netcoreapp3.1/EdgeConfigFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/bin/Debug/netcoreapp3.1/EdgeConfigFile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/bin/Debug/netcoreapp3.1/SmartConnector.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/bin/Debug/netcoreapp3.1/SmartConnector.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/bin/Debug/netcoreapp3.1/SmartConnector.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/bin/Debug/netcoreapp3.1/SmartConnector.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/bin/Debug/netcoreapp3.1/SmartConnector.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/bin/Debug/netcoreapp3.1/SmartConnector.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/obj/Debug/netcoreapp3.1/SmartConnector.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/obj/Debug/netcoreapp3.1/SmartConnector.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/obj/Debug/netcoreapp3.1/SmartConnector.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/obj/Debug/netcoreapp3.1/SmartConnector.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/obj/Debug/netcoreapp3.1/SmartConnector.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/obj/Debug/netcoreapp3.1/SmartConnector.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/obj/Debug/netcoreapp3.1/SmartConnector.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/obj/Debug/netcoreapp3.1/SmartConnector.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/obj/Debug/netcoreapp3.1/SmartConnector.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/obj/Debug/netcoreapp3.1/SmartConnector.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector/obj/Debug/netcoreapp3.1/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/obj/Debug/netcoreapp3.1/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../edgestart.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../edgestart.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vision.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vision.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/After.png" beforeDir="false" afterPath="$PROJECT_DIR$/After.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/O-example.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TF/diceTF.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/color-detection.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dice-tracking.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dice.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main-Original.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mqtt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mqtt_vision.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tracker.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yolo/coco.names" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yolo/testyolo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yolo/yolov3.cfg" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="27jZapu6hU03zPVHdxP0FaQDY28" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="visionTest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="vision" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/visionTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.visionTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="12ab09c1-803e-43b1-b71c-76cddaeba73b" name="변경" comment="" />
+      <created>1649835521552</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649835521552</updated>
+    </task>
+    <servers />
+  </component>
+</project>
