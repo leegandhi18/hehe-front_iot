@@ -52,7 +52,12 @@
           </b-form-select>
         </b-form-group>
         <b-form-group label="수량" label-for="productQuantity" label-cols="3">
-          <b-form-input
+          <b-form-select id="productQuantity" v-model="work.productQuantity" :options="options">
+            <template #first>
+              <b-form-select-option :value="null">-- 수량을 선택해 주세요. --</b-form-select-option>
+            </template>
+          </b-form-select>
+          <!-- <b-form-input
             id="productQuantity"
             v-model="work.productQuantity"
             type="number"
@@ -60,7 +65,7 @@
             max="5"
             placeholder="1 ~ 5 사이의 숫자를 넣으시오."
           >
-          </b-form-input>
+          </b-form-input> -->
         </b-form-group>
         <b-form-group label="작업시작 시간" label-for="startTime" label-cols="3">
           <input v-model="work.startTime" type="datetime-local" style="width: 100%" />
@@ -75,6 +80,13 @@
 export default {
   data() {
     return {
+      options: [
+        { value: 1, text: 1 },
+        { value: 2, text: 2 },
+        { value: 3, text: 3 },
+        { value: 4, text: 4 },
+        { value: 5, text: 5 }
+      ],
       work: {
         id: null,
         name: null,

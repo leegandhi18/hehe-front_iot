@@ -3,7 +3,8 @@ import api from '../apiUtil'
 const stateInit = {
   Machine: {
     id: null,
-    code: null
+    code: null,
+    status: null
   }
 }
 export default {
@@ -11,8 +12,9 @@ export default {
     MachineList: [],
     Machine: { ...stateInit.MachineList },
     InsertedResult: null, // 입력처리 후 결과
-    UpdatedResult: null,
+    UpdatedResult: null, // 수정처리 후 결과
     DeletedResult: null, // 삭제처리 후 결과
+    ChangedResult: null, // 설비상태 변경 후 결과
     InputMode: null
   },
   getters: {
@@ -21,6 +23,7 @@ export default {
     MachineInsertedResult: state => state.InsertedResult,
     MachineUpdatedResult: state => state.UpdatedResult,
     MachineDeletedResult: state => state.DeletedResult,
+    MachineChangedResult: state => state.ChangedResult,
     MachineInputMode: state => state.InputMode
   },
   mutations: {
@@ -38,6 +41,9 @@ export default {
     },
     setDeletedResult(state, data) {
       state.DeletedResult = data
+    },
+    setChangedResult(state, data) {
+      state.ChangedResult = data
     },
     setInputMode(state, data) {
       state.InputMode = data

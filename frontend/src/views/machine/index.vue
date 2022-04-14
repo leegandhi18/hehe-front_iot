@@ -34,14 +34,9 @@ export default {
       fields: [
         { key: 'id', label: 'ID' },
         { key: 'code', label: '설비' },
-        { key: 'state', label: '작동상태' },
+        { key: 'status', label: '작동상태' },
         { key: 'btn', label: '비고' }
       ]
-      // items: [
-      //   { id: '1', 설비: 'ASP001', state: '작동' },
-      //   { id: '2', 설비: 'ASP002', state: '작동' },
-      //   { id: '3', 설비: 'ASP003', state: '중지' }
-      // ]
     }
   },
   computed: {
@@ -59,6 +54,11 @@ export default {
     }
   },
   watch: {
+    // machineList(value) {
+    //   if (value !== null) {
+    //     this.searchMachineList()
+    //   }
+    // },
     insertedResult(value) {
       if (value !== null) {
         if (value > 0) {
@@ -130,6 +130,9 @@ export default {
   },
   created() {
     this.searchMachineList()
+    setInterval(() => {
+      this.searchMachineList()
+    }, 2000)
   },
   methods: {
     searchMachineList() {
