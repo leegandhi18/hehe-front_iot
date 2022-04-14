@@ -68,6 +68,7 @@ export default {
         this.$bvModal.hide('modal-machine-inform')
         return true
       } else if (!this.machine.code) {
+        alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
         return false
         // this.error.push('설비를 등록하셔야 합니다.')
       }
@@ -77,6 +78,7 @@ export default {
         this.$bvModal.hide('modal-machine-inform')
         return true
       } else if (!this.machine.code) {
+        alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
         return false
       }
     }

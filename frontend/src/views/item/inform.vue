@@ -117,7 +117,8 @@ export default {
         await this.$store.dispatch('actItemInsert', this.item) // 입력 실행
         this.$bvModal.hide('modal-item-inform')
         return true
-      } else if (!this.item.name && !this.item.quantity && !this.item.itemId && !this.item.machineCode) {
+      } else if (!this.item.name || !this.item.quantity || !this.item.itemId || !this.item.machineCode) {
+        alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
         return false
       }
       // 2. 수정인 경우
@@ -131,7 +132,8 @@ export default {
         await this.$store.dispatch('actItemUpdate', this.item) // 수정 실행
         this.$bvModal.hide('modal-item-inform')
         return true
-      } else if (!this.item.name && !this.item.quantity && !this.item.itemId && !this.item.machineCode) {
+      } else if (!this.item.name || !this.item.quantity || !this.item.itemId || !this.item.machineCode) {
+        alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
         return false
       }
     }

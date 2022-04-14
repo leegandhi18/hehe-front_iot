@@ -91,7 +91,8 @@ export default {
         console.log('update this.user', this.user)
         this.$store.dispatch('actUserUpdate', this.user)
         return true
-      } else if (!this.user.password && !this.user.phone) {
+      } else if (!this.user.password || !this.user.phone) {
+        alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
         return false
       }
     }

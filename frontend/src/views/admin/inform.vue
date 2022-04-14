@@ -39,7 +39,6 @@ export default {
         phone: null
       },
       adminRole: {
-        default: '0', // 기본값
         options: [
           { value: '관리자', text: '관리자' },
           { value: '작업자', text: '작업자' }
@@ -98,7 +97,8 @@ export default {
         await this.$store.dispatch('actAdminInsert', this.admin) // 입력 실행
         this.$bvModal.hide('modal-admin-inform')
         return true
-      } else if (!this.admin.name && !this.admin.password && !this.admin.role && !this.admin.phone) {
+      } else if (!this.admin.name || !this.admin.password || !this.admin.role || !this.admin.phone) {
+        alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
         return false
       }
       // 2. 수정인 경우
@@ -112,7 +112,8 @@ export default {
         await this.$store.dispatch('actAdminUpdate', this.admin) // 입력 실행
         this.$bvModal.hide('modal-admin-inform')
         return true
-      } else if (!this.admin.name && !this.admin.password && !this.admin.role && !this.admin.phone) {
+      } else if (!this.admin.name || !this.admin.password || !this.admin.role || !this.admin.phone) {
+        alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
         return false
       }
     }

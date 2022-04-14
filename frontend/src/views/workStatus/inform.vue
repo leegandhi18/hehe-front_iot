@@ -193,12 +193,13 @@ export default {
         this.$bvModal.hide('modal-work-inform')
         return true
       } else if (
-        !this.work.name &&
-        !this.work.machineCode &&
-        !this.work.itemName &&
-        !this.work.productQuantity &&
+        !this.work.name ||
+        !this.work.machineCode ||
+        !this.work.itemName ||
+        !this.work.productQuantity ||
         !this.work.startTime
       ) {
+        alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
         return false
       }
       // 2. 수정인 경우
@@ -214,12 +215,13 @@ export default {
         this.$bvModal.hide('modal-work-inform')
         return true
       } else if (
-        !this.work.name &&
-        !this.work.machineCode &&
-        !this.work.itemName &&
-        !this.work.productQuantity &&
+        !this.work.name ||
+        !this.work.machineCode ||
+        !this.work.itemName ||
+        !this.work.productQuantity ||
         !this.work.startTime
       ) {
+        alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
         return false
       }
     }
