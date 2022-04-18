@@ -9,16 +9,16 @@
       <edukit class="test1" />
       <iframe
         class="test2"
-        src="http://localhost:3005/d-solo/fIZ4z6s7z/influxdb-metrics?orgId=1&from=1650259940810&to=1650259945810&panelId=1"
+        src="http://localhost:3005/d-solo/fIZ4z6s7z/influxdb-metrics?orgId=1&refresh=5s&from=1650271341272&to=1650271351272&panelId=1"
         width="450"
-        height="200"
+        height="285"
         frameborder="0"
       ></iframe>
       <iframe
         class="test3"
         src="http://localhost:3005/d-solo/fIZ4z6s7z/influxdb-metrics?orgId=1&refresh=5s&from=1650256950610&to=1650257250610&panelId=2"
         width="450"
-        height="200"
+        height="285"
         frameborder="0"
       ></iframe>
     </div>
@@ -122,6 +122,6 @@ export default {
   margin-left: 33px;
 }
 .test3 {
-  margin-top: 25px;
+  margin-top: 30px;
 }
 </style>
