@@ -17,6 +17,8 @@ if (mqtt.connect):
 
 
 cap = cv2.VideoCapture(1) # 0 or 1, 0은 노트북 카메라 연결, 1이 usb로 붙인 카메라가 연결됨
+if (cap == False) :
+    print("camera connection error")
 
 readings = [-1, -1]
 
@@ -41,7 +43,6 @@ while True:
     ret, frame = cap.read()
 
     frame_blurred = cv2.GaussianBlur(frame, Gaussian_ksize, 1)
-
     frame_gray = cv2.cvtColor(frame_blurred, cv2.COLOR_BGR2GRAY)
     frame_canny = cv2.Canny(frame_gray, canny_threshold_min, canny_threshold_max, apertureSize=3, L2gradient=True)
 
@@ -66,5 +67,5 @@ while True:
             cv2.imwrite("After.png", im_with_keypoints)
             sleep(9)
 
-cap.release()
+cap.waitkey(0)
 cv2.destroyAllWindows()
