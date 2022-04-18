@@ -27,32 +27,74 @@
 
 <script>
 import edukit from './edukit.vue'
+import mqtt from 'mqtt'
 
 export default {
   components: {
     edukit
   },
+  data() {
+    return {
+      connection: {
+        host: '220.90.129.47',
+        port: 8088,
+        // Certification Information
+        clientId: 'mqtt_buttons_from_dashboard'
+      },
+      client: {
+        connected: false
+      }
+    }
+  },
+  created() {
+    this.createConnection()
+  },
   methods: {
-    start() {
-      this.$bvToast.toast('가즈아~', {
-        title: 'SUCCESS',
-        variant: 'success',
-        solid: true
+    // Create connection
+    createConnection() {
+      const { host, port, ...options } = this.connection
+      const connectUrl = `ws://${host}:${port}/mqtt`
+      try {
+        this.client = mqtt.connect(connectUrl, options)
+      } catch (error) {
+        console.log('mqtt.connect error', error)
+      }
+      this.client.on('connect', () => {
+        console.log('버튼 연결 완료!')
       })
+      this.client.on('error', error => {
+        console.log('버튼 연결 실패', error)
+      })
+    },
+    start() {
+      this.client.publish('UVC-EDU-outside', '{"tagId":"1", "value":"1"}')
+      if (this.client.publish) {
+        this.$bvToast.toast('가즈아~', {
+          title: 'SUCCESS',
+          variant: 'success',
+          solid: true
+        })
+      }
     },
     stop() {
-      this.$bvToast.toast('멈춰!', {
-        title: 'SUCCESS',
-        variant: 'success',
-        solid: true
-      })
+      this.client.publish('UVC-EDU-outside', '{"tagId":"50", "value":"1"}')
+      if (this.client.publish) {
+        this.$bvToast.toast('멈춰!', {
+          title: 'SUCCESS',
+          variant: 'success',
+          solid: true
+        })
+      }
     },
     reset() {
-      this.$bvToast.toast('초기화!', {
-        title: 'SUCCESS',
-        variant: 'success',
-        solid: true
-      })
+      this.client.publish('UVC-EDU-outside', '{"tagId":"8", "value":"1"}')
+      if (this.client.publish) {
+        this.$bvToast.toast('리셋!', {
+          title: 'SUCCESS',
+          variant: 'success',
+          solid: true
+        })
+      }
     }
   }
 }
