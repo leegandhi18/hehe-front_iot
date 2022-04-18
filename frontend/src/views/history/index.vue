@@ -3,13 +3,12 @@
     <h2 style="margin-bottom: 50px">완료이력</h2>
     <div>
       <b-table small hover striped :items="workHistoryList" :fields="fields" style="text-align: center">
-        <!-- <template #cell(startTime)="row">
+        <template #cell(startTime)="row">
           {{ row.item.startTime.substring(0, 16) }}
         </template>
         <template #cell(endTime)="row">
           {{ row.item.startTime.substring(0, 16) }}
-        </template> -->
-        {{ infoData }}
+        </template>
         <template #cell(emoHistory)="row">
           <b-button class="emoHistory" size="sm" variant="dark" @click="onClickRead(row.item.id)">중단이력</b-button>
         </template>
