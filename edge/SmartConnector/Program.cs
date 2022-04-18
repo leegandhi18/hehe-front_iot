@@ -31,18 +31,22 @@ namespace SmartConnector.Edukit
             {
                 SetConfig();
                 await Connect();
+                AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            }
+
+            private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs te)
+            {
+                Console.WriteLine("Pass : Cannot handle this message");
+                Console.WriteLine(te.ToString());
             }
 
             private static void SetConfig()
             {
                 string fullpathFile = AppDomain.CurrentDomain.BaseDirectory;
-
                 string EdgeConfigFile = fullpathFile + "//EdgeConfigFile.json";
-
                 string edgeConfig = File.ReadAllText(EdgeConfigFile);
 
                 edgeConfigResult = JsonConvert.DeserializeObject<EdgeConfig>(edgeConfig);
-                
             }
 
             public Task<Boolean> Connect()
@@ -110,7 +114,7 @@ namespace SmartConnector.Edukit
             {
                 string ReceivedMessage = Encoding.UTF8.GetString(e.Message);
                 Console.WriteLine( "ReceivedMessage = " + ReceivedMessage); // {"tagId":"37", "value":"1"}
-
+                
                 XGTClass xGTClass = new XGTClass(edgeConfigResult.EdukitIP, 2004);
                 XGTWrite(xGTClass, ReceivedMessage);
             }
