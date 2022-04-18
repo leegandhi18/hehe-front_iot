@@ -7,6 +7,7 @@
         </b-form-group>
         <b-form-group label="이름" label-for="device" label-cols="3">
           <b-form-input id="name" v-model="admin.name" placeholder="이름을 입력하시오."></b-form-input>
+          <b-button size="sm" @click="idCheck">이름 중복체크</b-button>
         </b-form-group>
         <b-form-group label="비밀번호" label-for="password" label-cols="3">
           <b-form-input
@@ -84,6 +85,20 @@ export default {
     // this.$store.dispatch('actAdminList') // 부서정보 조회
   },
   methods: {
+    async idCheck(e) {
+      e.preventDefault()
+      await this.$store.dispatch('actIdCheck', this.admin.name)
+      let checkId = await this.$store.getters.IdCheckResult
+      console.log('this.admin.name', this.admin.name)
+      console.log('checkId', checkId)
+      if (this.admin.name == null) {
+        alert('이름을 입력해 주세요.')
+      } else if (this.admin.name != checkId) {
+        alert(`사용 가능한 이름입니다. ${checkId}`)
+      } else if (this.admin.name == checkId) {
+        alert('이미 사용 중인 이름입니다.')
+      }
+    },
     async onSubmit(e) {
       e.preventDefault()
       // 1. 등록인 경우

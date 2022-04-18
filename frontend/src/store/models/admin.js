@@ -13,14 +13,16 @@ export default {
   state: {
     AdminList: [],
     Admin: { ...stateInit.AdminList },
+    IdCheckResult: null, // 이름 중복체크 후 결과
     InsertedResult: null, // 입력처리 후 결과
-    UpdatedResult: null,
+    UpdatedResult: null, // 수정처리 후 결과
     DeletedResult: null, // 삭제처리 후 결과
     InputMode: null
   },
   getters: {
     AdminList: state => state.AdminList,
     Admin: state => state.Admin,
+    IdCheckResult: state => state.IdCheckResult,
     AdminInsertedResult: state => state.InsertedResult,
     AdminUpdatedResult: state => state.UpdatedResult,
     AdminDeletedResult: state => state.DeletedResult,
@@ -32,6 +34,9 @@ export default {
     },
     setAdmin(state, data) {
       state.Admin = data
+    },
+    setIdCheckResult(state, data) {
+      state.IdCheckResult = data
     },
     setInsertedResult(state, data) {
       state.InsertedResult = data
@@ -48,16 +53,9 @@ export default {
   },
   actions: {
     // 사용자 리스트 조회
-    actAdminList(context, payload) {
-      /* 테스트 데이터 세팅 */
-      // const adminList = [
-      //   { id: 1, name: '이주현', phone: '010-9248-1198', btn: '' },
-      //   { id: 2, name: '주먹왕', phone: '010-2222-1111', btn: '' }
-      // ]
-      // context.commit('setAdminList', adminList)
-
+    async actAdminList(context, payload) {
       /* RestAPI 호출 */
-      api
+      await api
         .get('/serverApi/users')
         .then(response => {
           const userList = response && response.data && response.data.rows
@@ -71,14 +69,25 @@ export default {
           context.commit('setAdminList', [])
         })
     },
-    actAdminInsert(context, payload) {
-      context.commit('setInsertedResult', null)
-      // setTimeout(() => {
-      //   const insertedResult = 1
-      //   context.commit('setInsertedResult', insertedResult)
-      // }, 300) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+    async actIdCheck(context, payload) {
       /* RestAPI 호출 */
-      api
+      await api
+        .post(`/serverApi/users/idCheck/${payload}`)
+        .then(response => {
+          console.log('idCheck response', response)
+          const idCheckedResult = response && response.data && response.data.name
+          context.commit('setIdCheckResult', idCheckedResult)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('IdCheck.error', error)
+          context.commit('setIdCheckResult', -1)
+        })
+    },
+    async actAdminInsert(context, payload) {
+      context.commit('setInsertedResult', null)
+      /* RestAPI 호출 */
+      await api
         .post('/serverApi/users', payload)
         .then(response => {
           console.log('insert response', response)
@@ -99,22 +108,6 @@ export default {
     },
     actAdminInfo(context, payload) {
       context.commit('setAdmin', { ...stateInit.Admin })
-
-      //테스트 데이터 세팅 //
-      // setTimeout(() => {
-      //   const adminList = [
-      //     { id: 1, name: '이주현', phone: '010-9248-1198' },
-      //     { id: 2, name: '주먹왕', phone: '010-2222-1111' }
-      //   ]
-
-      //   let admin = { ...stateInit.Admin }
-      //   for (let i = 0; i < adminList.length; i += 1) {
-      //     if (payload === adminList[i].id) {
-      //       admin = { ...adminList[i] }
-      //     }
-      //   }
-      //   context.commit('setAdmin', admin)
-      // }, 300)
       /* RestAPI 호출 */
       api
         .get(`/serverApi/users/${payload}`)
