@@ -12,7 +12,13 @@
       >
     </b-col>
     <div>
-      <b-table small hover striped :items="machineList" :fields="fields" style="color: LightGray; text-align: center">
+      <b-table :items="machineList" :fields="fields" style="color: LightGray; text-align: center">
+        <template #cell(status)="row" class="status">
+          <b-button v-if="row.item.status === 'ON'" size="sm" variant="success">ON</b-button>
+          <b-button v-if="row.item.status === 'OFF'" size="sm" variant="danger">OFF</b-button>
+          <!-- <b-badge v-if="row.item.status === 'ON'" size="sm" variant="success">ON</b-badge>
+          <b-badge v-if="row.item.status === 'OFF'" size="sm" variant="danger">OFF</b-badge> -->
+        </template>
         <template #cell(btn)="row" class="btn">
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">수정</b-button>
           <b-button size="sm" variant="dark" @click="onClickDelete(row.item.id)">삭제</b-button>
@@ -31,6 +37,7 @@ export default {
   },
   data() {
     return {
+      auto_reload: null,
       fields: [
         { key: 'id', label: 'ID' },
         { key: 'code', label: '설비' },
@@ -54,11 +61,6 @@ export default {
     }
   },
   watch: {
-    // machineList(value) {
-    //   if (value !== null) {
-    //     this.searchMachineList()
-    //   }
-    // },
     insertedResult(value) {
       if (value !== null) {
         if (value > 0) {
@@ -67,7 +69,6 @@ export default {
             variant: 'success',
             solid: true
           })
-
           this.searchMachineList()
         } else {
           this.$bvToast.toast('등록이 실패하였습니다.', {
@@ -128,15 +129,22 @@ export default {
       }
     }
   },
+  beforeDestroy() {
+    console.log('beforeDestroy')
+    clearInterval(this.auto_reload)
+  },
   created() {
     this.searchMachineList()
-    setInterval(() => {
-      this.searchMachineList()
-    }, 2000)
+    this.clearMachineList()
   },
   methods: {
     searchMachineList() {
       this.$store.dispatch('actMachineList')
+    },
+    clearMachineList() {
+      this.auto_reload = setInterval(() => {
+        this.searchMachineList()
+      }, 2000)
     },
     onClickAddNew() {
       this.$store.dispatch('actMachineInputMode', 'insert') // 모달을 띄운다.
@@ -145,7 +153,6 @@ export default {
     },
     onClickEdit(id) {
       // (수정을 위한)상세정보
-
       // 1. 입력모드 설정
       this.$store.dispatch('actMachineInputMode', 'update')
 
