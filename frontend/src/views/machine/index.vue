@@ -12,7 +12,7 @@
       >
     </b-col>
     <div>
-      <b-table small hover striped :items="machineList" :fields="fields" style="text-align: center">
+      <b-table small hover striped :items="machineList" :fields="fields" style="color: LightGray; text-align: center">
         <template #cell(btn)="row" class="btn">
           <b-button size="sm" variant="dark" class="item_btn" @click="onClickEdit(row.item.id)">수정</b-button>
           <b-button size="sm" variant="dark" @click="onClickDelete(row.item.id)">삭제</b-button>

@@ -13,7 +13,14 @@
     </b-col>
     <div>
       <h2>작업중 리스트</h2>
-      <b-table small hover striped :items="workingList" :fields="workingFields" style="text-align: center">
+      <b-table
+        small
+        hover
+        striped
+        :items="workingList"
+        :fields="workingFields"
+        style="color: LightGray; text-align: center"
+      >
         <template #cell(startTime)="row">
           {{ row.item.startTime.substring(0, 16) }}
         </template>
@@ -31,7 +38,14 @@
       <h2>작업전 리스트</h2>
       <!-- {{ Date.now() }} -->
       <!-- {{ new Date().toISOString() }} -->
-      <b-table small hover striped :items="beforeWorkingList" :fields="beforeWorkingFields" style="text-align: center">
+      <b-table
+        small
+        hover
+        striped
+        :items="beforeWorkingList"
+        :fields="beforeWorkingFields"
+        style="color: LightGray; text-align: center"
+      >
         <template #cell(startTime)="row">
           {{ row.item.startTime.substring(0, 16) }}
         </template>
@@ -322,5 +336,8 @@ table td:last-child {
 }
 .item_btn {
   margin-right: 5px;
+}
+div {
+  color: LightGray;
 }
 </style>

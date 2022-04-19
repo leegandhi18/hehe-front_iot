@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div style="margin-top: 80px">
-      <b-row align-h="center">
+  <div style="color: LightGray; padding-top: 150px">
+    <div style="color: LightGray">
+      <b-row align-h="center" style="width: 100%">
         <b-col cols="4">
-          <b-card title="로그인">
+          <b-card style="color: black" title="로그인">
             <b-form-group label-cols="4" label-cols-lg="3" label="이름" label-for="input-name">
               <b-form-input id="input-name" v-model="name"></b-form-input>
             </b-form-group>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="margin-top: 80px">
+    <div style="color: LightGray; margin-top: 80px">
       <b-row align-h="center">
         <b-col cols="4">
           <b-card title="작업자 정보 수정">
