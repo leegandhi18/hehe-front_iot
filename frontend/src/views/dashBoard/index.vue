@@ -60,7 +60,7 @@ export default {
         console.log('mqtt.connect error', error)
       }
       this.client.on('connect', () => {
-        console.log('버튼 연결 완료!')
+        // console.log('버튼 연결 완료!')
       })
       this.client.on('error', error => {
         console.log('버튼 연결 실패', error)

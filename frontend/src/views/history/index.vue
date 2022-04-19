@@ -2,14 +2,7 @@
   <div class="test">
     <h2 style="margin-bottom: 50px; color: LightGray">완료이력</h2>
     <div>
-      <b-table
-        small
-        hover
-        striped
-        :items="workHistoryList"
-        :fields="fields"
-        style="color: LightGray; text-align: center"
-      >
+      <b-table :items="workHistoryList" :fields="fields" style="color: LightGray; text-align: center">
         <template #cell(startTime)="row">
           {{ row.item.startTime.substring(0, 16) }}
         </template>
