@@ -14,6 +14,7 @@ export default {
     AdminList: [],
     Admin: { ...stateInit.AdminList },
     IdCheckResult: null, // 이름 중복체크 후 결과
+    ButtonResult: null, // 버튼 클릭 체크
     InsertedResult: null, // 입력처리 후 결과
     UpdatedResult: null, // 수정처리 후 결과
     DeletedResult: null, // 삭제처리 후 결과
@@ -23,6 +24,7 @@ export default {
     AdminList: state => state.AdminList,
     Admin: state => state.Admin,
     IdCheckResult: state => state.IdCheckResult,
+    ButtonResult: state => state.ButtonResult,
     AdminInsertedResult: state => state.InsertedResult,
     AdminUpdatedResult: state => state.UpdatedResult,
     AdminDeletedResult: state => state.DeletedResult,
@@ -34,6 +36,9 @@ export default {
     },
     setAdmin(state, data) {
       state.Admin = data
+    },
+    setButtonResult(state, data) {
+      state.ButtonResult = data
     },
     setIdCheckResult(state, data) {
       state.IdCheckResult = data
@@ -68,6 +73,9 @@ export default {
           console.error('UserList.error', error)
           context.commit('setAdminList', [])
         })
+    },
+    async actButtonResult(context, payload) {
+      context.commit('setButtonResult', 0)
     },
     async actIdCheck(context, payload) {
       /* RestAPI 호출 */

@@ -7,7 +7,7 @@
         </b-form-group>
         <b-form-group label="이름" label-for="device" label-cols="3">
           <b-form-input id="name" v-model="admin.name" placeholder="이름을 입력하시오."></b-form-input>
-          <b-button size="sm" @click="idCheck">이름 중복체크</b-button>
+          <b-button v-if="inputMode === 'insert'" size="sm" @click="idCheck">이름 중복체크</b-button>
         </b-form-group>
         <b-form-group label="비밀번호" label-for="password" label-cols="3">
           <b-form-input
@@ -37,7 +37,8 @@ export default {
         name: null,
         password: null,
         role: null,
-        phone: null
+        phone: null,
+        btnCheck: null
       },
       adminRole: {
         options: [
@@ -73,36 +74,43 @@ export default {
     infoData(value) {
       this.admin = { ...value }
       this.admin.password = '' // 비밀번호 자료 공백으로 바꿔주기
-      // this.setDefaultValues() // 기본값 세팅
     }
   },
   created() {
     // 모달이 최초 열릴때 감지됨
     this.admin = { ...this.infoData }
-
-    // this.setDefaultValues() // 기본값 세팅
-
-    // this.$store.dispatch('actAdminList') // 부서정보 조회
   },
   methods: {
     async idCheck(e) {
       e.preventDefault()
+      await this.$store.dispatch('actButtonResult')
+      this.btnCheck = await this.$store.getters.ButtonResult
+      this.btnCheck = 1
+      console.log('중복체크 누를 시', this.btnCheck)
       await this.$store.dispatch('actIdCheck', this.admin.name)
       let checkId = await this.$store.getters.IdCheckResult
       console.log('this.admin.name', this.admin.name)
       console.log('checkId', checkId)
       if (this.admin.name == null) {
         alert('이름을 입력해 주세요.')
+      } else if (checkId == null) {
+        alert('사용가능한 이름입니다.')
       } else if (this.admin.name != checkId) {
-        alert(`사용 가능한 이름입니다. ${checkId}`)
+        let checkName = parseInt(checkId.slice(3, 4)) + 1
+        console.log('checkName', checkName)
+        alert(`${checkName}명의 동명이인이 있습니다. ${this.admin.name + checkName} 으로 가입하시오.`)
       } else if (this.admin.name == checkId) {
-        alert('이미 사용 중인 이름입니다.')
+        alert(`1명의 동명이인이 있습니다. ${this.admin.name + 1} 으로 가입하시오.`)
       }
     },
     async onSubmit(e) {
       e.preventDefault()
+      console.log('중복체크 누르기 전', this.btnCheck)
       // 1. 등록인 경우
-      if (
+      if (this.btnCheck == 0 || this.btnCheck == null) {
+        alert('이름 중복체크를 해주세요.')
+        return false
+      } else if (
         this.admin.name &&
         this.admin.password &&
         this.admin.role &&
@@ -111,6 +119,8 @@ export default {
       ) {
         await this.$store.dispatch('actAdminInsert', this.admin) // 입력 실행
         this.$bvModal.hide('modal-admin-inform')
+        this.btnCheck = await this.$store.getters.ButtonResult
+        console.log('중복체크 누른 후', this.btnCheck)
         return true
       } else if (!this.admin.name || !this.admin.password || !this.admin.role || !this.admin.phone) {
         alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
