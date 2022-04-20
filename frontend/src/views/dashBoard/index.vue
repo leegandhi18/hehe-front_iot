@@ -9,14 +9,14 @@
       <edukit class="test1" />
       <iframe
         class="test2"
-        src="http://localhost:3005/d-solo/fIZ4z6s7z/influxdb-metrics?orgId=1&refresh=5s&from=1650271341272&to=1650271351272&panelId=1"
+        src="http://localhost:3005/d-solo/fIZ4z6s7z/influxdb-metrics?orgId=1&refresh=5s&from=1650419561916&to=1650419571917&panelId=1"
         width="450"
         height="285"
         frameborder="0"
       ></iframe>
       <iframe
         class="test3"
-        src="http://localhost:3005/d-solo/fIZ4z6s7z/influxdb-metrics?orgId=1&refresh=5s&from=1650256950610&to=1650257250610&panelId=2"
+        src="http://localhost:3005/d-solo/fIZ4z6s7z/influxdb-metrics?orgId=1&refresh=5s&from=1650417740043&to=1650417750043&panelId=2"
         width="450"
         height="285"
         frameborder="0"
