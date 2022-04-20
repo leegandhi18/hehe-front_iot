@@ -3,7 +3,11 @@
     <b-modal id="modal-stop-inform" title="작업 중단" @ok="onSubmit">
       <div>
         <b-form-group label="작업 중단 사유" label-for="description" label-cols="3">
-          <b-form-input id="description" v-model="workStop.description"></b-form-input>
+          <b-form-input
+            id="description"
+            v-model="workStop.description"
+            placeholder="중단 사유를 입력하시오."
+          ></b-form-input>
         </b-form-group>
       </div>
     </b-modal>
