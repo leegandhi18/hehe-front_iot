@@ -52,6 +52,8 @@
 <script>
 import inform from './inform.vue'
 import inform2 from './inform2.vue'
+import mqtt from 'mqtt'
+
 export default {
   components: {
     // eslint-disable-next-line vue/no-unused-components
@@ -99,7 +101,17 @@ export default {
         // { key: 'btn', label: '비고' }
         // { key: 'workStatus', label: '작업상태' }
         // { key: 'deleteBtn', label: '삭제' }
-      ]
+      ],
+      connection: {
+        host: '220.90.129.47',
+        port: 8088,
+        reconnectPeriod: 10 * 1000,
+        // Certification Information
+        clientId: 'mqtt_buttons_from_workStatus'
+      },
+      client: {
+        connected: false
+      }
     }
   },
   computed: {
@@ -202,8 +214,25 @@ export default {
   created() {
     this.searchBeforeWorkingList()
     this.searchWorkingList()
+    this.createConnection()
   },
   methods: {
+    // Create connection
+    createConnection() {
+      const { host, port, ...options } = this.connection
+      const connectUrl = `ws://${host}:${port}/mqtt`
+      try {
+        this.client = mqtt.connect(connectUrl, options)
+      } catch (error) {
+        console.log('mqtt.connect error', error)
+      }
+      this.client.on('connect', () => {
+        // console.log('버튼 연결 완료!')
+      })
+      this.client.on('error', error => {
+        console.log('버튼 연결 실패', error)
+      })
+    },
     searchBeforeWorkingList() {
       this.$store.dispatch('actBeforeWorkingList')
     },
@@ -255,6 +284,16 @@ export default {
       // 바꿔준 work의 값을 수정해준다.
       await this.$store.dispatch('actWorkUpdate', this.work) // 수정 실행
       console.log('시작버튼 누를 시 데이터', this.work)
+
+      // 시작 publish
+      this.client.publish('UVC-EDU-outside', '{"tagId":"1", "value":"1"}')
+      if (this.client.publish) {
+        this.$bvToast.toast('작업을 시작합니다.', {
+          title: 'SUCCESS',
+          variant: 'success',
+          solid: true
+        })
+      }
     },
     async onClickComplete(id) {
       console.log('작업 완료')
@@ -273,6 +312,18 @@ export default {
       await this.$store.dispatch('actWorkUpdate', this.work)
       await this.$store.dispatch('actWorkHistoryInsert', this.work) // 작업 완료
       console.log('완료 이력에 넘겨준 데이터', this.work)
+
+      // 완료 되었으니 리셋하도록!
+      setTimeout(() => {
+        this.client.publish('UVC-EDU-outside', '{"tagId":"8", "value":"1"}')
+        if (this.client.publish) {
+          this.$bvToast.toast('완료된 작업을 확인하였습니다. 기기를 리셋합니다.', {
+            title: 'SUCCESS',
+            variant: 'success',
+            solid: true
+          })
+        }
+      }, 1000)
     },
     async onClickStop(id) {
       // 작업 중단 버튼을 누른 해당 리스트 상세 조회
@@ -307,6 +358,19 @@ export default {
       //   // 바꿔준 work의 값을 수정해준다.
       //   this.$store.dispatch('actWorkStopInsert', this.work) // 작업 중단
       // }, 1500) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
+
+      // 정지 후 리셋하도록 publish
+      setTimeout(() => {
+        this.client.publish('UVC-EDU-outside', '{"tagId":"50", "value":"1"}')
+        if (this.client.publish) {
+          this.$bvToast.toast('작업을 중단하였습니다.', {
+            title: '작업 중단',
+            variant: 'danger',
+            solid: true
+          }),
+            this.client.publish('UVC-EDU-outside', '{"tagId":"8", "value":"1"}')
+        }
+      }, 1000)
     }
   }
 }

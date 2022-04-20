@@ -38,6 +38,7 @@ export default {
       connection: {
         host: '220.90.129.47',
         port: 8088,
+        reconnectPeriod: 10 * 1000,
         // Certification Information
         clientId: 'mqtt_buttons_from_dashboard'
       },
@@ -70,7 +71,7 @@ export default {
       this.client.publish('UVC-EDU-outside', '{"tagId":"1", "value":"1"}')
       if (this.client.publish) {
         this.$bvToast.toast('가즈아~', {
-          title: 'SUCCESS',
+          title: 'START',
           variant: 'success',
           solid: true
         })
@@ -80,7 +81,7 @@ export default {
       this.client.publish('UVC-EDU-outside', '{"tagId":"50", "value":"1"}')
       if (this.client.publish) {
         this.$bvToast.toast('멈춰!', {
-          title: 'SUCCESS',
+          title: 'STOP',
           variant: 'success',
           solid: true
         })
@@ -90,7 +91,7 @@ export default {
       this.client.publish('UVC-EDU-outside', '{"tagId":"8", "value":"1"}')
       if (this.client.publish) {
         this.$bvToast.toast('리셋!', {
-          title: 'SUCCESS',
+          title: 'RESET',
           variant: 'success',
           solid: true
         })
