@@ -28,7 +28,7 @@
           <!-- <b-form-input v-if="tokenUserRole == '관리자'" id="name" v-model="work.name"></b-form-input>
           <b-form-input v-else-if="tokenUserRole == '작업자'" id="name" v-model="work.name" disabled></b-form-input> -->
         </b-form-group>
-        <b-form-group label="설비" label-for="code" label-cols="3">
+        <!-- <b-form-group label="설비" label-for="code" label-cols="3">
           <b-form-select
             id="code"
             v-model="work.machineCode"
@@ -40,7 +40,7 @@
               <b-form-select-option :value="null">-- 설비를 선택해 주세요. --</b-form-select-option>
             </template>
           </b-form-select>
-        </b-form-group>
+        </b-form-group> -->
         <!-- <b-form-group label="작업상태" label-for="name" label-cols="3">
           <b-form-input id="name" v-model="work.name"></b-form-input>
         </b-form-group> -->
@@ -51,6 +51,7 @@
             </template>
           </b-form-select>
         </b-form-group>
+        <!-- {{ itemList }} -->
         <b-form-group label="수량" label-for="productQuantity" label-cols="3">
           <b-form-select id="productQuantity" v-model="work.productQuantity" :options="options">
             <template #first>
@@ -183,7 +184,6 @@ export default {
       // 1. 등록인 경우
       if (
         this.work.name &&
-        this.work.machineCode &&
         this.work.itemName &&
         this.work.productQuantity &&
         this.work.startTime &&
@@ -192,20 +192,13 @@ export default {
         await this.$store.dispatch('actWorkInsert', this.work) // 입력 실행
         this.$bvModal.hide('modal-work-inform')
         return true
-      } else if (
-        !this.work.name ||
-        !this.work.machineCode ||
-        !this.work.itemName ||
-        !this.work.productQuantity ||
-        !this.work.startTime
-      ) {
+      } else if (!this.work.name || !this.work.itemName || !this.work.productQuantity || !this.work.startTime) {
         alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
         return false
       }
       // 2. 수정인 경우
       if (
         this.work.name &&
-        this.work.machineCode &&
         this.work.itemName &&
         this.work.productQuantity &&
         this.work.startTime &&
@@ -214,13 +207,7 @@ export default {
         await this.$store.dispatch('actWorkUpdate', this.work) // 입력 실행
         this.$bvModal.hide('modal-work-inform')
         return true
-      } else if (
-        !this.work.name ||
-        !this.work.machineCode ||
-        !this.work.itemName ||
-        !this.work.productQuantity ||
-        !this.work.startTime
-      ) {
+      } else if (!this.work.name || !this.work.itemName || !this.work.productQuantity || !this.work.startTime) {
         alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
         return false
       }

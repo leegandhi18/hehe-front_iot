@@ -51,7 +51,7 @@ export default {
       fields: [
         { key: 'id', label: 'ID' },
         { key: 'name', label: '작업자' },
-        { key: 'machineCode', label: '설비코드' },
+        // { key: 'machineCode', label: '설비코드' },
         { key: 'itemName', label: '품목명' },
         { key: 'totalQuantity', label: '생산량' },
         { key: 'goodQuantity', label: '양품' },

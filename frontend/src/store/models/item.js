@@ -14,6 +14,7 @@ export default {
     ItemList: [],
     Item: { ...stateInit.ItemList },
     InsertedResult: null, // 입력처리 후 결과
+    QuantityUpdate: null, // 작업중단, 작업완료 후 수량 갱신
     UpdatedResult: null,
     DeletedResult: null, // 삭제처리 후 결과
     InputMode: null
@@ -22,6 +23,7 @@ export default {
     ItemList: state => state.ItemList,
     Item: state => state.Item,
     ItemInsertedResult: state => state.InsertedResult,
+    ItemQuantityUpdate: state => state.QuantityUpdate,
     ItemUpdatedResult: state => state.UpdatedResult,
     ItemDeletedResult: state => state.DeletedResult,
     ItemInputMode: state => state.InputMode
@@ -35,6 +37,9 @@ export default {
     },
     setInsertedResult(state, data) {
       state.InsertedResult = data
+    },
+    setQuantityUpdate(state, data) {
+      state.QuantityUpdate = data
     },
     setUpdatedResult(state, data) {
       state.UpdatedResult = data
@@ -52,6 +57,7 @@ export default {
       /* RestAPI 호출 */
       api.get('/serverApi/items').then(response => {
         const itemList = response && response.data && response.data.rows
+        // console.log('response.data.rows', response.data.rows)
         context.commit('setItemList', itemList)
       })
     },
@@ -90,6 +96,22 @@ export default {
           // 에러인 경우 처리
           console.error('ItemInfo.error', error)
           context.commit('setItem', -1)
+        })
+    },
+    async actItemQuantityUpdate(context, payload) {
+      // context.commit('setQuantityUpdate', null)
+      console.log('payload', payload)
+      /* RestAPI 호출 */
+      await api
+        .put('/serverApi/items/quantityUpdate')
+        .then(response => {
+          const quantityUpdate = response && response.data && response.data.updatedCount
+          context.commit('setQuantityUpdate', quantityUpdate)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('ItemQuantityUpdate.error', error)
+          context.commit('setQuantityUpdate', -1)
         })
     },
     async actItemUpdate(context, payload) {

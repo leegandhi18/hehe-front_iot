@@ -5,9 +5,9 @@
         <b-form-group label="작업자" label-for="name" label-cols="3">
           <b-form-input id="name" v-model="workStop.name" disabled></b-form-input>
         </b-form-group>
-        <b-form-group label="설비코드" label-for="machineCode" label-cols="3">
+        <!-- <b-form-group label="설비코드" label-for="machineCode" label-cols="3">
           <b-form-input id="machineCode" v-model="workStop.machineCode" disabled></b-form-input>
-        </b-form-group>
+        </b-form-group> -->
         <b-form-group label="중단이력시간" label-for="time" label-cols="3">
           <b-form-input id="time" v-model="workStop.time" disabled></b-form-input>
         </b-form-group>

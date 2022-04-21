@@ -9,7 +9,7 @@
       <edukit class="test1" />
       <iframe
         class="test2"
-        src="http://localhost:3005/d-solo/fIZ4z6s7z/influxdb-metrics?orgId=1&refresh=5s&from=1650419561916&to=1650419571917&panelId=1"
+        src="http://localhost:3005/d-solo/fIZ4z6s7z/influxdb-metrics?orgId=1&refresh=5s&panelId=1"
         width="450"
         height="285"
         frameborder="0"
@@ -61,7 +61,7 @@ export default {
         console.log('mqtt.connect error', error)
       }
       this.client.on('connect', () => {
-        // console.log('버튼 연결 완료!')
+        console.log('버튼 연결 완료!')
       })
       this.client.on('error', error => {
         console.log('버튼 연결 실패', error)
