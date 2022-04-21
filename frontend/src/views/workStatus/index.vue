@@ -323,7 +323,7 @@ export default {
             solid: true
           })
         }
-      }, 1000)
+      }, 500)
     },
     async onClickStop(id) {
       // 작업 중단 버튼을 누른 해당 리스트 상세 조회
@@ -332,7 +332,7 @@ export default {
       await this.$store.dispatch('actWorkStopInit')
       // 작업 중단 모달 생성
       this.$bvModal.show('modal-stop-inform')
-      console.log('작업 중단')
+      // console.log('작업 중단')
       this.work = this.$store.getters.Work
       this.work.workNum = id
 
@@ -358,19 +358,6 @@ export default {
       //   // 바꿔준 work의 값을 수정해준다.
       //   this.$store.dispatch('actWorkStopInsert', this.work) // 작업 중단
       // }, 1500) // state값의 변화를 감지하기 위하여 일부러 지연 시켰다.
-
-      // 정지 후 리셋하도록 publish
-      setTimeout(() => {
-        this.client.publish('UVC-EDU-outside', '{"tagId":"50", "value":"1"}')
-        if (this.client.publish) {
-          this.$bvToast.toast('작업을 중단하였습니다.', {
-            title: '작업 중단',
-            variant: 'danger',
-            solid: true
-          }),
-            this.client.publish('UVC-EDU-outside', '{"tagId":"8", "value":"1"}')
-        }
-      }, 1000)
     }
   }
 }
