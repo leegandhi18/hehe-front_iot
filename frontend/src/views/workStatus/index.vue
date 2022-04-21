@@ -331,7 +331,7 @@ export default {
       await this.$store.dispatch('actWorkStopInit')
       // 작업 중단 모달 생성
       this.$bvModal.show('modal-stop-inform')
-      console.log('작업 중단')
+      // console.log('작업 중단')
       this.work = this.$store.getters.Work
       this.work.workNum = id
 

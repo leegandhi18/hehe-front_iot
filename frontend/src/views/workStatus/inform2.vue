@@ -41,7 +41,7 @@ export default {
         port: 8088,
         reconnectPeriod: 10 * 1000,
         // Certification Information
-        clientId: 'mqtt_buttons_from_workStatus'
+        clientId: 'mqtt_buttons_from_stopinform'
       },
       client: {
         connected: false
@@ -85,7 +85,7 @@ export default {
       console.log('작업 중단')
       // 작업 중단 버튼을 누른 해당 리스트 상세 조회
       this.work = this.$store.getters.Work
-      console.log('작업 정보', this.work)
+      console.log('중단된 작업 정보', this.work)
 
       // workStatus의 작업상태를 바꿔준다.
       // 작업 중단
@@ -132,6 +132,19 @@ export default {
 
       // 바꿔준 work의 값을 수정해준다.
       await this.$store.dispatch('actWorkStopInsert', this.work) // 작업 중단
+
+      // 정지 후 리셋하도록 publish
+      setTimeout(() => {
+        this.client.publish('UVC-EDU-outside', '{"tagId":"50", "value":"1"}')
+        if (this.client.publish) {
+          this.$bvToast.toast('작업을 중단하였습니다.', {
+            title: '작업 중단',
+            variant: 'danger',
+            solid: true
+          }),
+            this.client.publish('UVC-EDU-outside', '{"tagId":"8", "value":"1"}')
+        }
+      }, 500)
     }
   }
 }
