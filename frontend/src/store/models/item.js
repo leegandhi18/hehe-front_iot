@@ -100,7 +100,7 @@ export default {
           context.commit('setItem', -1)
         })
     },
-    async actItemInfo1(context, payload) {
+    async actProductInfo(context, payload) {
       context.commit('setItem', { ...stateInit.Item })
       /* RestAPI 호출 */
       await api
