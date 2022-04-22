@@ -81,14 +81,14 @@ export default {
     // 사용자 정보 수정 폼에 토큰 유저의 정보를 불러온다.
     this.user = this.$store.getters.TokenUser
     this.user.password = ''
-    console.log('login tokenUser', this.user)
+    // console.log('login tokenUser', this.user)
   },
   methods: {
     // 작업자 정보 수정하기 버튼 클릭 시
     onClickUpdate(e) {
       e.preventDefault()
       if (this.user.password && this.user.phone) {
-        console.log('update this.user', this.user)
+        // console.log('update this.user', this.user)
         this.$store.dispatch('actUserUpdate', this.user)
         return true
       } else if (!this.user.password || !this.user.phone) {

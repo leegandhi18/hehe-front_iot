@@ -12,7 +12,7 @@
             name="itemId"
             value-field="itemId"
             text-field="itemId"
-            placeholder="품목계정을 입력하시오."
+            placeholder="품목계정을 입력하세요."
           >
             <template #first>
               <b-form-select-option :value="null">-- 품목계정을 선택해 주세요. --</b-form-select-option>
@@ -36,7 +36,7 @@
           </b-form-select>
         </b-form-group>
         <b-form-group label="품목" label-for="name" label-cols="3">
-          <b-form-input id="name" v-model="item.name" name="name" placeholder="품목을 입력하시오."></b-form-input>
+          <b-form-input id="name" v-model="item.name" name="name" placeholder="품목명을 입력하세요."></b-form-input>
         </b-form-group>
         <b-form-group label="수량" label-for="quantity" label-cols="3">
           <b-form-input
@@ -44,7 +44,7 @@
             v-model="item.quantity"
             type="number"
             name="quantity"
-            placeholder="수량을 입력하시오."
+            placeholder="수량을 입력하세요."
           ></b-form-input>
         </b-form-group>
         <b-form-group label="컬러 센서" label-for="No2Mode" label-cols="3">

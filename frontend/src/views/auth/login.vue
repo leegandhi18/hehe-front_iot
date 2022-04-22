@@ -46,7 +46,7 @@ export default {
     tokenUser(value) {
       if (value && value.id && value.id > 0) {
         // 로그인이 완료된 상황
-        console.log('login token value', value)
+        // console.log('login token value', value)
         this.$router.push('/dashboard') // 메인 대시보드 페이지로 이동
       }
     },
@@ -66,7 +66,7 @@ export default {
     const token = window.localStorage.getItem('token')
     if (token) {
       const decodedToken = jwtDecode(token)
-      console.log('decodedToken', decodedToken)
+      // console.log('decodedToken', decodedToken)
       const today = new Date()
       const expDate = new Date(decodedToken.exp * 1000)
 
@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log('onSubmit', this.name, this.password)
+      // console.log('onSubmit', this.name, this.password)
       this.$store.dispatch('authLogin', { name: this.name, password: this.password })
     }
   }

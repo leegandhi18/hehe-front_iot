@@ -69,7 +69,7 @@ export default {
       await api
         .post('/serverApi/items', payload)
         .then(response => {
-          console.log('response', response)
+          // console.log('response', response)
           const insertedResult = response && response.data && response.data.id
           context.commit('setInsertedResult', insertedResult)
         })
@@ -133,7 +133,7 @@ export default {
     },
     async actItemUpdate(context, payload) {
       context.commit('setUpdatedResult', null)
-      console.log('payload', payload)
+      // console.log('payload', payload)
       /* RestAPI 호출 */
       await api
         .put(`/serverApi/items/${payload.id}`, payload)

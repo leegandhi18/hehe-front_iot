@@ -130,7 +130,7 @@ export default {
     }
   },
   beforeDestroy() {
-    console.log('beforeDestroy')
+    // console.log('beforeDestroy')
     clearInterval(this.auto_reload)
   },
   created() {

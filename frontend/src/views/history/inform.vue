@@ -59,7 +59,7 @@ export default {
     // 모달이 열린 이후에 감지됨
     infoData(value) {
       this.workStop = { ...value }
-      console.log('모달 열리고 감지되는 데이터', this.workStop)
+      // console.log('모달 열리고 감지되는 데이터', this.workStop)
     }
   },
   created() {
