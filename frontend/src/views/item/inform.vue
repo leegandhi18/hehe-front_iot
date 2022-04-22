@@ -47,10 +47,10 @@
             placeholder="수량을 입력하세요."
           ></b-form-input>
         </b-form-group>
-        <b-form-group label="컬러 센서" label-for="No2Mode" label-cols="3">
+        <b-form-group v-if="item.itemId == '완제품'" label="컬러 센서" label-for="No2Mode" label-cols="3">
           <b-form-radio-group id="No2Mode" v-model="item.No2Mode" :options="no2Mode.options" />
         </b-form-group>
-        <b-form-group label="양품 기준" label-for="DiceComparisonValue" label-cols="3">
+        <b-form-group v-if="item.itemId == '완제품'" label="양품 기준" label-for="DiceComparisonValue" label-cols="3">
           <b-form-select id="DiceComparisonValue" v-model="item.DiceComparisonValue" :options="dice.options">
             <template #first>
               <b-form-select-option :value="null">-- 기준값을 선택해 주세요. --</b-form-select-option>
@@ -137,13 +137,9 @@ export default {
       e.preventDefault()
       // 1. 등록인 경우
       if (
-        this.item.name &&
-        this.item.quantity &&
-        this.item.itemId &&
-        this.item.machineCode &&
-        this.item.No2Mode &&
-        this.item.DiceComparisonValue &&
-        this.inputMode === 'insert'
+        (this.item.name && this.item.quantity && this.item.itemId && this.item.machineCode) ||
+        this.item.No2Mode ||
+        (this.item.DiceComparisonValue && this.inputMode === 'insert')
       ) {
         await this.$store.dispatch('actItemInsert', this.item) // 입력 실행
         this.$bvModal.hide('modal-item-inform')

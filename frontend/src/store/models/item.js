@@ -111,7 +111,7 @@ export default {
         })
         .catch(error => {
           // 에러인 경우 처리
-          console.error('ItemInfo.error', error)
+          console.error('ProductInfo.error', error)
           context.commit('setItem', -1)
         })
     },
