@@ -114,9 +114,18 @@ namespace SmartConnector.Edukit
             {
                 string ReceivedMessage = Encoding.UTF8.GetString(e.Message);
                 Console.WriteLine( "ReceivedMessage = " + ReceivedMessage); // {"tagId":"37", "value":"1"}
-                
-                XGTClass xGTClass = new XGTClass(edgeConfigResult.EdukitIP, 2004);
-                XGTWrite(xGTClass, ReceivedMessage);
+                try 
+	            {	        
+		            XGTClass xGTClass = new XGTClass(edgeConfigResult.EdukitIP, 2004);
+                    XGTWrite(xGTClass, ReceivedMessage);
+	            }
+	            catch (Exception me) // message 관련 exeption
+	            {
+                    Console.WriteLine (me.Message + "\n" + me.StackTrace);
+                    Console.WriteLine("이 메세지는 처리할 수 없습니다.");
+                    Console.WriteLine("다시 시도합니다.");
+                    throw;
+	            }
             }
 
             private void XGTWrite(XGTClass xGTClass, string ReceivedMessage)
@@ -238,6 +247,23 @@ namespace SmartConnector.Edukit
                         xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                     }
                 }
+                else if (test.tagId == "31") // 공정조건 - True: 모두, False: 색선별
+                {
+                    if (test.value == "0")  // 색 선별
+                    {
+                        pAddress2.Address = "18";
+                        pAddress2.Data = "0";
+
+                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
+                    }
+                    else if (test.value == "1")  // 모두
+                    {
+                        pAddress2.Address = "18";
+                        pAddress2.Data = "1";
+
+                        xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
+                    }
+                }
                 else if (test.tagId == "13") // sensor2 ON/OFF
                 {
                     if (test.value == "0")
@@ -254,6 +280,20 @@ namespace SmartConnector.Edukit
 
                         xGTClass.Write(XGT_DataType.Bit, pAddress2, XGT_MemoryType.SubRelay_M, 0);
                     }
+                }
+                else if (test.tagId == "36") // OutputLimit
+                {
+                    pAddress2.Address = "10000";
+                    pAddress2.Data = test.value;
+                        
+                    xGTClass.Write(XGT_DataType.Word, pAddress2, XGT_MemoryType.DataRegister_D, 0);
+                }
+                else if (test.tagId == "38") // DiceComparisonValue
+                {
+                    pAddress2.Address = "150";
+                    pAddress2.Data = test.value;
+                        
+                    xGTClass.Write(XGT_DataType.Word, pAddress2, XGT_MemoryType.DataRegister_D, 0);
                 }
                 else if (test.tagId == "37") // DiceValue
                 {

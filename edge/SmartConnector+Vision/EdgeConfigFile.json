@@ -1,0 +1,13 @@
+{
+  "EdukitId": "UVC-EDU-hehe",
+  "FromOutside": "UVC-EDU-outside",
+  // "FromWeb": "UVC-EDU-operation",
+  "EdukitIP": "192.168.0.120",
+  // 이더넷 전용 통신 XGT protocol TCP/IP port number 가 2004임!
+  "EdukitPort": "2004",
+  "MqttBrokerIP": "220.90.129.47",
+  "MqttBrokerPort": "1883",
+  "WebSocketServerUrl": "ws://localhost:8088",
+  "DelayTime": "500",
+  "DebugType": "Debug"
+}
