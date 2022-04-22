@@ -3,22 +3,30 @@ import numpy as np
 from time import sleep
 import paho.mqtt.client as mqtt
 
+def on_log(client, userdata, level, buf):
+    print("log: ",buf)
+
+
 topic = "UVC-EDU-outside"
 client_id = 'python-mqtt'
 new_connection_message = '{"tagId":"37", "value":"0"}'
-mqtt = mqtt.Client(client_id) #create new instance
-mqtt.connect("220.90.129.47", 1883) #connect to broker
-if (mqtt.connect):
-    print('connect is success')
-    sleep(5)
+mqtt = mqtt.Client(client_id)  # create new instance
+mqtt.connect("220.90.129.47", 1883, 600)  # connect to broker, keepalive 10 min
+if mqtt.connect:
+    print('Mqtt connection success')
+    sleep(3.5)
     mqtt.publish(topic, new_connection_message)
-    if (mqtt.publish):
+    if mqtt.publish:
         print("Set default value")
 
+mqtt.loop_start()  # connection fail 방지
+mqtt.on_log=on_log # set client logging
 
 cap = cv2.VideoCapture(1) # 0 or 1, 0은 노트북 카메라 연결, 1이 usb로 붙인 카메라가 연결됨
-if (cap == False) :
-    print("camera connection error")
+if cap:
+    print("camera connection success")
+else:
+    print("camera error")
 
 readings = [-1, -1]
 
@@ -59,13 +67,11 @@ while True:
             print("mqtt_message = ", mqtt_message)
 
             mqtt.publish(topic, mqtt_message)
-            if (mqtt.publish):
-                print("Dice_value Published!")
-            else:
-                print("Something Wrong~~~")
+            # if (mqtt.publish):
+            #     print("Dice_value Published!")
+            # else:
+            #     print("Something Wrong~~~")
 
             cv2.imwrite("After.png", im_with_keypoints)
             sleep(9)
 
-cap.waitkey(0)
-cv2.destroyAllWindows()
