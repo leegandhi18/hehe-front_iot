@@ -82,36 +82,23 @@ export default {
       })
     },
     async onSubmit() {
-      console.log('작업 중단')
+      // console.log('작업 중단')
       // 작업 중단 버튼을 누른 해당 리스트 상세 조회
       this.work = this.$store.getters.Work
-      console.log('중단된 작업 정보', this.work)
+      // console.log('중단된 작업 정보', this.work)
 
       // workStatus의 작업상태를 바꿔준다.
       // 작업 중단
       this.work.workStatus = 3
-      console.log('this.work', this.work)
+      // console.log('this.work', this.work)
       this.work.workNum = this.work.id
-      console.log('this.work.id', this.work.id)
-      console.log('중단버튼 누를 시 workNum', this.work.workNum)
+      // console.log('this.work.id', this.work.id)
+      // console.log('중단버튼 누를 시 workNum', this.work.workNum)
       this.work.endTime = new Date().toISOString()
       this.work.time = new Date().toISOString()
       this.work.description = this.workStop.description
-      console.log('work.endTime', this.work.endTime)
-      console.log('work.Time', this.work.time)
-
-      // 정지 후 리셋하도록 publish
-      // setTimeout(() => {
-      //   this.client.publish('UVC-EDU-outside', '{"tagId":"50", "value":"1"}')
-      //   if (this.client.publish) {
-      //     this.$bvToast.toast('작업을 중단하였습니다.', {
-      //       title: '작업 중단',
-      //       variant: 'danger',
-      //       solid: true
-      //     }),
-      //       this.client.publish('UVC-EDU-outside', '{"tagId":"8", "value":"1"}')
-      //   }
-      // }, 1000)
+      // console.log('work.endTime', this.work.endTime)
+      // console.log('work.Time', this.work.time)
 
       // 정지 후 리셋하도록 publish
       await this.client.publish('UVC-EDU-outside', '{"tagId":"50", "value":"1"}')
@@ -128,23 +115,10 @@ export default {
       await this.$store.dispatch('actWorkUpdate', this.work)
       await this.$store.dispatch('actItemQuantityUpdate') // 품목 수량 최신화
       await this.$store.dispatch('actWorkHistoryInsert', this.work) // 완료이력에 남긴다
-      console.log('중단 이력에 넘겨준 데이터', this.work)
+      // console.log('중단 이력에 넘겨준 데이터', this.work)
 
       // 바꿔준 work의 값을 수정해준다.
       await this.$store.dispatch('actWorkStopInsert', this.work) // 작업 중단
-
-      // 정지 후 리셋하도록 publish
-      setTimeout(() => {
-        this.client.publish('UVC-EDU-outside', '{"tagId":"50", "value":"1"}')
-        if (this.client.publish) {
-          this.$bvToast.toast('작업을 중단하였습니다.', {
-            title: '작업 중단',
-            variant: 'danger',
-            solid: true
-          }),
-            this.client.publish('UVC-EDU-outside', '{"tagId":"8", "value":"1"}')
-        }
-      }, 500)
     }
   }
 }

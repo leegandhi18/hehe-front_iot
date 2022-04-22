@@ -86,21 +86,21 @@ export default {
       await this.$store.dispatch('actButtonResult')
       this.btnCheck = await this.$store.getters.ButtonResult
       this.btnCheck = 1
-      console.log('중복체크 누를 시', this.btnCheck)
+      // console.log('중복체크 누를 시', this.btnCheck)
       await this.$store.dispatch('actIdCheck', this.admin.name)
       let checkId = await this.$store.getters.IdCheckResult
-      console.log('this.admin.name', this.admin.name)
-      console.log('checkId', checkId)
+      // console.log('this.admin.name', this.admin.name)
+      // console.log('checkId', checkId)
       if (this.admin.name == null) {
         alert('이름을 입력해 주세요.')
       } else if (checkId == null) {
         alert('사용가능한 이름입니다.')
       } else if (this.admin.name != checkId) {
         let checkName = parseInt(checkId.slice(3, 4)) + 1
-        console.log('checkName', checkName)
-        alert(`${checkName}명의 동명이인이 있습니다. ${this.admin.name + checkName} 으로 가입하시오.`)
+        // console.log('checkName', checkName)
+        alert(`${checkName}명의 동명이인이 있습니다. ${this.admin.name + checkName} 으로 가입하세요.`)
       } else if (this.admin.name == checkId) {
-        alert(`1명의 동명이인이 있습니다. ${this.admin.name + 1} 으로 가입하시오.`)
+        alert(`1명의 동명이인이 있습니다. ${this.admin.name + 1} 으로 가입하세요.`)
       }
     },
     async onSubmit(e) {
@@ -120,7 +120,7 @@ export default {
         await this.$store.dispatch('actAdminInsert', this.admin) // 입력 실행
         this.$bvModal.hide('modal-admin-inform')
         this.btnCheck = await this.$store.getters.ButtonResult
-        console.log('중복체크 누른 후', this.btnCheck)
+        // console.log('중복체크 누른 후', this.btnCheck)
         return true
       } else if (!this.admin.name || !this.admin.password || !this.admin.role || !this.admin.phone) {
         alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')

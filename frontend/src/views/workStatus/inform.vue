@@ -113,7 +113,9 @@ export default {
         name: null,
         quantity: null,
         itemId: null,
-        machineCode: null
+        machineCode: null,
+        No2Mode: null,
+        DiceComparisonValue: null
       }
     }
   },

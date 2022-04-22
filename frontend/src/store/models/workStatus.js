@@ -15,6 +15,8 @@ const stateInit = {
     startTime: null,
     endTime: null,
     description: null,
+    No2Mode: null,
+    DiceComparisonValue: null,
     workStatus: 0
   }
 }

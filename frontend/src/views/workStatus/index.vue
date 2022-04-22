@@ -78,6 +78,15 @@ export default {
         workStatus: null,
         description: null
       },
+      item: {
+        id: null,
+        name: null,
+        quantity: null,
+        itemId: null,
+        machineCode: null,
+        No2Mode: null,
+        DiceComparisonValue: null
+      },
       beforeWorkingFields: [
         { key: 'id', label: 'ID' },
         { key: 'name', label: '작업자' },
@@ -271,32 +280,43 @@ export default {
       })
     },
     async onClickStart(id) {
-      console.log('작업 시작')
+      // console.log('작업 시작')
       // 작업 시작 버튼을 누른 해당 리스트 상세 조회
       await this.$store.dispatch('actWorkInfo', id)
       this.work = this.$store.getters.Work
+      // console.log('work.itemName', this.work.itemName)
+      // 작업 시작 버튼을 누르면 해당 품목의 정보를 가져온다
+      await this.$store.dispatch('actProductInfo', this.work.itemName)
+      this.item = this.$store.getters.Item
+      // console.log('this.item info', this.item)
+      // console.log('real itemName', this.item.name)
 
       // workStatus의 작업상태를 1로 바꿔준다.
       this.work.workStatus = 1
       this.work.workNum = id
-      console.log('시작버튼 누를 시 workNum', this.work.workNum)
+      // console.log('시작버튼 누를 시 workNum', this.work.workNum)
 
       // 바꿔준 work의 값을 수정해준다.
       await this.$store.dispatch('actWorkUpdate', this.work) // 수정 실행
-      console.log('시작버튼 누를 시 데이터', this.work)
+      // console.log('시작버튼 누를 시 데이터', this.work)
+
+      // 작업물품 조건 전달 (조건1, 2, 개수)
+      await this.client.publish('UVC-EDU-outside', `{"tagId":"36", "value":"${this.work.productQuantity}"}`) // OutputLimit
+      await this.client.publish('UVC-EDU-outside', `{"tagId":"31", "value":"${this.item.No2Mode}"}`) // No2Mode
+      await this.client.publish('UVC-EDU-outside', `{"tagId":"38", "value":"${this.item.DiceComparisonValue}"}`) // DiceComparisonValue
 
       // 시작 publish
       await this.client.publish('UVC-EDU-outside', '{"tagId":"1", "value":"1"}')
       if (this.client.publish) {
         this.$bvToast.toast('작업을 시작합니다.', {
           title: 'SUCCESS',
-          variant: 'success',
+          variant: 'info',
           solid: true
         })
       }
     },
     async onClickComplete(id) {
-      console.log('작업 완료')
+      // console.log('작업 완료')
       // 작업 완료 버튼을 누른 해당 리스트 상세 조회
       await this.$store.dispatch('actWorkInfo', id)
       this.work = this.$store.getters.Work
@@ -304,22 +324,22 @@ export default {
       // workStatus의 작업상태를 바꿔준다. (작업 완료)
       this.work.workStatus = 2
       this.work.workNum = id
-      console.log('완료버튼 누를 시 workNum', this.work.workNum)
+      // console.log('완료버튼 누를 시 workNum', this.work.workNum)
       this.work.endTime = new Date().toISOString()
-      console.log('work.endTime', this.work.endTime)
+      // console.log('work.endTime', this.work.endTime)
 
       // 바꿔준 work의 값을 수정해준다.
       await this.$store.dispatch('actWorkUpdate', this.work)
       await this.$store.dispatch('actItemQuantityUpdate') // 품목 수량 최신화
       await this.$store.dispatch('actWorkHistoryInsert', this.work) // 작업 완료
-      console.log('완료 이력에 넘겨준 데이터', this.work)
+      // console.log('완료 이력에 넘겨준 데이터', this.work)
 
       // 완료 되었으니 리셋하도록!
       await this.client.publish('UVC-EDU-outside', '{"tagId":"8", "value":"1"}')
       if (this.client.publish) {
         this.$bvToast.toast('완료된 작업을 확인하였습니다. 기기를 리셋합니다.', {
           title: 'SUCCESS',
-          variant: 'success',
+          variant: 'info',
           solid: true
         })
       }
@@ -334,7 +354,6 @@ export default {
       // console.log('작업 중단')
       this.work = this.$store.getters.Work
       this.work.workNum = id
-
     }
   }
 }

@@ -82,7 +82,7 @@ export default {
       if (this.client.publish) {
         this.$bvToast.toast('멈춰!', {
           title: 'STOP',
-          variant: 'success',
+          variant: 'warning',
           solid: true
         })
       }
@@ -92,7 +92,7 @@ export default {
       if (this.client.publish) {
         this.$bvToast.toast('리셋!', {
           title: 'RESET',
-          variant: 'success',
+          variant: 'info',
           solid: true
         })
       }

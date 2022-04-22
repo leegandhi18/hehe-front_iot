@@ -84,8 +84,8 @@ export default {
       await this.$store.dispatch('actWorkStopInfo', id)
       await this.$store.dispatch('actWorkHistoryInfo', id)
       this.workHistory = this.$store.getters.WorkHistory
-      console.log('this.workHistory', this.workHistory)
-      console.log('this.workHistory.workStatus', this.workHistory.workStatus)
+      // console.log('this.workHistory', this.workHistory)
+      // console.log('this.workHistory.workStatus', this.workHistory.workStatus)
 
       if (this.workHistory.workStatus == 3) {
         this.$bvModal.show('modal-stop-inform')

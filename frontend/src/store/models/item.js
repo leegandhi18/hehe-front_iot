@@ -6,7 +6,9 @@ const stateInit = {
     name: null,
     quantity: null,
     itemId: null,
-    machineCode: null
+    machineCode: null,
+    No2Mode: null,
+    DiceComparisonValue: null
   }
 }
 export default {
@@ -67,7 +69,7 @@ export default {
       await api
         .post('/serverApi/items', payload)
         .then(response => {
-          console.log('response', response)
+          // console.log('response', response)
           const insertedResult = response && response.data && response.data.id
           context.commit('setInsertedResult', insertedResult)
         })
@@ -84,6 +86,21 @@ export default {
       context.commit('setInputMode', payload)
     },
     async actItemInfo(context, payload) {
+      context.commit('setItem', { ...stateInit.Item })
+      /* RestAPI 호출 */
+      await api
+        .get(`/serverApi/items/${payload}`)
+        .then(response => {
+          const item = response && response.data
+          context.commit('setItem', item)
+        })
+        .catch(error => {
+          // 에러인 경우 처리
+          console.error('ItemInfo.error', error)
+          context.commit('setItem', -1)
+        })
+    },
+    async actProductInfo(context, payload) {
       context.commit('setItem', { ...stateInit.Item })
       /* RestAPI 호출 */
       await api
@@ -116,7 +133,7 @@ export default {
     },
     async actItemUpdate(context, payload) {
       context.commit('setUpdatedResult', null)
-      console.log('payload', payload)
+      // console.log('payload', payload)
       /* RestAPI 호출 */
       await api
         .put(`/serverApi/items/${payload.id}`, payload)
