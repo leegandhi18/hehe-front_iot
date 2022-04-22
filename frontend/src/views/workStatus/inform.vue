@@ -145,7 +145,7 @@ export default {
       return this.$store.getters.MachineList
     },
     itemList() {
-      return this.$store.getters.ItemList
+      return this.$store.getters.ItemList && this.$store.getters.ItemList.itemId == '완제품'
     },
     tokenUserRole() {
       return this.$store.getters.TokenUser && this.$store.getters.TokenUser.role
