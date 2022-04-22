@@ -5,18 +5,6 @@
         <b-form-group v-if="inputMode === 'update'" label="ID" label-for="id" label-cols="3">
           <b-form-input id="id" v-model="item.id" disabled></b-form-input>
         </b-form-group>
-        <b-form-group label="품목" label-for="name" label-cols="3">
-          <b-form-input id="name" v-model="item.name" name="name" placeholder="품목을 입력하시오."></b-form-input>
-        </b-form-group>
-        <b-form-group label="수량" label-for="quantity" label-cols="3">
-          <b-form-input
-            id="quantity"
-            v-model="item.quantity"
-            type="number"
-            name="quantity"
-            placeholder="수량을 입력하시오."
-          ></b-form-input>
-        </b-form-group>
         <b-form-group label="품목계정" label-for="itemId" label-cols="3">
           <b-form-select
             id="itemId"
@@ -47,6 +35,28 @@
             </template>
           </b-form-select>
         </b-form-group>
+        <b-form-group label="품목" label-for="name" label-cols="3">
+          <b-form-input id="name" v-model="item.name" name="name" placeholder="품목을 입력하시오."></b-form-input>
+        </b-form-group>
+        <b-form-group label="수량" label-for="quantity" label-cols="3">
+          <b-form-input
+            id="quantity"
+            v-model="item.quantity"
+            type="number"
+            name="quantity"
+            placeholder="수량을 입력하시오."
+          ></b-form-input>
+        </b-form-group>
+        <b-form-group label="컬러 센서" label-for="No2Mode" label-cols="3">
+          <b-form-radio-group id="No2Mode" v-model="item.No2Mode" :options="no2Mode.options" />
+        </b-form-group>
+        <b-form-group label="양품 기준" label-for="DiceComparisonValue" label-cols="3">
+          <b-form-select id="DiceComparisonValue" v-model="item.DiceComparisonValue" :options="dice.options">
+            <template #first>
+              <b-form-select-option :value="null">-- 기준값을 선택해 주세요. --</b-form-select-option>
+            </template>
+          </b-form-select>
+        </b-form-group>
       </div>
     </b-modal>
   </div>
@@ -61,11 +71,30 @@ export default {
         name: null,
         quantity: null,
         itemId: null,
-        machineCode: null
+        machineCode: null,
+        No2Mode: null,
+        DiceComparisonValue: null
       },
       machine: {
         id: null,
         code: null
+      },
+      no2Mode: {
+        options: [
+          { value: '0', text: 'ON - 선별' },
+          { value: '1', text: 'OFF - 비선별' }
+        ]
+      },
+      dice: {
+        options: [
+          { value: 0, text: 0 },
+          { value: 1, text: 1 },
+          { value: 2, text: 2 },
+          { value: 3, text: 3 },
+          { value: 4, text: 4 },
+          { value: 5, text: 5 },
+          { value: 6, text: 6 }
+        ]
       }
     }
   },
@@ -112,12 +141,21 @@ export default {
         this.item.quantity &&
         this.item.itemId &&
         this.item.machineCode &&
+        this.item.No2Mode &&
+        this.item.DiceComparisonValue &&
         this.inputMode === 'insert'
       ) {
         await this.$store.dispatch('actItemInsert', this.item) // 입력 실행
         this.$bvModal.hide('modal-item-inform')
         return true
-      } else if (!this.item.name || !this.item.quantity || !this.item.itemId || !this.item.machineCode) {
+      } else if (
+        !this.item.name ||
+        !this.item.quantity ||
+        !this.item.itemId ||
+        !this.item.machineCode ||
+        !this.item.No2Mode ||
+        !this.item.DiceComparisonValue
+      ) {
         alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
         return false
       }
@@ -127,12 +165,21 @@ export default {
         this.item.quantity &&
         this.item.itemId &&
         this.item.machineCode &&
+        this.item.No2Mode &&
+        this.item.DiceComparisonValue &&
         this.inputMode === 'update'
       ) {
         await this.$store.dispatch('actItemUpdate', this.item) // 수정 실행
         this.$bvModal.hide('modal-item-inform')
         return true
-      } else if (!this.item.name || !this.item.quantity || !this.item.itemId || !this.item.machineCode) {
+      } else if (
+        !this.item.name ||
+        !this.item.quantity ||
+        !this.item.itemId ||
+        !this.item.machineCode ||
+        !this.item.No2Mode ||
+        !this.item.DiceComparisonValue
+      ) {
         alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
         return false
       }
