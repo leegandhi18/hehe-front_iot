@@ -288,8 +288,11 @@ export default {
       // 작업 시작 버튼을 누르면 해당 품목의 정보를 가져온다
       await this.$store.dispatch('actProductInfo', this.work.itemName)
       this.item = this.$store.getters.Item
-      // console.log('this.item info', this.item)
+      console.log('this.item info', this.item)
       // console.log('real itemName', this.item.name)
+      console.log('this.work.productQuantity', this.work.productQuantity)
+      console.log('this.item.No2Mode', this.item.No2Mode)
+      console.log('this.item.DiceComparisonValue', this.item.DiceComparisonValue)
 
       // workStatus의 작업상태를 1로 바꿔준다.
       this.work.workStatus = 1
@@ -302,8 +305,10 @@ export default {
 
       // 작업물품 조건 전달 (조건1, 2, 개수)
       await this.client.publish('UVC-EDU-outside', `{"tagId":"36", "value":"${this.work.productQuantity}"}`) // OutputLimit
-      await this.client.publish('UVC-EDU-outside', `{"tagId":"31", "value":"${this.item.No2Mode}"}`) // No2Mode
-      await this.client.publish('UVC-EDU-outside', `{"tagId":"38", "value":"${this.item.DiceComparisonValue}"}`) // DiceComparisonValue
+      await setTimeout(() => {
+        this.client.publish('UVC-EDU-outside', `{"tagId":"31", "value":"${this.item.No2Mode}"}`) // No2Mode
+        this.client.publish('UVC-EDU-outside', `{"tagId":"38", "value":"${this.item.DiceComparisonValue}"}`) // DiceComparisonValue
+      }, 500)
 
       // 시작 publish
       await this.client.publish('UVC-EDU-outside', '{"tagId":"1", "value":"1"}')
