@@ -107,7 +107,10 @@ export default {
       e.preventDefault()
       console.log('중복체크 누르기 전', this.btnCheck)
       // 1. 등록인 경우
-      if (this.btnCheck == 0 || this.btnCheck == null) {
+      if (
+        (this.inputMode === 'insert' && this.btnCheck == 0) ||
+        (this.inputMode === 'insert' && this.btnCheck == null)
+      ) {
         alert('이름 중복체크를 해주세요.')
         return false
       } else if (
@@ -120,7 +123,7 @@ export default {
         await this.$store.dispatch('actAdminInsert', this.admin) // 입력 실행
         this.$bvModal.hide('modal-admin-inform')
         this.btnCheck = await this.$store.getters.ButtonResult
-        // console.log('중복체크 누른 후', this.btnCheck)
+        console.log('중복체크 누른 후', this.btnCheck)
         return true
       } else if (!this.admin.name || !this.admin.password || !this.admin.role || !this.admin.phone) {
         alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
