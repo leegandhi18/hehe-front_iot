@@ -81,8 +81,8 @@ export default {
       },
       no2Mode: {
         options: [
-          { value: '0', text: 'ON - 선별' },
-          { value: '1', text: 'OFF - 비선별' }
+          { value: '0', text: '하얀색 선별' },
+          { value: '1', text: '비선별' }
         ]
       },
       dice: {
@@ -136,48 +136,94 @@ export default {
     async onSubmit(e) {
       e.preventDefault()
       // 1. 등록인 경우
-      if (
-        (this.item.name && this.item.quantity && this.item.itemId && this.item.machineCode) ||
-        this.item.No2Mode ||
-        (this.item.DiceComparisonValue && this.inputMode === 'insert')
-      ) {
-        await this.$store.dispatch('actItemInsert', this.item) // 입력 실행
-        this.$bvModal.hide('modal-item-inform')
-        return true
-      } else if (
-        !this.item.name ||
-        !this.item.quantity ||
-        !this.item.itemId ||
-        !this.item.machineCode ||
-        !this.item.No2Mode ||
-        !this.item.DiceComparisonValue
-      ) {
-        alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
-        return false
+      if (this.item.itemId === '완제품') {
+        if (
+          this.item.name &&
+          this.item.quantity >= 0 &&
+          this.item.itemId &&
+          this.item.machineCode &&
+          this.item.No2Mode &&
+          this.item.DiceComparisonValue >= 0 &&
+          this.inputMode === 'insert'
+        ) {
+          await this.$store.dispatch('actItemInsert', this.item) // 입력 실행
+          this.$bvModal.hide('modal-item-inform')
+          return true
+        }
+      } else if (this.item.itemId === '재료') {
+        if (
+          this.item.name &&
+          this.item.quantity >= 0 &&
+          this.item.itemId &&
+          this.item.machineCode &&
+          this.inputMode === 'insert'
+        ) {
+          await this.$store.dispatch('actItemInsert', this.item) // 입력 실행
+          this.$bvModal.hide('modal-item-inform')
+          return true
+        }
+      } else if (this.item.itemId === '완제품') {
+        if (
+          !this.item.name ||
+          !this.item.quantity ||
+          !this.item.itemId ||
+          !this.item.machineCode ||
+          !this.item.No2Mode ||
+          !this.item.DiceComparisonValue
+        ) {
+          alert('완제품 입력을 완료하지 않았습니다. 다시 확인해주세요.')
+          return false
+        }
+      } else if (this.item.itemId === '재료') {
+        if (!this.item.name || !this.item.quantity || !this.item.itemId || !this.item.machineCode) {
+          alert('재료 입력을 완료하지 않았습니다. 다시 확인해주세요.')
+          return false
+        }
       }
       // 2. 수정인 경우
-      if (
-        this.item.name &&
-        this.item.quantity &&
-        this.item.itemId &&
-        this.item.machineCode &&
-        this.item.No2Mode &&
-        this.item.DiceComparisonValue &&
-        this.inputMode === 'update'
-      ) {
-        await this.$store.dispatch('actItemUpdate', this.item) // 수정 실행
-        this.$bvModal.hide('modal-item-inform')
-        return true
-      } else if (
-        !this.item.name ||
-        !this.item.quantity ||
-        !this.item.itemId ||
-        !this.item.machineCode ||
-        !this.item.No2Mode ||
-        !this.item.DiceComparisonValue
-      ) {
-        alert('입력을 완료하지 않았습니다. 다시 확인해주세요.')
-        return false
+      if (this.item.itemId === '완제품') {
+        if (
+          this.item.name &&
+          this.item.quantity &&
+          this.item.itemId &&
+          this.item.machineCode &&
+          this.item.No2Mode &&
+          this.item.DiceComparisonValue &&
+          this.inputMode === 'update'
+        ) {
+          await this.$store.dispatch('actItemUpdate', this.item) // 입력 실행
+          this.$bvModal.hide('modal-item-inform')
+          return true
+        }
+      } else if (this.item.itemId === '재료') {
+        if (
+          this.item.name &&
+          this.item.quantity &&
+          this.item.itemId &&
+          this.item.machineCode &&
+          this.inputMode === 'update'
+        ) {
+          await this.$store.dispatch('actItemUpdate', this.item) // 입력 실행
+          this.$bvModal.hide('modal-item-inform')
+          return true
+        }
+      } else if (this.item.itemId === '완제품') {
+        if (
+          !this.item.name ||
+          !this.item.quantity >= 0 ||
+          !this.item.itemId ||
+          !this.item.machineCode ||
+          !this.item.No2Mode ||
+          !this.item.DiceComparisonValue >= 0
+        ) {
+          alert('완제품 입력을 완료하지 않았습니다. 다시 확인해주세요.')
+          return false
+        }
+      } else if (this.item.itemId === '재료') {
+        if (!this.item.name || !this.item.quantity >= 0 || !this.item.itemId || !this.item.machineCode) {
+          alert('재료 입력을 완료하지 않았습니다. 다시 확인해주세요.')
+          return false
+        }
       }
     }
   }

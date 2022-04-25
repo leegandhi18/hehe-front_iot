@@ -104,7 +104,7 @@ export default {
       context.commit('setItem', { ...stateInit.Item })
       /* RestAPI 호출 */
       await api
-        .get(`/serverApi/items/${payload}`)
+        .get(`/serverApi/items/product/${payload}`)
         .then(response => {
           const item = response && response.data
           context.commit('setItem', item)
