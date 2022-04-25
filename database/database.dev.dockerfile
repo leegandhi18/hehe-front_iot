@@ -8,4 +8,4 @@ RUN localedef -f UTF-8 -i ko_KR ko_KR.UTF-8
 ENV LC_ALL ko_KR.UTF-8
 ENV POSTGRES_USER=postgres
 ENV POSTGRES_PASSWORD=postgres
-ENV POSTGRES_DB=EDUKiT_database
+ENV POSTGRES_DB=hehe_database

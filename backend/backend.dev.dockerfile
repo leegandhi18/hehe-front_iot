@@ -1,6 +1,6 @@
 # Backend dockerfile
-# node 14.15.4 version 설치
-FROM node:14.15.4-alpine
+# node 14.18.1 version 설치
+FROM node:14.18.1-alpine
 # 앱 디렉터리 생성
 WORKDIR /usr/src/app
 # 앱 의존성 설치
@@ -14,4 +14,3 @@ COPY . /usr/src/app
 EXPOSE 3000
 # nodemon으로 실행
 CMD [ "npm", "start" ]
-# CMD [ "npm", "run", "dev" ]
