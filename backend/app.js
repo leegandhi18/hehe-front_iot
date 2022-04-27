@@ -32,8 +32,8 @@ models.sequelize.authenticate().then(() => {
 
   // sequelize sync (table 생성)
   // force: true -> table 재생성
-  models.sequelize.sync({ force: true }).then(() => {
-  // models.sequelize.sync().then(() => {
+  // models.sequelize.sync({ force: true }).then(() => {
+  models.sequelize.sync().then(() => {
     logger.info('Sequelize sync success');
   }).catch((err) => {
     logger.error('Sequelize sync error', err);

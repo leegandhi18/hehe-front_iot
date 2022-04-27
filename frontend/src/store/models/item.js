@@ -119,8 +119,9 @@ export default {
       // context.commit('setQuantityUpdate', null)
       console.log('payload', payload)
       /* RestAPI 호출 */
+      // await api
       await api
-        .put('/serverApi/items/quantityUpdate')
+        .put('/serverApi/items/quantityUpdate', payload)
         .then(response => {
           const quantityUpdate = response && response.data && response.data.updatedCount
           context.commit('setQuantityUpdate', quantityUpdate)

@@ -54,7 +54,7 @@ router.route('/quantityUpdate')
     try {
       const params = {
         id: req.params.id,
-        name: req.body.name,
+        name: req.body.itemName,
         No2Mode: req.body.No2Mode,
         DiceComparisonValue: req.body.DiceComparisonValue,
       };
