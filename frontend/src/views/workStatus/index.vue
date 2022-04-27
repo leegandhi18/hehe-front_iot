@@ -350,7 +350,7 @@ export default {
 
       // 바꿔준 work의 값을 수정해준다.
       await this.$store.dispatch('actWorkUpdate', this.work)
-      await this.$store.dispatch('actItemQuantityUpdate') // 품목 수량 최신화
+      await this.$store.dispatch('actItemQuantityUpdate', this.work) // 품목 수량 최신화
       await this.$store.dispatch('actWorkHistoryInsert', this.work) // 작업 완료
       // console.log('완료 이력에 넘겨준 데이터', this.work)
 
