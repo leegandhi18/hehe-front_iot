@@ -4,6 +4,9 @@ services:
     image: postgres
     restart: always
     container_name: postgres
+    build:
+      context: ./database
+      dockerfile: database.dev.dockerfile
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -13,7 +16,7 @@ services:
     networks:
       - monitoring
     ports:
-      - 5432:5432
+      - 5433:5432
   #     ###########################################################################################################################
   grafana:
     image: grafana/grafana:latest
@@ -30,12 +33,13 @@ services:
     user: root
   influxdb:
     image: influxdb:1.8.3
-    container_name: influx
+    container_name: influxdb
     ports:
       - '8086:8086'
     networks:
       - monitoring
     environment:
+      - INFLUXDB_DB=backend
       - INFLUXDB_ADMIN_ENABLED=true
       - INFLUXDB_ADMIN_USER=admin
       - INFLUXDB_ADMIN_PASSWORD=admin

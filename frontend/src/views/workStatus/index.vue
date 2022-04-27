@@ -304,11 +304,26 @@ export default {
       // console.log('시작버튼 누를 시 데이터', this.work)
 
       // 작업물품 조건 전달 (조건1, 2, 개수)
+      // await this.client.publish('UVC-EDU-outside', `{"tagId":"38", "value":"${this.item.DiceComparisonValue}"}`) // DiceComparisonValue
+      // setTimeout(() => {
+      //   this.client.publish('UVC-EDU-outside', `{"tagId":"31", "value":"${this.item.No2Mode}"}`) // No2Mode
+      // }, 500)
+      // setTimeout(() => {
+      //   this.client.publish('UVC-EDU-outside', `{"tagId":"36", "value":"${this.work.productQuantity}"}`) // OutputLimit
+      // }, 1000)
+      // setTimeout(() => {
+      //   this.client.publish('UVC-EDU-outside', '{"tagId":"1", "value":"1"}')
+      //   if (this.client.publish) {
+      //     this.$bvToast.toast('작업을 시작합니다.', {
+      //       title: 'SUCCESS',
+      //       variant: 'info',
+      //       solid: true
+      //     })
+      //   }
+      // }, 1500)
+      await this.client.publish('UVC-EDU-outside', `{"tagId":"31", "value":"${this.item.No2Mode}"}`) // No2Mode
+      await this.client.publish('UVC-EDU-outside', `{"tagId":"38", "value":"${this.item.DiceComparisonValue}"}`) // DiceComparisonValue
       await this.client.publish('UVC-EDU-outside', `{"tagId":"36", "value":"${this.work.productQuantity}"}`) // OutputLimit
-      await setTimeout(() => {
-        this.client.publish('UVC-EDU-outside', `{"tagId":"31", "value":"${this.item.No2Mode}"}`) // No2Mode
-        this.client.publish('UVC-EDU-outside', `{"tagId":"38", "value":"${this.item.DiceComparisonValue}"}`) // DiceComparisonValue
-      }, 500)
 
       // 시작 publish
       await this.client.publish('UVC-EDU-outside', '{"tagId":"1", "value":"1"}')
