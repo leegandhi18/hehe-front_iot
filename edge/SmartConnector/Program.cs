@@ -113,30 +113,48 @@ namespace SmartConnector.Edukit
             private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
             {
                 string ReceivedMessage = Encoding.UTF8.GetString(e.Message);
-                Console.WriteLine( "ReceivedMessage = " + ReceivedMessage); // {"tagId":"37", "value":"1"}
-                try 
-	            {	        
-		            XGTClass xGTClass = new XGTClass(edgeConfigResult.EdukitIP, 2004);
-                    XGTWrite(xGTClass, ReceivedMessage);
-	            }
-	            catch (Exception me) // message 관련 exeption
-	            {
-                    Console.WriteLine (me.Message + "\n" + me.StackTrace);
-                    Console.WriteLine("이 메세지는 처리할 수 없습니다.");
-                    Console.WriteLine("다시 시도합니다.");
-                    throw;
-	            }
+                Console.WriteLine( "ReceivedMessage = " + ReceivedMessage); // ex, {"tagId":"37", "value":"1"}-~~
+
+                string[] MessageSplit = ReceivedMessage.Split("-");  // 메세지 나눠주기
+                foreach(string order in MessageSplit)
+                {
+                    try 
+	                {	        
+		                XGTClass xGTClass = new XGTClass(edgeConfigResult.EdukitIP, 2004);
+                        XGTWrite(xGTClass, order);
+	                }
+	                catch (Exception) // message 관련 exeption
+	                {
+                        Console.WriteLine("메세지 처리에 실패하였습니다.");
+	                }
+                    finally
+                    {
+                        Thread.Sleep(100);
+                    }
+                }
+
+                //try 
+	            //{	        
+		        //    XGTClass xGTClass = new XGTClass(edgeConfigResult.EdukitIP, 2004);
+                //    XGTWrite(xGTClass, ReceivedMessage);
+	            //}
+	            //catch (Exception me) // message 관련 exeption
+	            //{
+                //    Console.WriteLine (me.Message + "\n" + me.StackTrace);
+                //    Console.WriteLine($"XGTWrite 오류 : {ReceivedMessage} 이 메세지는 처리할 수 없습니다.");
+                //   // throw;
+	            //}
             }
 
-            private void XGTWrite(XGTClass xGTClass, string ReceivedMessage)
+            private void XGTWrite(XGTClass xGTClass, string order)
             {
                 xGTClass.Connect(edgeConfigResult.EdukitIP, 2004);
                 
                 // 읽어올 데이터를 XGTAddressData로 생성
                 XGTAddressData pAddress2 = new XGTAddressData();
 
-                dynamic test = JsonConvert.DeserializeObject(ReceivedMessage);  // 여기서 json 형식으로 바꾸는거야~~~~~~~
-                // Console.Write("test.ToString = "+ test.ToString());
+                dynamic test = JsonConvert.DeserializeObject(order);  // 여기서 json 형식으로 바꾸는거야~~~~~~~
+                Console.Write("Incoming Message = "+ test.ToString());
 
                 if (test.tagId == "1") //start
                 {

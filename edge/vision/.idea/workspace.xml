@@ -2,6 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12ab09c1-803e-43b1-b71c-76cddaeba73b" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/.vs/SmartConnector+Vision/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/.vs/SmartConnector+Vision/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/.vs/VSWorkspaceState.json" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/.vs/VSWorkspaceState.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/.vs/slnx.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/bin/Debug/netcoreapp3.1/SmartConnector.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/bin/Debug/netcoreapp3.1/SmartConnector.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/bin/Debug/netcoreapp3.1/SmartConnector.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/bin/Debug/netcoreapp3.1/SmartConnector.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/bin/Debug/netcoreapp3.1/SmartConnector.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/bin/Debug/netcoreapp3.1/SmartConnector.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/SmartConnector.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Debug/netcoreapp3.1/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Release/netcoreapp3.1/SmartConnector.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Release/netcoreapp3.1/SmartConnector.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Release/netcoreapp3.1/SmartConnector.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector+Vision/obj/Release/netcoreapp3.1/SmartConnector.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SmartConnector/.vs/SmartConnector/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/.vs/SmartConnector/v17/.suo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SmartConnector/.vs/slnx.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/.vs/slnx.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SmartConnector/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartConnector/Program.cs" afterDir="false" />
@@ -17,6 +34,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/After.png" beforeDir="false" afterPath="$PROJECT_DIR$/After.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DiceValue.py" beforeDir="false" afterPath="$PROJECT_DIR$/DiceValue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/views/workStatus/inform.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/views/workStatus/inform.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

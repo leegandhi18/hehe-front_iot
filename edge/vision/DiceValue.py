@@ -14,17 +14,17 @@ mqtt = mqtt.Client(client_id)  # create new instance
 mqtt.connect("220.90.129.47", 1883, 600)  # connect to broker, keepalive 10 min
 if mqtt.connect:
     print('Mqtt connection success')
-    sleep(3.5)
-    mqtt.publish(topic, new_connection_message)
-    if mqtt.publish:
-        print("Set default value")
 
 mqtt.loop_start()  # connection fail 방지
 mqtt.on_log=on_log # set client logging
 
-cap = cv2.VideoCapture(1) # 0 or 1, 0은 노트북 카메라 연결, 1이 usb로 붙인 카메라가 연결됨
+cap = cv2.VideoCapture(0) # 0 or 1, 0은 노트북 카메라 연결, 1이 usb로 붙인 카메라가 연결됨
 if cap:
     print("camera connection success")
+    sleep(3)
+    mqtt.publish(topic, new_connection_message)
+    if mqtt.publish:
+        print("Set default value")
 else:
     print("camera error")
 
