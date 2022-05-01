@@ -321,12 +321,8 @@ export default {
       //     })
       //   }
       // }, 1500)
-      await this.client.publish('UVC-EDU-outside', `{"tagId":"31", "value":"${this.item.No2Mode}"}`) // No2Mode
-      await this.client.publish('UVC-EDU-outside', `{"tagId":"38", "value":"${this.item.DiceComparisonValue}"}`) // DiceComparisonValue
-      await this.client.publish('UVC-EDU-outside', `{"tagId":"36", "value":"${this.work.productQuantity}"}`) // OutputLimit
-
-      // 시작 publish
-      await this.client.publish('UVC-EDU-outside', '{"tagId":"1", "value":"1"}')
+      let plcPublish = `{"tagId":"31", "value":"${this.item.No2Mode}"}-{"tagId":"38", "value":"${this.item.DiceComparisonValue}"}-{"tagId":"36", "value":"${this.work.productQuantity}"}-{"tagId":"1", "value":"1"}`
+      await this.client.publish('UVC-EDU-outside', plcPublish)
       if (this.client.publish) {
         this.$bvToast.toast('작업을 시작합니다.', {
           title: 'SUCCESS',
@@ -334,6 +330,19 @@ export default {
           solid: true
         })
       }
+      // await this.client.publish('UVC-EDU-outside', `{"tagId":"31", "value":"${this.item.No2Mode}"}`) // No2Mode
+      // await this.client.publish('UVC-EDU-outside', `{"tagId":"38", "value":"${this.item.DiceComparisonValue}"}`) // DiceComparisonValue
+      // await this.client.publish('UVC-EDU-outside', `{"tagId":"36", "value":"${this.work.productQuantity}"}`) // OutputLimit
+
+      // // 시작 publish
+      // await this.client.publish('UVC-EDU-outside', '{"tagId":"1", "value":"1"}')
+      // if (this.client.publish) {
+      //   this.$bvToast.toast('작업을 시작합니다.', {
+      //     title: 'SUCCESS',
+      //     variant: 'info',
+      //     solid: true
+      //   })
+      // }
     },
     async onClickComplete(id) {
       // console.log('작업 완료')

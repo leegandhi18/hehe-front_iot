@@ -101,15 +101,26 @@ export default {
       // console.log('work.Time', this.work.time)
 
       // 정지 후 리셋하도록 publish
-      await this.client.publish('UVC-EDU-outside', '{"tagId":"50", "value":"1"}')
+      let plcPublish = `{"tagId":"50", "value":"1"}-{"tagId":"8", "value":"1"}`
+      await this.client.publish('UVC-EDU-outside', plcPublish)
       if (this.client.publish) {
-        this.$bvToast.toast('작업을 중단하였습니다.', {
-          title: '작업 중단',
-          variant: 'danger',
+        this.$bvToast.toast('작업을 시작합니다.', {
+          title: 'SUCCESS',
+          variant: 'info',
           solid: true
-        }),
-          this.client.publish('UVC-EDU-outside', '{"tagId":"8", "value":"1"}')
+        })
       }
+
+      // // 정지 후 리셋하도록 publish
+      // await this.client.publish('UVC-EDU-outside', '{"tagId":"50", "value":"1"}')
+      // if (this.client.publish) {
+      //   this.$bvToast.toast('작업을 중단하였습니다.', {
+      //     title: '작업 중단',
+      //     variant: 'danger',
+      //     solid: true
+      //   }),
+      //     this.client.publish('UVC-EDU-outside', '{"tagId":"8", "value":"1"}')
+      // }
 
       // 바꿔준 work의 값을 수정해준다.
       await this.$store.dispatch('actWorkUpdate', this.work)

@@ -70,7 +70,7 @@ export default {
     start() {
       this.client.publish('UVC-EDU-outside', '{"tagId":"1", "value":"1"}')
       if (this.client.publish) {
-        this.$bvToast.toast('가즈아~', {
+        this.$bvToast.toast('시작', {
           title: 'START',
           variant: 'success',
           solid: true
@@ -80,7 +80,7 @@ export default {
     stop() {
       this.client.publish('UVC-EDU-outside', '{"tagId":"50", "value":"1"}')
       if (this.client.publish) {
-        this.$bvToast.toast('멈춰!', {
+        this.$bvToast.toast('정지', {
           title: 'STOP',
           variant: 'warning',
           solid: true
@@ -90,7 +90,7 @@ export default {
     reset() {
       this.client.publish('UVC-EDU-outside', '{"tagId":"8", "value":"1"}')
       if (this.client.publish) {
-        this.$bvToast.toast('리셋!', {
+        this.$bvToast.toast('리셋', {
           title: 'RESET',
           variant: 'info',
           solid: true
